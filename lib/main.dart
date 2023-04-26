@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:rts/constants/colors.dart';
 import 'package:rts/constants/textstyles.dart';
+import 'package:rts/ui/home/home.dart';
+import 'package:rts/utils/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,25 +24,27 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       scrollBehavior: const ScrollBehavior(
           androidOverscrollIndicator: AndroidOverscrollIndicator.stretch),
-      darkTheme: darkThemeData(context),
+      // darkTheme: darkThemeData(context),
       theme: ThemeConfig.lightTheme,
-      themeMode: ThemeMode.system,
+      // themeMode: ThemeMode.system,
 
       // home: HomeView(),
-      home: HomeView(),
+      // home: const HomePage()
+      initialRoute: AppRotutes.home,
+      getPages: AppRotutes.pages,
       // home: OnboardingScreen(),
     );
   }
 }
 
-class HomeView extends StatelessWidget {
-  const HomeView({Key? key}) : super(key: key);
+// class HomeView extends StatelessWidget {
+//   const HomeView({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text("hii")));
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(body: Center(child: Text("hii")));
+//   }
+// }
 
 ThemeData darkThemeData(BuildContext context) {
   return ThemeData(
