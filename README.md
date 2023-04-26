@@ -1,16 +1,12 @@
-# rts
+# Raah-Towards-Success
 
-A new Flutter project.
+A Project to empower students of our college with technology and frameworks so that the can achieve success in the near future.
 
-## Getting Started
+## Our Mission
 
-This project is a starting point for a Flutter application.
+In this project we are going to organize some bootcamps and with this website we will take take of all the stats of the students.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- We are going to organize Bootcamps
+-- Flutter Development
+-- Competitive Programming
+-- And more in future will happen.
