@@ -5,8 +5,8 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:rts/ui/home/home_vm.dart';
 
-class Dashboard extends StatelessWidget {
-  const Dashboard({super.key});
+class About extends StatelessWidget {
+  const About({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class Dashboard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                "Your Dashboard",
+                "About RTS",
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,

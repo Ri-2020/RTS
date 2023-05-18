@@ -6,22 +6,13 @@ import 'package:rts/widgets/bootcamp_tile.dart';
 
 class HomeVM extends GetxController {
   List<Widget> views = [
-    const Dashboard(),
     const LoggedInHome(),
     const Text("Resourses"),
+    const Dashboard(),
     const Text("About Section"),
   ];
 
   List<Widget> test = [
-    const BootCampTile(),
-    const BootCampTile(),
-    const BootCampTile(),
-    const BootCampTile(),
-    const BootCampTile(),
-    const BootCampTile(),
-    const BootCampTile(),
-    const BootCampTile(),
-    const BootCampTile(),
     const BootCampTile(),
   ];
 
