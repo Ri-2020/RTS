@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:rts/constants/colors.dart';
 import 'package:rts/constants/textstyles.dart';
 import 'package:rts/ui/home/home.dart';
+import 'package:rts/ui/register/signin.dart';
 import 'package:rts/utils/routes.dart';
 
 void main() async {
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       // themeMode: ThemeMode.system,
 
       // home: HomeView(),
-      // home: const HomePage()
+      // home: const Signin(),
       initialRoute: AppRotutes.home,
       getPages: AppRotutes.pages,
       // home: OnboardingScreen(),

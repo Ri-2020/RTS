@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rts/ui/home/home_vm.dart';
+import 'package:rts/ui/register/signin.dart';
 import 'package:side_navigation/side_navigation.dart';
 
 class HomePage extends StatelessWidget {
@@ -77,24 +78,29 @@ class HomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       // const Text("Raah-Towards-Success"),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: const [
-                          Text(
-                            "Logout",
-                            style: TextStyle(
+                      InkWell(
+                        onTap: () {
+                          Get.to(() => Signin());
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: const [
+                            Text(
+                              "Logout",
+                              style: TextStyle(
+                                color: Colors.red,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Icon(
+                              Icons.logout,
                               color: Colors.red,
                             ),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Icon(
-                            Icons.logout,
-                            color: Colors.red,
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ],
                   ),
