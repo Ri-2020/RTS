@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rts/constants/google_fonts.dart';
-import 'package:rts/ui/about/characterTile.dart';
 import 'package:rts/ui/home/home_vm.dart';
+import 'package:rts/ui/resourses/resource_box.dart';
 
-class About extends StatelessWidget {
-  const About({super.key});
+class Resourses extends StatelessWidget {
+  const Resourses({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +46,10 @@ class About extends StatelessWidget {
                                 width: Get.width,
                                 height: Get.height,
                                 decoration: const BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(10),
+                                    topRight: Radius.circular(10),
+                                  ),
                                   gradient: LinearGradient(
                                     colors: [
                                       Colors.black,
@@ -63,25 +67,28 @@ class About extends StatelessWidget {
                               Positioned(
                                 top: 0,
                                 child: Container(
-                                  width: Get.width,
-                                  height: Get.height,
-                                  decoration: BoxDecoration(
-                                    gradient: RadialGradient(
-                                      colors: [
-                                        Colors.black.withOpacity(0.51),
-                                        Colors.transparent,
-                                      ],
-                                      radius: Get.width * 0.45,
-                                    ),
-                                  ),
-                                ),
+                                    width: Get.width,
+                                    height: Get.height,
+                                    decoration: BoxDecoration(
+                                      borderRadius: const BorderRadius.only(
+                                        topLeft: Radius.circular(10),
+                                        topRight: Radius.circular(10),
+                                      ),
+                                      gradient: RadialGradient(
+                                        colors: [
+                                          Colors.black.withOpacity(0.51),
+                                          Colors.transparent,
+                                        ],
+                                        radius: Get.width * 0.45,
+                                      ),
+                                    )),
                               ),
                               Center(
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      "Raah Towards Success",
+                                      "Get Resourses",
                                       style: UseGoogleFont().openSans(
                                         size: 30,
                                         color: Colors.white,
@@ -89,7 +96,7 @@ class About extends StatelessWidget {
                                       ),
                                     ),
                                     const Text(
-                                      "/about",
+                                      "/resourses",
                                       style: TextStyle(
                                         fontSize: 10,
                                         color: Colors.white,
@@ -103,85 +110,12 @@ class About extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          // width: 600,
-                          margin: EdgeInsets.all(30),
-                          padding: EdgeInsets.all(30),
-                          decoration: BoxDecoration(
-                            // color: Colors.blue[100],
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(15),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 0,
-                                blurRadius: 2,
-                                offset:
-                                    Offset(0, 0), // changes position of shadow
-                              ),
-                            ],
-                          ),
+                          width: double.infinity,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.symmetric(
-                                    vertical: 10, horizontal: 5),
-                                child: Text(
-                                  "About Us",
-                                  style: UseGoogleFont().openSans(
-                                    size: 30,
-                                    color: Colors.blue[900],
-                                    weight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                "John Doe is a software developer with over 10 years of experience. He is currently a senior software engineer at Google, where he works on the development of the company's search engine. John is a highly skilled developer with a strong understanding of computer science. He is also a talented problem solver and is able to quickly come up with creative solutions to complex problems. John is a valuable asset to any team and is always willing to help others. He is also a great communicator and is able to clearly explain complex technical concepts to both technical and non-technical audiences. John is a passionate developer who is always looking for new ways to improve his skills and knowledge. He is also a strong advocate for diversity and inclusion in the tech industry. John is a role model for aspiring developers and is an inspiration to his colleagues.",
-                                textAlign: TextAlign.justify,
-                                style: UseGoogleFont().openSans(
-                                    size: 17,
-                                    color: Colors.blue[900],
-                                    weight: FontWeight.w500),
-                              ),
-                            ],
+                            children: [...vm.resources],
                           ),
-                        ),
-                        // const SizedBox(
-                        //   height: 20,
-                        // ),
-                        Container(
-                          margin: const EdgeInsets.symmetric(
-                              vertical: 20, horizontal: 5),
-                          child: Text(
-                            "Our Team",
-                            style: TextStyle(
-                              color: Colors.blue[900],
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.all(10),
-                          width: double.infinity,
-                          child: Wrap(
-                            alignment: WrapAlignment.spaceAround,
-                            children: const [
-                              CharacterTile(
-                                name: "Rohit Gupta",
-                                post: "Chief Technology Head",
-                              ),
-                              CharacterTile(
-                                name: "Vikram Negi",
-                                post: "Chief Executive Head",
-                              ),
-                              CharacterTile(
-                                name: "Aman Tiwari",
-                                post: "Chief Managing Head",
-                              ),
-                            ],
-                          ),
-                        ),
+                        )
                       ],
                     ),
                   ),
