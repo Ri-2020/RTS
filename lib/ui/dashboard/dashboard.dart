@@ -20,14 +20,6 @@ class Dashboard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                "Your Dashboard",
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const Divider(),
               Container(
                 margin: const EdgeInsets.all(10),
                 padding: const EdgeInsets.all(20),
@@ -42,6 +34,7 @@ class Dashboard extends StatelessWidget {
                       children: [
                         Container(
                           height: 200,
+                          width: double.infinity,
                           decoration: const BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Colors.red, Colors.blue],
@@ -50,6 +43,16 @@ class Dashboard extends StatelessWidget {
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(10),
                               topRight: Radius.circular(10),
+                            ),
+                          ),
+                          child: const Center(
+                            child: Text(
+                              "Your Dashboard",
+                              style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
