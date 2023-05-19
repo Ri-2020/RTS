@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:rts/ui/dashboard/dashboard.dart';
 import 'package:rts/ui/home/logged_in_home.dart';
+import 'package:rts/ui/register/signin.dart';
 import 'package:rts/widgets/bootcamp_tile.dart';
 
 class HomeVM extends GetxController {
