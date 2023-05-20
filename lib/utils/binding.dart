@@ -6,6 +6,12 @@ class HomeBinding extends Bindings {
   @override
   void dependencies() {
     Get.put(HomeVM());
+  }
+}
+
+class BootcampDetailsBinding extends Bindings {
+  @override
+  void dependencies() {
     Get.put(BootcampDetailsVM());
   }
 }
