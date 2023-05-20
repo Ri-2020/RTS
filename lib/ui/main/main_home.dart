@@ -1,11 +1,32 @@
-import 'package:blur/blur.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rts/ui/home/home_vm.dart';
 import 'package:rts/ui/register/signin.dart';
+import 'package:rts/utils/shared_prefer.dart';
 
-class MainHomePage extends StatelessWidget {
+class MainHomePage extends StatefulWidget {
   const MainHomePage({super.key});
+
+  @override
+  State<MainHomePage> createState() => _MainHomePageState();
+}
+
+class _MainHomePageState extends State<MainHomePage> {
+  String name = "";
+
+  void getUserName() async {
+    name = (await SharedPrefs.getString("name")) ?? "";
+    setState(() {});
+    print("user data : ${(await SharedPrefs.getString("name")) ?? "data"}");
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getUserName();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +110,7 @@ class MainHomePage extends StatelessWidget {
                     Get.to(() => Signin());
                   },
                   child: Text(
-                    "Sign in",
+                    "Hello $name" ?? "Sign in",
                     style: TextStyle(
                       fontSize: 14,
                       color: Colors.grey.shade800,

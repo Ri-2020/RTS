@@ -44,15 +44,6 @@ class HomePage extends StatelessWidget {
                     child: Text(""),
                   ),
                   image: const Text(""),
-                  //  ClipRRect(
-                  //   borderRadius: BorderRadius.circular(50),
-                  //   child: Image.network(
-                  //     "https://th.bing.com/th/id/OIP.jryuUgIHWL-1FVD2ww8oWgHaHa?pid=ImgDet&rs=1",
-                  //     fit: BoxFit.cover,
-                  //     width: 50,
-                  //     height: 50,
-                  //   ),
-                  // ),
                 ),
                 selectedIndex: vm.selectedIndex,
                 items: const [

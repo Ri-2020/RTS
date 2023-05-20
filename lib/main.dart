@@ -3,20 +3,22 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:rts/constants/colors.dart';
 import 'package:rts/constants/textstyles.dart';
-import 'package:rts/ui/home/home.dart';
-import 'package:rts/ui/main/main_home.dart';
-import 'package:rts/ui/register/signin.dart';
 import 'package:rts/utils/routes.dart';
+import 'package:rts/utils/shared_prefer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Paint.enableDithering = true;
+  runApp(MyApp(isUserAuthenticated: await isUSerLoggedIn()));
+}
 
-  runApp(MyApp());
+Future<bool> isUSerLoggedIn() async {
+  return await SharedPrefs.getString("userId") == null ? false : true;
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  MyApp({super.key, required this.isUserAuthenticated});
+
+  bool isUserAuthenticated;
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +35,8 @@ class MyApp extends StatelessWidget {
       // themeMode: ThemeMode.system,
 
       // home: HomeView(),
-      home: MainHomePage(),
-      // initialRoute: AppRotutes.home,
+      // home: const Signin(),
+      initialRoute: isUserAuthenticated ? AppRotutes.home : AppRotutes.mainHome,
       getPages: AppRotutes.pages,
       // home: OnboardingScreen(),
     );

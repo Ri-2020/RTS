@@ -44,6 +44,9 @@ class ThemeConfig {
       labelColor: Colors.black,
       unselectedLabelColor: Colors.grey,
     ),
+    fontFamily: 'Open Sans',
+    // fontFamily: 'Racing Sans One',
+
     appBarTheme: AppBarTheme(
       color: lightPrimary,
       elevation: 0.0,
