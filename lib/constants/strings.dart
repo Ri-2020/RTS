@@ -14,4 +14,5 @@ class UseString {
   static const user_name_not_found = "User Name Not found";
   static const signin = "Sign In";
   static const edit_profile = "Edit Profile";
+  static const no_skills_added = "No Skills Added";
 }

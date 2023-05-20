@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -7,8 +9,10 @@ import 'package:rts/constants/colors.dart';
 import 'package:rts/constants/google_fonts.dart';
 import 'package:rts/constants/strings.dart';
 import 'package:rts/ui/edit_profile/edit_profile_viewmodel.dart';
+import 'package:rts/ui/register/signup.dart';
 import 'package:rts/utils/routes.dart';
 import 'package:rts/widgets/custom_text_form_field.dart';
+import 'package:rts/widgets/round_container.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
@@ -18,7 +22,7 @@ class EditProfileScreen extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     return GetBuilder<EditProfileVM>(builder: (vm) {
       return Scaffold(
-        body: Container(
+        body: SingleChildScrollView(
           child: Column(
             children: [
               Container(
@@ -122,56 +126,199 @@ class EditProfileScreen extends StatelessWidget {
                             title: "Phone Number",
                             hint: "Enter Phone Number",
                           ),
+                          LabelField(name: "Bio"),
+                          TextFormField(
+                            minLines: 3,
+                            maxLines: null,
+                            controller: vm.bioController,
+                            decoration: InputDecoration(
+                                hintText: "Tell us about yourself...",
+                                hintStyle: TextStyle(
+                                  color: Colors.grey.shade500,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                                contentPadding: const EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 20),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(4),
+                                  borderSide: const BorderSide(width: 1),
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(4),
+                                  borderSide: const BorderSide(width: 1),
+                                )),
+                          ),
                         ],
                       ),
                     ),
-                    Container(
-                      width: width * 0.60,
-                      margin: EdgeInsets.all(30),
-                      padding: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(30),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 0,
-                            blurRadius: 2,
-                            offset: const Offset(
-                                0, 0), // changes position of shadow
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Skills",
-                                style: GoogleFonts.openSans(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              IconButton(
-                                onPressed: () {},
-                                icon: const Icon(Icons.add),
+                    Column(
+                      children: [
+                        Container(
+                          width: width * 0.60,
+                          margin: EdgeInsets.all(30),
+                          padding: EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(30),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 0,
+                                blurRadius: 2,
+                                offset: const Offset(
+                                    0, 0), // changes position of shadow
                               ),
                             ],
                           ),
-                          Container(
-                            width: double.infinity,
-                            margin: EdgeInsets.symmetric(vertical: 20),
-                            child: Wrap(
-                              alignment: WrapAlignment.start,
-                              children: vm.skills
-                                  .map((e) => RoundContainer(skill: e))
-                                  .toList(),
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Skills",
+                                    style: GoogleFonts.openSans(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Row(children: [
+                                    AnimatedContainer(
+                                      duration: Duration(milliseconds: 700),
+                                      width: vm.isAddingSkill ? 250 : 0,
+                                      child: TextField(
+                                        controller: vm.addSkillController,
+                                        decoration: InputDecoration(
+                                          hintText: "Add Skill",
+                                          suffixIcon: !vm.isAddingSkill
+                                              ? null
+                                              : Container(
+                                                  margin:
+                                                      EdgeInsets.only(right: 6),
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.black,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            36),
+                                                  ),
+                                                  child: IconButton(
+                                                    onPressed: () {
+                                                      vm.addSkill();
+                                                    },
+                                                    icon: Icon(
+                                                      Icons.add,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ),
+                                          hintStyle: TextStyle(
+                                            color: Colors.grey.shade500,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                          contentPadding:
+                                              const EdgeInsets.symmetric(
+                                            vertical: 10,
+                                            horizontal: 20,
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(36),
+                                            borderSide:
+                                                const BorderSide(width: 1),
+                                          ),
+                                          border: !vm.isAddingSkill
+                                              ? InputBorder.none
+                                              : OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(36),
+                                                  borderSide:
+                                                      BorderSide(width: 0),
+                                                ),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(width: 10),
+                                    CircleAvatar(
+                                      radius: 20,
+                                      backgroundColor: Colors.black,
+                                      child: IconButton(
+                                        onPressed: () {
+                                          vm.isAddingSkill = !vm.isAddingSkill;
+                                          vm.update();
+                                        },
+                                        icon: Icon(
+                                          vm.isAddingSkill
+                                              ? Icons.close
+                                              : Icons.add,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ]),
+                                ],
+                              ),
+                              Container(
+                                width: double.infinity,
+                                margin:
+                                    const EdgeInsets.symmetric(vertical: 20),
+                                child: vm.skills.isNotEmpty
+                                    ? Wrap(
+                                        alignment: WrapAlignment.start,
+                                        children: vm.skills
+                                            .map(
+                                              (e) => RoundContainer(
+                                                skill: e,
+                                              ),
+                                            )
+                                            .toList(),
+                                      )
+                                    : Center(
+                                        child: SizedBox(
+                                          height: 50,
+                                          child: Text(
+                                            UseString.no_skills_added,
+                                            style: GoogleFonts.openSans(
+                                              fontSize: 15,
+                                              color: Colors.grey,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: width * 0.60,
+                          margin: const EdgeInsets.symmetric(
+                            vertical: 15,
+                            horizontal: 30,
+                          ),
+                          padding: EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(30),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 0,
+                                blurRadius: 2,
+                                offset: const Offset(
+                                    0, 0), // changes position of shadow
+                              ),
+                            ],
+                          ),
+                          child: Text(
+                            "Social Media Links",
+                            style: GoogleFonts.openSans(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
                             ),
-                          )
-                        ],
-                      ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -192,16 +339,20 @@ Widget changeInput({
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Container(
-        margin: EdgeInsets.all(10),
-        child: Text(
-          title,
-          style: GoogleFonts.openSans(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
+      LabelField(
+        name: title,
       ),
+      // Container(
+      //   margin: EdgeInsets.all(10),
+      //   child:
+      //    Text(
+      //     title,
+      //     style: GoogleFonts.openSans(
+      //       fontSize: 14,
+      //       fontWeight: FontWeight.w500,
+      //     ),
+      //   ),
+      // ),
       CustomTextFormField(
         controller: controller,
         hintText: hint,
@@ -213,32 +364,6 @@ Widget changeInput({
   );
 }
 
-class RoundContainer extends StatelessWidget {
-  final String skill;
-  const RoundContainer({
-    super.key,
-    required this.skill,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        color: AppColors.blackColor,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Text(
-        skill,
-        style: GoogleFonts.openSans(
-          color: Colors.white,
-          fontSize: 14,
-          fontWeight: FontWeight.normal,
-        ),
-      ),
-    );
-  }
-}
 
 //   String name;
 //   String email;

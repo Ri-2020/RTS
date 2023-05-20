@@ -12,8 +12,6 @@ class Resourses extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HomeVM homeVM = Get.find<HomeVM>();
-    ResourcesVM vm = Get.find<ResourcesVM>();
     double width = MediaQuery.of(context).size.width;
     return GetBuilder<ResourcesVM>(builder: (vm) {
       return SelectionArea(
