@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:rts/ui/edit_profile/edit_profile.dart';
 import 'package:rts/ui/home/home.dart';
 import 'package:rts/ui/main/main_home.dart';
 import 'package:rts/utils/binding.dart';
@@ -23,9 +24,9 @@ class AppRotutes {
       // binding: HomeBinding(),
     ),
     GetPage(
-      name: AppRotutes.bootcamp,
-      page: () => const HomePage(),
-      binding: BootcampDetailsBinding(),
+      name: AppRotutes.editProfile,
+      page: () => const EditProfileScreen(),
+      binding: EditProfileBindings(),
     ),
   ];
 }
