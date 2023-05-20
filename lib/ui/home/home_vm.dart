@@ -1,16 +1,22 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:rts/ui/about/about.dart';
 import 'package:rts/ui/dashboard/dashboard.dart';
 import 'package:rts/ui/home/logged_in_home.dart';
-import 'package:rts/ui/register/signin.dart';
+import 'package:rts/ui/resourses/resource_box.dart';
+import 'package:rts/ui/resourses/resourses.dart';
 import 'package:rts/widgets/bootcamp_tile.dart';
 
 class HomeVM extends GetxController {
   List<Widget> views = [
     const LoggedInHome(),
-    const Text("Resourses"),
+    const Resourses(),
     const Dashboard(),
-    const Text("About Section"),
+    const About(),
+  ];
+
+  List<ResourceBox> resources = [
+    const ResourceBox(),
   ];
 
   List<Widget> test = [

@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:rts/constants/google_fonts.dart';
 import 'package:rts/ui/home/home_vm.dart';
 
 class Dashboard extends StatelessWidget {
@@ -15,19 +16,11 @@ class Dashboard extends StatelessWidget {
     return GetBuilder<HomeVM>(builder: (vm) {
       return SingleChildScrollView(
         child: Container(
-          color: Color.fromARGB(255, 243, 243, 243),
+          color: const Color.fromARGB(255, 243, 243, 243),
           padding: const EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                "Your Dashboard",
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const Divider(),
               Container(
                 margin: const EdgeInsets.all(10),
                 padding: const EdgeInsets.all(20),
@@ -42,15 +35,72 @@ class Dashboard extends StatelessWidget {
                       children: [
                         Container(
                           height: 200,
+                          width: double.infinity,
                           decoration: const BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [Colors.red, Colors.blue],
-                              stops: [0.0, 1.0],
-                            ),
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(10),
                               topRight: Radius.circular(10),
                             ),
+                          ),
+                          child: Stack(
+                            children: [
+                              Container(
+                                width: Get.width,
+                                height: Get.height,
+                                decoration: const BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Colors.black,
+                                      Color.fromARGB(255, 29, 2, 103),
+                                      Colors.deepPurpleAccent,
+                                      Colors.red,
+                                      Colors.black
+                                    ],
+                                    begin: Alignment.bottomLeft,
+                                    end: Alignment.topRight,
+                                    stops: [0.0, 0.1, 0.2, 0.76, 1.0],
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                top: 0,
+                                child: Container(
+                                    width: Get.width,
+                                    height: Get.height,
+                                    decoration: BoxDecoration(
+                                      gradient: RadialGradient(
+                                        colors: [
+                                          Colors.black.withOpacity(0.51),
+                                          Colors.transparent,
+                                        ],
+                                        radius: Get.width * 0.45,
+                                      ),
+                                    )),
+                              ),
+                              Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Your Dashboard",
+                                      style: UseGoogleFont().openSans(
+                                        size: 30,
+                                        color: Colors.white,
+                                        weight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    const Text(
+                                      "/dashboard",
+                                      style: TextStyle(
+                                        fontSize: 10,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w100,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                         Container(
@@ -58,11 +108,12 @@ class Dashboard extends StatelessWidget {
                           // color: Colors.black,
                           margin: const EdgeInsets.only(top: 70),
                           padding: const EdgeInsets.only(left: 20),
-                          child: const Text(
+                          child: Text(
                             "Rohit Gupta Indurkhya",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600,
+                            style: UseGoogleFont().openSans(
+                              color: Colors.black,
+                              size: 20,
+                              weight: FontWeight.bold,
                             ),
                           ),
                         ),
@@ -75,9 +126,9 @@ class Dashboard extends StatelessWidget {
                             // top: 15,
                             bottom: 15,
                           ),
-                          child: const Text(
+                          child: Text(
                             "rohitgupta111abcd@gmail.com | 2007360130047",
-                            style: TextStyle(
+                            style: UseGoogleFont().openSans(
                               color: Colors.grey,
                             ),
                           ),
@@ -93,25 +144,24 @@ class Dashboard extends StatelessWidget {
                                   children: [
                                     Container(
                                       // width: 600,
-                                      padding: EdgeInsets.all(15),
+                                      padding: const EdgeInsets.all(15),
                                       decoration: BoxDecoration(
-                                        color: Colors.blue[100],
+                                        color: Colors.blue[50],
                                         borderRadius: BorderRadius.circular(15),
                                       ),
                                       child: const Text(
                                         "John Doe is a software developer with over 10 years of experience. He is currently a senior software engineer at Google, where he works on the development of the company's search engine. John is a highly skilled developer with a strong understanding of computer science. He is also a talented problem solver and is able to quickly come up with creative solutions to complex problems. John is a valuable asset to any team and is always willing to help others. He is also a great communicator and is able to clearly explain complex technical concepts to both technical and non-technical audiences. John is a passionate developer who is always looking for new ways to improve his skills and knowledge. He is also a strong advocate for diversity and inclusion in the tech industry. John is a role model for aspiring developers and is an inspiration to his colleagues.",
+                                        textAlign: TextAlign.justify,
                                         style: TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.normal,
-                                          // color:
-                                          // Color.fromRGBO(101, 101, 101, 1),
                                         ),
                                       ),
                                     ),
                                     Container(
                                       // width: 600,
-                                      margin: EdgeInsets.only(top: 20),
-                                      padding: EdgeInsets.all(15),
+                                      margin: const EdgeInsets.only(top: 20),
+                                      padding: const EdgeInsets.all(15),
                                       decoration: BoxDecoration(
                                         color: Colors.blue[100],
                                         borderRadius: BorderRadius.circular(15),
