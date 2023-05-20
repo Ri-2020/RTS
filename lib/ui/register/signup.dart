@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rts/ui/register/signup_viewmodel.dart';
+import 'package:rts/widgets/custom_text_form_field.dart';
 
 class Signup extends StatelessWidget {
   Signup({super.key});
@@ -300,39 +301,6 @@ class Signup extends StatelessWidget {
         ),
       );
     });
-  }
-}
-
-class CustomTextFormField extends StatelessWidget {
-  CustomTextFormField({Key? key, this.hintText, required this.controller})
-      : super(key: key);
-  final String? hintText;
-  TextEditingController controller;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 35,
-      child: TextFormField(
-        controller: controller,
-        decoration: InputDecoration(
-            hintText: hintText,
-            hintStyle: TextStyle(
-              color: Colors.grey.shade500,
-              fontWeight: FontWeight.w500,
-            ),
-            contentPadding:
-                const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(4),
-              borderSide: const BorderSide(width: 1),
-            ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(4),
-              borderSide: const BorderSide(width: 1),
-            )),
-      ),
-    );
   }
 }
 

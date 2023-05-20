@@ -29,13 +29,50 @@ class HomePage extends StatelessWidget {
                       )
                     : null,
                 header: SideNavigationBarHeader(
-                  title: Container(
-                    padding: const EdgeInsets.only(top: 20.0, right: 30),
-                    child: const Text(
-                      "RTS",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                  title: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SizedBox(
+                        width: 115,
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Padding(
+                                padding: EdgeInsets.only(left: 8.0),
+                                child: Text("RTS",
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w900,
+                                    )),
+                              ),
+                              const SizedBox(height: 5),
+                              // const Divider(
+                              //   thickness: 1,
+                              // ),
+                              Container(
+                                height: 2,
+                                decoration: BoxDecoration(
+                                  color: Color.fromARGB(255, 206, 187, 15),
+                                  borderRadius: BorderRadius.circular(4),
+                                ),
+                                width: 75,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(vm.user?.name ?? "name",
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold,
+                                        )),
+                                  ],
+                                ),
+                              ),
+                            ]),
                       ),
                     ),
                   ),
