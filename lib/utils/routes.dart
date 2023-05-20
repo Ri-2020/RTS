@@ -9,6 +9,7 @@ class AppRotutes {
   static const signin = '/signin';
   static const signup = '/signup';
   static const bootcamp = "/bootcamp";
+  static const editProfile = "/editProfile";
 
   static final pages = [
     GetPage(

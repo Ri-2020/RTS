@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:rts/constants/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ResourceBox extends StatelessWidget {
-  const ResourceBox({super.key});
+  final String title;
+  final String description;
+  final String? url;
+  const ResourceBox({
+    super.key,
+    required this.title,
+    required this.description,
+    this.url,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,49 +35,52 @@ class ResourceBox extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Learn Dart",
-            style: UseGoogleFont().openSans(
+            title,
+            style: GoogleFonts.openSans(
               color: Colors.black,
-              size: 20,
-              weight: FontWeight.bold,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
             ),
           ),
           const SizedBox(height: 10),
           Text(
-            "Click on Go to Docs button to find the Dart related Resources",
-            style: UseGoogleFont().openSans(
+            description,
+            style: GoogleFonts.openSans(
               color: Colors.grey,
-              size: 15,
+              fontSize: 15,
+              fontWeight: FontWeight.normal,
             ),
           ),
           const SizedBox(height: 20),
-          InkWell(
-            onTap: () async {
-              // print("Working");
-              if (await canLaunchUrl(Uri.parse("http://dart.dev"))) {
-                await launchUrl(Uri.parse("http://dart.dev"));
-              }
-              // launchUrl(Uri.parse("http://dart.dev"));
-            },
-            child: Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 10,
-                vertical: 7,
-              ),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.blue, width: 2),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: const Text(
-                "Go to Docs",
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
+          url != null
+              ? InkWell(
+                  onTap: () async {
+                    final uriParsed = Uri.parse(url!);
+                    if (await canLaunchUrl(uriParsed)) {
+                      await launchUrl(uriParsed);
+                    }
+                    // launchUrl(Uri.parse("http://dart.dev"));
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 7,
+                    ),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blue, width: 2),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: const Text(
+                      "Go to Resource",
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                )
+              : const SizedBox(),
         ],
       ),
     );

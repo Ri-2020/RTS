@@ -3,7 +3,11 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:rts/constants/colors.dart';
 import 'package:rts/constants/google_fonts.dart';
+import 'package:rts/constants/strings.dart';
+import 'package:rts/ui/dashboard/dashboard_vm.dart';
 import 'package:rts/ui/home/home_vm.dart';
 
 class Dashboard extends StatelessWidget {
@@ -11,7 +15,8 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HomeVM vm = Get.find<HomeVM>();
+    DashboardVM vm = Get.find<DashboardVM>();
+    HomeVM homeVM = Get.find<HomeVM>();
     double width = MediaQuery.of(context).size.width;
     return GetBuilder<HomeVM>(builder: (vm) {
       return SingleChildScrollView(
@@ -100,6 +105,32 @@ class Dashboard extends StatelessWidget {
                                   ],
                                 ),
                               ),
+                              Positioned(
+                                bottom: 20,
+                                right: 20,
+                                child: InkWell(
+                                  onTap: () {
+                                    print("Edit Profile");
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.all(5),
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 1,
+                                      ),
+                                    ),
+                                    child: Text(
+                                      UseString.edit_profile,
+                                      style: GoogleFonts.openSans(
+                                        fontSize: 12,
+                                        color: AppColors.whiteColor,
+                                        fontWeight: FontWeight.w100,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -109,7 +140,8 @@ class Dashboard extends StatelessWidget {
                           margin: const EdgeInsets.only(top: 70),
                           padding: const EdgeInsets.only(left: 20),
                           child: Text(
-                            vm.user.data?.name ?? "name",
+                            homeVM.user?.username ??
+                                UseString.user_name_not_found,
                             style: UseGoogleFont().openSans(
                               color: Colors.black,
                               size: 20,
@@ -127,7 +159,7 @@ class Dashboard extends StatelessWidget {
                             bottom: 15,
                           ),
                           child: Text(
-                            "rohitgupta111abcd@gmail.com | 2007360130047",
+                            "${vm.user?.email}",
                             style: UseGoogleFont().openSans(
                               color: Colors.grey,
                             ),
