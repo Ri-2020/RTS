@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rts/constants/strings.dart';
-import 'package:rts/ui/home/home_vm.dart';
 import 'package:rts/ui/register/signin.dart';
 import 'package:rts/utils/shared_prefer.dart';
 
