@@ -9,6 +9,7 @@ import 'package:rts/constants/google_fonts.dart';
 import 'package:rts/constants/strings.dart';
 import 'package:rts/ui/dashboard/dashboard_vm.dart';
 import 'package:rts/ui/home/home_vm.dart';
+import 'package:rts/utils/routes.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -110,7 +111,8 @@ class Dashboard extends StatelessWidget {
                                 right: 20,
                                 child: InkWell(
                                   onTap: () {
-                                    print("Edit Profile");
+                                    // print("Edit Profile");
+                                    Get.toNamed(AppRotutes.editProfile);
                                   },
                                   child: Container(
                                     padding: const EdgeInsets.all(5),
