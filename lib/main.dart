@@ -4,11 +4,14 @@ import 'package:get/get.dart';
 import 'package:rts/constants/colors.dart';
 import 'package:rts/constants/textstyles.dart';
 import 'package:rts/ui/home/home.dart';
+import 'package:rts/ui/main/main_home.dart';
 import 'package:rts/ui/register/signin.dart';
 import 'package:rts/utils/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Paint.enableDithering = true;
+
   runApp(MyApp());
 }
 
@@ -30,8 +33,8 @@ class MyApp extends StatelessWidget {
       // themeMode: ThemeMode.system,
 
       // home: HomeView(),
-      // home: const Signin(),
-      initialRoute: AppRotutes.home,
+      home: MainHomePage(),
+      // initialRoute: AppRotutes.home,
       getPages: AppRotutes.pages,
       // home: OnboardingScreen(),
     );
