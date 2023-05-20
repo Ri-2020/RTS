@@ -10,4 +10,7 @@ class UseString {
   static const no_resources_available = "No resources available";
   static const Dashboard = "Dashboard";
   static const dashboard = "dashboard";
+  static const user_name_not_found = "User Name Not found";
+  static const signin = "Sign In";
+  static const edit_profile = "Edit Profile";
 }

@@ -11,17 +11,13 @@ import 'package:rts/utils/shared_prefer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeVM extends GetxController {
-  UserModel user = UserModel();
+  UserData? user;
 
   List<Widget> views = [
     const LoggedInHome(),
     const Resourses(),
     const Dashboard(),
     const About(),
-  ];
-
-  List<ResourceBox> resources = [
-    // const ResourceBox(),
   ];
 
   List<Widget> test = [
@@ -39,7 +35,7 @@ class HomeVM extends GetxController {
   }
 
   void getUserDetails() async {
-    user = UserModel.fromJson((await SharedPrefs.getString("user"))!);
+    user = UserData.fromJson((await SharedPrefs.getString("user"))!);
     update();
   }
 
