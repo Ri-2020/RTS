@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:rts/constants/google_fonts.dart';
+import 'package:rts/constants/strings.dart';
 import 'package:rts/ui/home/home_vm.dart';
 import 'package:rts/ui/resourses/resource_box.dart';
 
@@ -35,21 +37,21 @@ class Resourses extends StatelessWidget {
                           height: 200,
                           width: double.infinity,
                           decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              topRight: Radius.circular(10),
-                            ),
-                          ),
+                              // borderRadius: BorderRadius.only(
+                              //   topLeft: Radius.circular(10),
+                              //   topRight: Radius.circular(10),
+                              // ),
+                              ),
                           child: Stack(
                             children: [
                               Container(
                                 width: Get.width,
                                 height: Get.height,
                                 decoration: const BoxDecoration(
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(10),
-                                    topRight: Radius.circular(10),
-                                  ),
+                                  // borderRadius: BorderRadius.only(
+                                  //   topLeft: Radius.circular(10),
+                                  //   topRight: Radius.circular(10),
+                                  // ),
                                   gradient: LinearGradient(
                                     colors: [
                                       Colors.black,
@@ -70,10 +72,10 @@ class Resourses extends StatelessWidget {
                                     width: Get.width,
                                     height: Get.height,
                                     decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(10),
-                                        topRight: Radius.circular(10),
-                                      ),
+                                      // borderRadius: const BorderRadius.only(
+                                      //   topLeft: Radius.circular(10),
+                                      //   topRight: Radius.circular(10),
+                                      // ),
                                       gradient: RadialGradient(
                                         colors: [
                                           Colors.black.withOpacity(0.51),
@@ -88,7 +90,7 @@ class Resourses extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      "Get Resourses",
+                                      UseString.Get_Resources,
                                       style: UseGoogleFont().openSans(
                                         size: 30,
                                         color: Colors.white,
@@ -96,7 +98,7 @@ class Resourses extends StatelessWidget {
                                       ),
                                     ),
                                     const Text(
-                                      "/resourses",
+                                      "/${UseString.resources}",
                                       style: TextStyle(
                                         fontSize: 10,
                                         color: Colors.white,
@@ -111,10 +113,43 @@ class Resourses extends StatelessWidget {
                         ),
                         Container(
                           width: double.infinity,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [...vm.resources],
-                          ),
+                          child: vm.resources.isNotEmpty
+                              ? Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [...vm.resources],
+                                )
+                              : Column(
+                                  children: [
+                                    Container(
+                                      padding: const EdgeInsets.all(30),
+                                      width: double.infinity,
+                                      margin: const EdgeInsets.only(
+                                          top: 20, bottom: 20),
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(15),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.withOpacity(0.5),
+                                            spreadRadius: 0,
+                                            blurRadius: 2,
+                                            offset: const Offset(0,
+                                                0), // changes position of shadow
+                                          ),
+                                        ],
+                                      ),
+                                      child: Text(
+                                        UseString.no_resources_available,
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.openSans(
+                                          fontWeight: FontWeight.normal,
+                                          color: Colors.grey,
+                                          fontSize: 15,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                         )
                       ],
                     ),
@@ -127,8 +162,8 @@ class Resourses extends StatelessWidget {
             ),
             Container(
               width: double.infinity,
-              margin: EdgeInsets.all(30),
-              padding: EdgeInsets.all(30),
+              margin: const EdgeInsets.all(30),
+              padding: const EdgeInsets.all(30),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(15),

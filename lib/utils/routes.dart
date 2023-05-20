@@ -6,12 +6,17 @@ class AppRotutes {
   static const home = '/';
   static const signin = '/signin';
   static const signup = '/signup';
+  static const bootcamp = "/bootcamp";
 
   static final pages = [
     GetPage(
       name: AppRotutes.home,
       page: () => const HomePage(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: AppRotutes.bootcamp,
+      page: () => const HomePage(),
     ),
   ];
 }
