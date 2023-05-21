@@ -34,17 +34,6 @@ class ResourceBox extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          url != null
-              ? Container(
-                  width: 300,
-                  height: 200,
-                  child: LinkPreviewGenerator(
-                    link: url!,
-                    linkPreviewStyle: LinkPreviewStyle.large,
-                    showGraphic: true,
-                  ),
-                )
-              : SizedBox(),
           Text(
             title,
             style: GoogleFonts.openSans(
