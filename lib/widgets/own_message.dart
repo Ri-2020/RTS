@@ -22,9 +22,7 @@ class OwnMsgCard extends StatelessWidget {
     return GetBuilder<DoubtVM>(builder: (vm) {
       return Container(
         // padding: const EdgeInsets.only(bottom: 20),
-        color: vm.chatList[index].selected
-            ? Colors.blue.withOpacity(0.2)
-            : Colors.transparent,
+
         alignment: Alignment.centerRight,
         child: ConstrainedBox(
           constraints: BoxConstraints(
@@ -35,19 +33,6 @@ class OwnMsgCard extends StatelessWidget {
               vm.showBottomNavigation = true;
               vm.selectedChatId = chatId;
               vm.selectedIndex = index;
-              vm.update();
-            },
-            onDoubleTap: () {
-              vm.multipleSelect = true;
-              vm.chatList[index].selected = !vm.chatList[index].selected;
-              if (vm.selectedChatList.contains(vm.chatList[index])) {
-                vm.selectedChatList.remove(vm.chatList[index]);
-              } else {
-                vm.selectedChatList.add(vm.chatList[index]);
-                if (vm.selectedChatList.isEmpty) {
-                  vm.multipleSelect = false;
-                }
-              }
               vm.update();
             },
             child: Stack(
@@ -100,17 +85,6 @@ class OwnMsgCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                vm.chatList[index].isPinned
-                    ? Positioned(
-                        right: 10,
-                        top: 10,
-                        child: Transform.rotate(
-                            angle: math.pi / 4,
-                            child: Icon(
-                              CupertinoIcons.pin_fill,
-                              color: Colors.grey.shade600,
-                            )))
-                    : const SizedBox(width: 0)
               ],
             ),
           ),

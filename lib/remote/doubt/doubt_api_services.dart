@@ -9,13 +9,15 @@ class DoubtApiServices extends DoubtApiInterface {
   Future<Map<String, dynamic>>? getDoubts() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     String token = sharedPreferences.getString("token")!;
-    String senderUserId = sharedPreferences.getString("userId")!;
 
-    String api = "$baseUrl/api/user/chat/getChat/";
+    print("token $token");
+
+    String api = "$baseUrl/doubt/get-doubts";
 
     var response = await http.get(Uri.parse(api), headers: {
       "Authorization": "Bearer $token",
     });
+    print("response ${response.body}");
     if (response == null) {
       return {};
     }

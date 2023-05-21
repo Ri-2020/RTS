@@ -9,12 +9,12 @@ import 'package:rts/repositories/doubt_repo/doubt_repo.dart';
 class DoubtRepoImp extends DoubtRepo {
   DoubtApiServices doubtApiServices = DoubtApiServices();
   @override
-  Future<List<ChatModel>> getDoubts() async {
+  Future<List<Doubt>> getDoubts() async {
     Map<String, dynamic>? res = await doubtApiServices.getDoubts();
-    List<ChatModel> chats;
+    List<Doubt> chats;
     // debugPrint("common Repo Imp $res");
     if (res != null && res["data"].isNotEmpty) {
-      chats = res["data"].map((e) => ChatModel.fromMap(e)).toList();
+      chats = res["data"].map((e) => Doubt.fromMap(e)).toList();
       return chats;
     }
     return [];

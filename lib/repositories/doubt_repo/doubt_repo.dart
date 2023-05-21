@@ -1,7 +1,7 @@
 import 'package:rts/models/chat_model.dart';
 
 abstract class DoubtRepo {
-  Future<List<ChatModel>>? getDoubts();
+  Future<List<Doubt>>? getDoubts();
   Future<Map<String, dynamic>>? sendMessageToUser(
       String receiverUserId, String message);
   // Future<List<ChatUsers>> getAllChatUsers();

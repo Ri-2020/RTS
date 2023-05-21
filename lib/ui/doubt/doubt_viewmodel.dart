@@ -8,6 +8,7 @@ import 'package:rts/remote/api_constants.dart';
 import 'package:rts/repositories/doubt_repo/doubt_repo_imp.dart';
 import 'package:rts/ui/doubt/doubt.dart';
 import 'package:rts/ui/home/home_vm.dart';
+import 'package:rts/utils/constants.dart';
 import 'package:rts/utils/shared_prefer.dart';
 import 'package:rts/widgets/snackbar.dart';
 
@@ -15,7 +16,7 @@ import 'package:socket_io_client/socket_io_client.dart' as io;
 
 class DoubtVM extends GetxController {
   List<MessageModel> messages = [];
-  List<ChatModel> selectedChatList = [];
+  List<Doubt> selectedChatList = [];
   bool showBottomNavigation = false;
 
   bool showEnojiOption = false;
@@ -33,8 +34,8 @@ class DoubtVM extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // initSocket();
-    // getDoubts();
+    initSocket();
+    getDoubts();
     focusNode.addListener(() {
       if (focusNode.hasFocus) {
         showEnojiOption = false;
@@ -60,8 +61,9 @@ class DoubtVM extends GetxController {
         print("message : $msg");
         Map<String, dynamic> res = msg;
         if (res["status"] == "success") {
-          ChatModel chat = ChatModel.fromMap(res["data"]);
-          var response = doubtRepoImp.setIsSend(chat.id);
+          Doubt chat = Doubt.fromMap(res["data"]);
+          // var response = doubtRepoImp.setIsSend(chat.id);
+          chatList.removeLast();
           setMessage(res["data"]);
         }
       });
@@ -71,31 +73,58 @@ class DoubtVM extends GetxController {
     print("socket connection : ${socket.connected}");
   }
 
+  HomeVM homeVM =
+      Get.isRegistered<HomeVM>() ? Get.find<HomeVM>() : Get.put(HomeVM());
+
   void sendMessage() async {
     String meassge = txtController.text;
-    chatList.add(ChatModel(
-      message: meassge,
+    print("caalled send messagage");
+    chatList.add(Doubt(
+      userImage: homeVM.user?.profileImage ?? Constants.image,
+      username: homeVM.user?.username ?? "",
+      text: meassge,
       createdAt: DateTime.now(),
-      id: senderUserId!,
-      isPinned: false,
-      isSent: false,
-      messageType: "text",
-      sendBy: await SharedPrefs.getString("username") ?? "",
-      senderUserId: senderUserId ?? "",
+      id: homeVM.user?.id ?? "",
+      isEdited: false,
+      name: homeVM.user?.name ?? "",
+      userId: homeVM.user?.id ?? "",
     ));
     txtController.text;
     txtController.clear();
 
+    update();
+
     socket.emit("message", {
       "message": meassge,
-      "senderUserId": senderUserId,
+      "userId": homeVM.user?.id ?? "",
     });
   }
 
+  List<Map<String, String>> faqData = [
+    {
+      'question': 'What is Flutter?',
+      'answer':
+          'Flutter is a UI toolkit for building natively compiled applications '
+              'for mobile, web, and desktop from a single codebase.'
+    },
+    {
+      'question': 'Is Flutter free to use?',
+      'answer': 'Yes, Flutter is an open-source framework released under the '
+          'BSD-style license, which means it is free to use and customize.'
+    },
+    {
+      'question': 'What programming language is used in Flutter?',
+      'answer': 'Flutter uses the Dart programming language, which is also '
+          'developed by Google.'
+    },
+  ];
+  List expandedList = List.generate(3, (index) => false);
+
   String time = DateFormat.jm().format(DateTime.now()).toString();
   void setMessage(Map<String, dynamic> map) {
-    ChatModel chat = ChatModel.fromMap(map);
-    print("chat : ${chat.message}");
+    Doubt chat = Doubt.fromMap(map);
+
+    print("chat : ${chat.text}");
     chatList.add(chat);
     update();
     scrollController.animateTo(scrollController.position.maxScrollExtent + 40,
@@ -104,12 +133,12 @@ class DoubtVM extends GetxController {
   }
 
   DoubtRepoImp doubtRepoImp = DoubtRepoImp();
-  List<ChatModel> chatList = [];
+  List<Doubt> chatList = [];
 
   void getDoubts() async {
     loading = true;
     update();
-    List<ChatModel> chatModelList = await doubtRepoImp.getDoubts();
+    List<Doubt> chatModelList = await doubtRepoImp.getDoubts();
     chatList = chatModelList;
     loading = false;
     update();

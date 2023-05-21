@@ -3,20 +3,21 @@ import 'package:get/get.dart';
 import 'package:rts/ui/doubt/doubt.dart';
 import 'package:rts/ui/doubt/doubt_viewmodel.dart';
 
+import '../utils/constants.dart';
+
 class BottomTextMessaging extends StatelessWidget {
   BottomTextMessaging({super.key});
   DoubtVM vm = Get.isRegistered<DoubtVM>() ? Get.find() : Get.put(DoubtVM());
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return Align(
       alignment: Alignment.bottomCenter,
       child: GetBuilder<DoubtVM>(builder: (vm) {
         return SizedBox(
           // height: widget.isWeb! ? 70 : 500,
-          // width: widget.isWeb!
-          //     ? MediaQuery.of(context).size.width - 400
-          //     : MediaQuery.of(context).size.width - 55,
+
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -27,7 +28,9 @@ class BottomTextMessaging extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
-                      width: MediaQuery.of(context).size.width - 55,
+                      width: width < Constants.mwidth + 50
+                          ? width - 160
+                          : Constants.commentSectionWidth - 55,
                       child: Card(
                         margin:
                             const EdgeInsets.only(left: 4, right: 2, bottom: 6),
@@ -47,7 +50,7 @@ class BottomTextMessaging extends StatelessWidget {
                           minLines: 1,
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            hintText: "Message",
+                            hintText: "Ask question here",
                             hintStyle: const TextStyle(fontSize: 18),
                             prefixIcon: IconButton(
                               icon: const Icon(
@@ -63,29 +66,6 @@ class BottomTextMessaging extends StatelessWidget {
                               },
                             ),
                             contentPadding: const EdgeInsets.all(5),
-                            suffixIcon: Padding(
-                              padding: const EdgeInsets.only(right: 10.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  SizedBox(
-                                    width: MediaQuery.of(context).size.width *
-                                        0.09,
-                                    child: IconBtn(
-                                      icon: Icons.attach_file,
-                                      iconOnPress: () {},
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: MediaQuery.of(context).size.width *
-                                        0.09,
-                                    child: const IconBtn(
-                                      icon: Icons.camera_alt,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
                           ),
                         ),
                       ),
@@ -93,28 +73,18 @@ class BottomTextMessaging extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 6.0),
                       child: CircleAvatar(
-                        radius: 24.5,
+                        radius: width < 555 ? 20 : 24.5,
                         backgroundColor: Theme.of(context).primaryColor,
                         child: IconButton(
                             onPressed: () {
-                              if (vm.sendButton) {
-                                vm.scrollController.animateTo(
-                                    vm.scrollController.position
-                                            .maxScrollExtent +
-                                        40,
-                                    duration: const Duration(milliseconds: 300),
-                                    curve: Curves.easeOut);
-                                // vm.sendMessage(vm.txtController.text,
-                                //     vm.senderUserId!, widget.receiverId);
-
-                                // vm.sendMessageToUser();
-                                vm.sendMessage();
-                                // vm.txtController.clear();
-                                vm.sendButton = false;
-                                vm.update();
-                              }
+                              // vm.scrollController.animateTo(
+                              //     vm.scrollController.position.maxScrollExtent +
+                              //         40,
+                              //     duration: const Duration(milliseconds: 300),
+                              //     curve: Curves.easeOut);
+                              vm.sendMessage();
                             },
-                            icon: Icon(vm.sendButton ? Icons.send : Icons.mic,
+                            icon: Icon(Icons.send,
                                 color: Colors.white,
                                 size: vm.sendButton ? 23 : 25)),
                       ),
