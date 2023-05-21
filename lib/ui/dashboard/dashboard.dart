@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:rts/constants/colors.dart';
 import 'package:rts/constants/google_fonts.dart';
 import 'package:rts/constants/strings.dart';
 import 'package:rts/ui/dashboard/dashboard_vm.dart';
 import 'package:rts/ui/home/home_vm.dart';
 import 'package:rts/utils/routes.dart';
-import 'package:rts/widgets/page_frame.dart';
+import 'package:rts/widgets/page_frame/page_frame.dart';
+import 'package:rts/widgets/page_frame/page_frame_header_button.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -28,31 +24,17 @@ class Dashboard extends StatelessWidget {
           imageUrl:
               "https://www.alexisdental.ca/files/alexis-dental-belle-river-fillings-1.jpg",
           headerButtons: [
-            Positioned(
-              bottom: 20,
-              right: 20,
-              child: InkWell(
-                onTap: () {
-                  Get.toNamed(AppRotutes.editProfile);
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.white,
-                      width: 1,
-                    ),
-                  ),
-                  child: Text(
-                    UseString.edit_profile,
-                    style: GoogleFonts.openSans(
-                      fontSize: 12,
-                      color: AppColors.whiteColor,
-                      fontWeight: FontWeight.w100,
-                    ),
-                  ),
-                ),
-              ),
+            PageFrameHeaderButton(
+              onTap: () {
+                Get.toNamed(AppRotutes.editProfile);
+              },
+              label: UseString.edit_profile,
+            ),
+            PageFrameHeaderButton(
+              onTap: () {
+                Get.toNamed(AppRotutes.editProfile);
+              },
+              label: UseString.edit_profile,
             ),
           ],
           children: [

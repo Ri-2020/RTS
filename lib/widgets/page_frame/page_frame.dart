@@ -9,6 +9,7 @@ class PageFrame extends StatelessWidget {
   final String pageTitle;
   final String? pageDescription;
   final List<Widget>? children;
+  final bool isPadding;
   const PageFrame({
     super.key,
     this.headerButtons,
@@ -16,6 +17,7 @@ class PageFrame extends StatelessWidget {
     required this.pageTitle,
     this.pageDescription,
     this.children,
+    this.isPadding = true,
   });
 
   @override
@@ -25,7 +27,7 @@ class PageFrame extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: const EdgeInsets.all(20),
+            padding: EdgeInsets.all(isPadding ? 20 : 0),
             decoration: BoxDecoration(
               color: Theme.of(context).scaffoldBackgroundColor,
               borderRadius: BorderRadius.circular(10),

@@ -4,7 +4,7 @@ import 'package:rts/constants/google_fonts.dart';
 import 'package:rts/constants/strings.dart';
 import 'package:rts/ui/about/characterTile.dart';
 import 'package:rts/ui/home/home_vm.dart';
-import 'package:rts/widgets/page_frame.dart';
+import 'package:rts/widgets/page_frame/page_frame.dart';
 
 class About extends StatelessWidget {
   const About({super.key});

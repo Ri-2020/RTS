@@ -6,7 +6,7 @@ import 'package:rts/constants/strings.dart';
 import 'package:rts/ui/home/home_vm.dart';
 import 'package:rts/ui/resourses/resource_box.dart';
 import 'package:rts/ui/resourses/resourcesvm.dart';
-import 'package:rts/widgets/page_frame.dart';
+import 'package:rts/widgets/page_frame/page_frame.dart';
 
 class Resourses extends StatelessWidget {
   const Resourses({super.key});
