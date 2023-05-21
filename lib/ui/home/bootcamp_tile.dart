@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:rts/constants/colors.dart';
 
 class BootCampTile extends StatelessWidget {
-  const BootCampTile({super.key});
+  final double width;
+
+  const BootCampTile({
+    super.key,
+    required this.width,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +17,7 @@ class BootCampTile extends StatelessWidget {
       },
       child: Container(
         margin: const EdgeInsets.all(10),
-        width: 350,
+        width: width < 800 ? width * 0.9 : 330,
         decoration: BoxDecoration(
           color: Theme.of(context).scaffoldBackgroundColor,
           borderRadius: BorderRadius.circular(10),

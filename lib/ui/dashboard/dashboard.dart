@@ -30,12 +30,6 @@ class Dashboard extends StatelessWidget {
               },
               label: UseString.edit_profile,
             ),
-            PageFrameHeaderButton(
-              onTap: () {
-                Get.toNamed(AppRotutes.editProfile);
-              },
-              label: UseString.edit_profile,
-            ),
           ],
           children: [
             Container(
