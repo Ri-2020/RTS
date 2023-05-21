@@ -102,8 +102,8 @@ class SignupVM extends GetxController {
       isSigninClickedBool = false;
       update();
       debugPrint(userModel.toString());
-      print("sharef prefs : ${SharedPrefs.getString("userId")}");
-      // Get.offAllNamed(AppRotutes.home);
+      print("sharef prefs : ${await SharedPrefs.getString("name")}");
+      Get.offAllNamed(AppRotutes.home);
       // Get.offAll(const HomePage());
     } else {
       showSnackBar(Get.context!,
