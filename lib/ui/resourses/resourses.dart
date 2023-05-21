@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:rts/constants/google_fonts.dart';
 import 'package:rts/constants/strings.dart';
 import 'package:rts/ui/home/home_vm.dart';
-import 'package:rts/ui/resourses/resource_box.dart';
 import 'package:rts/ui/resourses/resourcesvm.dart';
 import 'package:rts/widgets/page_frame/page_frame.dart';
 

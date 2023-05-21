@@ -20,7 +20,8 @@ class AppRotutes {
     ),
     GetPage(
       name: AppRotutes.mainHome,
-      page: () => const MainHomePage(),
+      page: () => MainHomePage(),
+      // binding: HomeBinding(),
     ),
     GetPage(
       name: AppRotutes.editProfile,
