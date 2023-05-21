@@ -5,7 +5,6 @@ import 'package:rts/constants/google_fonts.dart';
 import 'package:rts/constants/strings.dart';
 import 'package:rts/ui/home/home_vm.dart';
 import 'package:rts/ui/resourses/resourcesvm.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class Resourses extends StatelessWidget {
   const Resourses({super.key});

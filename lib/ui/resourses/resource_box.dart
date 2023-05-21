@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:link_preview_generator/link_preview_generator.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ResourceBox extends StatelessWidget {
@@ -17,7 +18,6 @@ class ResourceBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(30),
-      width: double.infinity,
       margin: const EdgeInsets.only(top: 20, bottom: 20),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -34,6 +34,17 @@ class ResourceBox extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          url != null
+              ? Container(
+                  width: 300,
+                  height: 200,
+                  child: LinkPreviewGenerator(
+                    link: url!,
+                    linkPreviewStyle: LinkPreviewStyle.large,
+                    showGraphic: true,
+                  ),
+                )
+              : SizedBox(),
           Text(
             title,
             style: GoogleFonts.openSans(

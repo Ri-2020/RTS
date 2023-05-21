@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rts/constants/google_fonts.dart';
+import 'package:rts/constants/strings.dart';
 import 'package:rts/ui/about/characterTile.dart';
 import 'package:rts/ui/home/home_vm.dart';
 
@@ -81,7 +82,7 @@ class About extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      "Raah Towards Success",
+                                      UseString.website_name,
                                       style: UseGoogleFont().openSans(
                                         size: 30,
                                         color: Colors.white,

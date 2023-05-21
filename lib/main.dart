@@ -8,17 +8,11 @@ import 'package:rts/utils/shared_prefer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp(isUserAuthenticated: await isUSerLoggedIn()));
-}
-
-Future<bool> isUSerLoggedIn() async {
-  return await SharedPrefs.getString("userId") == null ? false : true;
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key, required this.isUserAuthenticated});
-
-  bool isUserAuthenticated;
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +30,7 @@ class MyApp extends StatelessWidget {
 
       // home: HomeView(),
       // home: const Signin(),
-      initialRoute: isUserAuthenticated ? AppRotutes.home : AppRotutes.mainHome,
+      initialRoute: AppRotutes.mainHome,
       getPages: AppRotutes.pages,
       // home: OnboardingScreen(),
     );
