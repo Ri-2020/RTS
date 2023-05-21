@@ -18,87 +18,91 @@ class HomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                width: width < Constants.webWidth ? 55 : 280,
+                // width: width < Constants.webWidth ? 55 : 280,
                 child: width < Constants.webWidth
-                    ? SideNavigationBar(
-                        expandable: false,
-                        initiallyExpanded: false,
-                        toggler: null,
-                        header: const SideNavigationBarHeader(
-                          title: Align(
-                            alignment: Alignment.centerLeft,
-                            child: SizedBox(
-                              child: Text("RTS",
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w900,
-                                  )),
+                    ? SizedBox(
+                        width: 55,
+                        child: SideNavigationBar(
+                          expandable: false,
+                          initiallyExpanded: false,
+                          toggler: null,
+                          header: const SideNavigationBarHeader(
+                            title: Align(
+                              alignment: Alignment.centerLeft,
+                              child: SizedBox(
+                                child: Text("RTS",
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w900,
+                                    )),
+                              ),
                             ),
+                            subtitle: Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Text(""),
+                            ),
+                            image: Text(""),
                           ),
-                          subtitle: Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text(""),
-                          ),
-                          image: Text(""),
-                        ),
-                        selectedIndex: vm.selectedIndex,
-                        items: const [
-                          SideNavigationBarItem(
-                            icon: Icons.home,
-                            label: "Home",
-                          ),
-                          SideNavigationBarItem(
-                            icon: Icons.water_drop,
-                            label: "Resourses",
-                          ),
-                          SideNavigationBarItem(
-                            icon: Icons.dashboard,
-                            label: "Dashboard",
-                          ),
-                          SideNavigationBarItem(
-                            icon: Icons.question_answer,
-                            label: "Ask a Doubt",
-                          ),
-                          SideNavigationBarItem(
-                            icon: Icons.self_improvement,
-                            label: "About",
-                          ),
-                        ],
-                        footer: SideNavigationBarFooter(
-                          label: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              // const Text("Raah-Towards-Success"),
-                              InkWell(
-                                onTap: () {
-                                  Get.to(() => Signin());
-                                },
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: const [
-                                    Text(
-                                      "Logout",
-                                      style: TextStyle(
+                          selectedIndex: vm.selectedIndex,
+                          items: const [
+                            SideNavigationBarItem(
+                              icon: Icons.home,
+                              label: "Home",
+                            ),
+                            SideNavigationBarItem(
+                              icon: Icons.water_drop,
+                              label: "Resourses",
+                            ),
+                            SideNavigationBarItem(
+                              icon: Icons.dashboard,
+                              label: "Dashboard",
+                            ),
+                            SideNavigationBarItem(
+                              icon: Icons.question_answer,
+                              label: "Ask a Doubt",
+                            ),
+                            SideNavigationBarItem(
+                              icon: Icons.self_improvement,
+                              label: "About",
+                            ),
+                          ],
+                          footer: SideNavigationBarFooter(
+                            label: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                // const Text("Raah-Towards-Success"),
+                                InkWell(
+                                  onTap: () {
+                                    Get.to(() => Signin());
+                                  },
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: const [
+                                      Text(
+                                        "Logout",
+                                        style: TextStyle(
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      Icon(
+                                        Icons.logout,
                                         color: Colors.red,
                                       ),
-                                    ),
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Icon(
-                                      Icons.logout,
-                                      color: Colors.red,
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
+                          onTap: (i) {
+                            vm.changeIndex(i);
+                          },
                         ),
-                        onTap: (i) {
-                          vm.changeIndex(i);
-                        },
                       )
                     : SideNavigationBar(
                         expandable: true,

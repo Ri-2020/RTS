@@ -20,7 +20,7 @@ class BootCampTile extends StatelessWidget {
         width: width < 600 ? width * 0.9 : 300,
         decoration: BoxDecoration(
           color: Theme.of(context).scaffoldBackgroundColor,
-          // borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
               color: Theme.of(context).primaryColor.withOpacity(.2),
