@@ -26,6 +26,7 @@ class AppRotutes {
     GetPage(
       name: AppRotutes.editProfile,
       page: () => const EditProfileScreen(),
+      transition: Transition.downToUp,
       binding: EditProfileBindings(),
     ),
   ];
