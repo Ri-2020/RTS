@@ -14,7 +14,11 @@ class DoubtRepoImp extends DoubtRepo {
     List<Doubt> chats;
     // debugPrint("common Repo Imp $res");
     if (res != null && res["data"].isNotEmpty) {
-      chats = res["data"].map((e) => Doubt.fromMap(e)).toList();
+      // chats = res["data"].map((e) => Doubt.fromMap(e)).toList();
+      chats = (res["data"] as List<dynamic>)
+          .map((e) => Doubt.fromMap(e as Map<String, dynamic>))
+          .toList();
+
       return chats;
     }
     return [];

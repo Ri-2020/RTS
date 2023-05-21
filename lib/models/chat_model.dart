@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:rts/utils/constants.dart';
+
 class Doubt {
   final String username; //
   final String userImage;
@@ -47,7 +49,7 @@ class Doubt {
   factory Doubt.fromMap(Map<String, dynamic> map) {
     return Doubt(
       username: map['username'] as String,
-      isEdited: map['isEdited'] as bool,
+      isEdited: map['isEdited'] ?? false,
       text: map['text'] as String,
       images: map['image'] != null && map['image'] != []
           ? List<dynamic>.from((map['image'] as List<dynamic>))
@@ -56,12 +58,12 @@ class Doubt {
       updatedAt:
           map['updatedAt'] != null ? DateTime.parse(map['updatedAt']) : null,
       id: map['_id'] as String,
-      name: map['name'] as String,
-      userImage: map['userImage']["url"] as String,
+      name: map['name'] ?? "",
+      userImage: map['userImage']["url"] ?? Constants.image,
       replies: map['image'] != null && map['replies'] != []
           ? List<Reply>.from((map['replies'] as List))
           : [],
-      likes: map['likes'] != null ? map["likes"] : 0,
+      likes: map['likes'] != null ? map["likes"].length : 0,
       userId: map['userId'] as String,
     );
   }
