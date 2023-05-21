@@ -42,7 +42,7 @@ class HomePage extends StatelessWidget {
                           image: Text(""),
                         ),
                         selectedIndex: vm.selectedIndex,
-                        items: [
+                        items: const [
                           SideNavigationBarItem(
                             icon: Icons.home,
                             label: "Home",

@@ -3,7 +3,7 @@
 import 'package:rts/ui/dashboard/dashboard.dart';
 
 class UseString {
-  static const website_name = "Raah Towards Success";
+  static const website_name = "Incandescent";
   static const short_website_name = "RTS";
   static const save_changes = "Save Changes";
   static const Bootcamps = "Bootcamps";

@@ -16,6 +16,7 @@ class Resourses extends StatelessWidget {
     return GetBuilder<ResourcesVM>(builder: (vm) {
       return SelectionArea(
         child: PageFrame(
+          width: width,
           pageTitle: UseString.Resources,
           pageDescription: "/${UseString.resources}",
           children: [

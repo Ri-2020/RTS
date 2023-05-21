@@ -12,40 +12,40 @@ class LoggedInHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomeVM vm = Get.find<HomeVM>();
+    double width = MediaQuery.of(context).size.width;
     return PageFrame(
+      width: width,
       pageTitle: UseString.Bootcamps,
       pageDescription: "/home",
       children: [
         const SizedBox(
           height: 20,
         ),
-        Center(
-          child: Container(
-            constraints: BoxConstraints(
-              maxWidth: Get.width - 270,
-              minWidth: Get.width - 300,
-            ),
-            child: Wrap(
-              runAlignment: WrapAlignment.spaceAround,
-              alignment: WrapAlignment.spaceAround,
-              children: [
-                BootCampTile(
-                  width: MediaQuery.of(context).size.width,
-                ),
-                BootCampTile(
-                  width: MediaQuery.of(context).size.width,
-                ),
-                BootCampTile(
-                  width: MediaQuery.of(context).size.width,
-                ),
-                BootCampTile(
-                  width: MediaQuery.of(context).size.width,
-                ),
-                BootCampTile(
-                  width: MediaQuery.of(context).size.width,
-                ),
-              ],
-            ),
+        Container(
+          constraints: BoxConstraints(
+            // maxWidth: Get.width - 270,
+            minWidth: Get.width - 300,
+          ),
+          child: Wrap(
+            runAlignment: WrapAlignment.start,
+            alignment: WrapAlignment.spaceBetween,
+            children: [
+              BootCampTile(
+                width: MediaQuery.of(context).size.width,
+              ),
+              BootCampTile(
+                width: MediaQuery.of(context).size.width,
+              ),
+              BootCampTile(
+                width: MediaQuery.of(context).size.width,
+              ),
+              BootCampTile(
+                width: MediaQuery.of(context).size.width,
+              ),
+              BootCampTile(
+                width: MediaQuery.of(context).size.width,
+              ),
+            ],
           ),
         ),
       ],

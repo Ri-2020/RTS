@@ -27,6 +27,7 @@ class EditProfileScreen extends StatelessWidget {
     return GetBuilder<EditProfileVM>(builder: (vm) {
       return Scaffold(
         body: PageFrame(
+          width: width,
           pageTitle: UseString.edit_profile,
           pageDescription: "/edit_profile",
           isPadding: false,

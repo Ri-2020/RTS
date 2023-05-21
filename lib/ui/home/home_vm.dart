@@ -21,12 +21,6 @@ class HomeVM extends GetxController {
     const About(),
   ];
 
-  // List<Widget> test = [
-  //   const BootCampTile(
-  //     width: ,
-  //   ),
-  // ];
-
   String homeTitle = "Raah Towards Success";
 
   int selectedIndex = 0;

@@ -57,6 +57,7 @@ class _UserChatPageState extends State<DoubtPage> {
                 vm.update();
               },
               child: PageFrame(
+                width: width,
                 pageTitle: "Ask a doubt",
                 children: [
                   Wrap(

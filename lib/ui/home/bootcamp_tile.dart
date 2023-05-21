@@ -16,11 +16,11 @@ class BootCampTile extends StatelessWidget {
         print("Bootcamp tile tapped");
       },
       child: Container(
-        margin: const EdgeInsets.all(10),
-        width: width < 800 ? width * 0.9 : 330,
+        margin: const EdgeInsets.symmetric(vertical: 10),
+        width: width < 600 ? width * 0.9 : 300,
         decoration: BoxDecoration(
           color: Theme.of(context).scaffoldBackgroundColor,
-          borderRadius: BorderRadius.circular(10),
+          // borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
               color: Theme.of(context).primaryColor.withOpacity(.2),
@@ -39,7 +39,7 @@ class BootCampTile extends StatelessWidget {
                 child: Image.network(
                   "https://uploads-ssl.webflow.com/5f841209f4e71b2d70034471/6078b650748b8558d46ffb7f_Flutter%20app%20development.png",
                   width: 350,
-                  height: (720 / 1280) * 350,
+                  // height: (720 / 1280) * 350,
                   fit: BoxFit.cover,
                 ),
               ),
