@@ -60,10 +60,11 @@ class DoubtVM extends GetxController {
       socket.on("message", (msg) {
         print("message : $msg");
         Map<String, dynamic> res = msg;
+        print("chat reply $res");
         if (res["status"] == "success") {
           Doubt chat = Doubt.fromMap(res["data"]);
           // var response = doubtRepoImp.setIsSend(chat.id);
-          chatList.removeLast();
+          // chatList.removeLast();
           setMessage(res["data"]);
         }
       });
