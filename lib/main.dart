@@ -3,17 +3,16 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:rts/constants/colors.dart';
 import 'package:rts/constants/textstyles.dart';
-import 'package:rts/ui/home/home.dart';
-import 'package:rts/ui/register/signin.dart';
 import 'package:rts/utils/routes.dart';
+import 'package:rts/utils/shared_prefer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +30,7 @@ class MyApp extends StatelessWidget {
 
       // home: HomeView(),
       // home: const Signin(),
-      initialRoute: AppRotutes.home,
+      initialRoute: AppRotutes.mainHome,
       getPages: AppRotutes.pages,
       // home: OnboardingScreen(),
     );
