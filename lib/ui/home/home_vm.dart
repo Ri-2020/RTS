@@ -8,6 +8,7 @@ import 'package:rts/ui/home/logged_in_home.dart';
 import 'package:rts/ui/resourses/resourses.dart';
 import 'package:rts/ui/home/bootcamp_tile.dart';
 import 'package:rts/utils/shared_prefer.dart';
+import 'package:rts/widgets/snackbar.dart';
 
 class HomeVM extends GetxController {
   UserData? user;
@@ -56,6 +57,15 @@ class HomeVM extends GetxController {
   void getUserDetails() async {
     user = UserData.fromJson((await SharedPrefs.getString("user"))!);
     update();
+  }
+
+  void signout() async {
+    bool isSignout = await SharedPrefs.clearPrefs();
+    if (isSignout) {
+      showSnackBar(Get.context!, "Logged out successfully");
+    } else {
+      showSnackBar(Get.context!, "Something went wrong");
+    }
   }
 
   void changeIndex(int i) {

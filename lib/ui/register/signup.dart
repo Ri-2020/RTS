@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rts/ui/register/signup_viewmodel.dart';
+import 'package:rts/utils/snackbar.dart';
 import 'package:rts/widgets/custom_text_form_field.dart';
 
 class Signup extends StatelessWidget {
@@ -141,7 +142,7 @@ class Signup extends StatelessWidget {
                                   SizedBox(
                                     height: 35,
                                     child: TextFormField(
-                                      obscureText: true,
+                                      obscureText: !vm.showPassword,
                                       controller: vm.registerPasswordController,
                                       decoration: InputDecoration(
                                           hintText: "Enter Password",
@@ -158,8 +159,16 @@ class Signup extends StatelessWidget {
                                             borderSide:
                                                 const BorderSide(width: 1),
                                           ),
-                                          suffix: const InkWell(
-                                            child: Text("show"),
+                                          suffix: InkWell(
+                                            onTap: () {
+                                              vm.showPassword =
+                                                  !vm.showPassword;
+
+                                              vm.update();
+                                            },
+                                            child: Text(vm.showPassword
+                                                ? "hide"
+                                                : "show"),
                                           ),
                                           border: OutlineInputBorder(
                                             borderRadius:
@@ -173,7 +182,7 @@ class Signup extends StatelessWidget {
                                   SizedBox(
                                     height: 35,
                                     child: TextFormField(
-                                      obscureText: true,
+                                      obscureText: !vm.showConfirmPassword,
                                       controller: vm.confirmPasswordController,
                                       decoration: InputDecoration(
                                           hintText: "Confirm Password",
@@ -190,8 +199,16 @@ class Signup extends StatelessWidget {
                                             borderSide:
                                                 const BorderSide(width: 1),
                                           ),
-                                          suffix: const InkWell(
-                                            child: Text("show"),
+                                          suffix: InkWell(
+                                            onTap: () {
+                                              vm.showConfirmPassword =
+                                                  !vm.showConfirmPassword;
+
+                                              vm.update();
+                                            },
+                                            child: Text(vm.showConfirmPassword
+                                                ? "hide"
+                                                : "show"),
                                           ),
                                           border: OutlineInputBorder(
                                             borderRadius:
@@ -243,6 +260,13 @@ class Signup extends StatelessWidget {
                             if (vm.registerPage == 1) {
                               vm.signupUser();
                             }
+                            if (vm.registerEmailController.text.isEmpty ||
+                                vm.registerPasswordController.text.isEmpty ||
+                                vm.confirmPasswordController.text.isEmpty) {
+                              showSnackBar(
+                                  context, "Please Enter All fields", true);
+                              return;
+                            }
                             vm.registerPage = 1;
                             vm.update();
                           },
@@ -253,20 +277,26 @@ class Signup extends StatelessWidget {
                               color: const Color.fromRGBO(240, 191, 78, 1),
                               borderRadius: BorderRadius.circular(4),
                             ),
-                            child: vm.isSigninClickedBool
-                                ? const Center(
-                                    child: CircularProgressIndicator())
-                                : Center(
-                                    child: Text(
-                                    vm.registerPage == 0
-                                        ? "Proceed Next"
-                                        : "Sign up",
-                                    style: const TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.white60,
-                                      fontWeight: FontWeight.w800,
-                                    ),
-                                  )),
+                            child:
+                                (vm.isSignupBtnClicked && vm.registerPage == 1)
+                                    ? const Center(
+                                        child: SizedBox(
+                                        height: 25,
+                                        child: CircularProgressIndicator(
+                                          color: Colors.white,
+                                        ),
+                                      ))
+                                    : Center(
+                                        child: Text(
+                                        vm.registerPage == 0
+                                            ? "Proceed Next"
+                                            : "Sign up",
+                                        style: const TextStyle(
+                                          fontSize: 14,
+                                          color: Colors.white60,
+                                          fontWeight: FontWeight.w800,
+                                        ),
+                                      )),
                           ),
                         ),
                         const SizedBox(height: 20),

@@ -34,7 +34,7 @@ class DoubtVM extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    initSocket();
+    // initSocket();
     getDoubts();
     focusNode.addListener(() {
       if (focusNode.hasFocus) {
@@ -90,6 +90,7 @@ class DoubtVM extends GetxController {
       name: homeVM.user?.name ?? "",
       userId: homeVM.user?.id ?? "",
     ));
+    update();
     txtController.text;
     txtController.clear();
 

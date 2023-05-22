@@ -128,7 +128,7 @@ class About extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "Email: rohitgupta111abcd@gmail.com\nPhone: +91 1234567890",
+                  "Email: incandescent.rec@gmail.com\nPhone: +91 1234567890",
                   style: TextStyle(
                     color: Colors.blue[900],
                     fontSize: 10,

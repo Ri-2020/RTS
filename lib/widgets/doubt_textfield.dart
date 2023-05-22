@@ -52,19 +52,19 @@ class BottomTextMessaging extends StatelessWidget {
                             border: InputBorder.none,
                             hintText: "Ask question here",
                             hintStyle: const TextStyle(fontSize: 18),
-                            prefixIcon: IconButton(
-                              icon: const Icon(
-                                Icons.emoji_emotions_outlined,
-                                size: 28,
-                                color: Colors.grey,
-                              ),
-                              onPressed: () {
-                                vm.focusNode.unfocus();
-                                vm.focusNode.canRequestFocus = false;
-                                vm.showEnojiOption = !vm.showEnojiOption;
-                                vm.update();
-                              },
-                            ),
+                            // prefixIcon: IconButton(
+                            //   icon: const Icon(
+                            //     Icons.emoji_emotions_outlined,
+                            //     size: 28,
+                            //     color: Colors.grey,
+                            //   ),
+                            //   onPressed: () {
+                            //     vm.focusNode.unfocus();
+                            //     vm.focusNode.canRequestFocus = false;
+                            //     vm.showEnojiOption = !vm.showEnojiOption;
+                            //     vm.update();
+                            //   },
+                            // ),
                             contentPadding: const EdgeInsets.all(5),
                           ),
                         ),

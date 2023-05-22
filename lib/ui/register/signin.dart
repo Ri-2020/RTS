@@ -28,7 +28,7 @@ class Signin extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox(
-                          width: 115,
+                          width: 125,
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -124,7 +124,7 @@ class Signin extends StatelessWidget {
                         SizedBox(
                           height: 35,
                           child: TextFormField(
-                            obscureText: true,
+                            obscureText: !vm.showPassword,
                             controller: vm.passwordController,
                             decoration: InputDecoration(
                                 hintText: "Enter Password",
@@ -138,8 +138,13 @@ class Signin extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(4),
                                   borderSide: const BorderSide(width: 1),
                                 ),
-                                suffix: const InkWell(
-                                  child: Text("show"),
+                                suffix: InkWell(
+                                  onTap: () {
+                                    vm.showPassword = !vm.showPassword;
+                                    vm.update();
+                                  },
+                                  child:
+                                      Text(vm.showPassword ? "hide" : "show"),
                                 ),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(4),
@@ -171,15 +176,24 @@ class Signin extends StatelessWidget {
                               color: const Color.fromRGBO(240, 191, 78, 1),
                               borderRadius: BorderRadius.circular(4),
                             ),
-                            child: const Center(
-                                child: Text(
-                              "Sign in",
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.white60,
-                                fontWeight: FontWeight.w800,
-                              ),
-                            )),
+                            child: vm.isSigninClickedBool
+                                ? const Center(
+                                    child: SizedBox(
+                                    height: 25,
+                                    width: 25,
+                                    child: CircularProgressIndicator(
+                                      color: Colors.white,
+                                    ),
+                                  ))
+                                : const Center(
+                                    child: Text(
+                                    "Sign in",
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.white60,
+                                      fontWeight: FontWeight.w800,
+                                    ),
+                                  )),
                           ),
                         ),
                         const SizedBox(height: 20),
@@ -213,7 +227,7 @@ class Signin extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
               ],
             ),
           ),

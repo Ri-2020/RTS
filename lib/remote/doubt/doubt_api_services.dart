@@ -51,7 +51,7 @@ class DoubtApiServices extends DoubtApiInterface {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     String token = sharedPreferences.getString("token")!;
     String userId = sharedPreferences.getString("userId")!;
-    String api = "$baseUrl/doubt/create-doubt/";
+    String api = "$baseUrl/doubt/create-doubts/";
     var response = await http.post(
       Uri.parse(api),
       headers: {
@@ -67,11 +67,6 @@ class DoubtApiServices extends DoubtApiInterface {
       return {};
     }
     Map<String, dynamic> res = jsonDecode(response.body);
-    if (response.statusCode == 200) {
-      if (res.isNotEmpty) {
-        return res;
-      }
-    }
     return res;
   }
 
