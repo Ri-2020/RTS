@@ -10,8 +10,8 @@ class EditProfileVM extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController bioController = TextEditingController();
-  TextEditingController socialMediaName = TextEditingController();
-  TextEditingController socialMediaUrl = TextEditingController();
+  TextEditingController socialMediaNameController = TextEditingController();
+  TextEditingController socialMediaUrlController = TextEditingController();
   TextEditingController addSkillController = TextEditingController();
   List<String> skills = [
     'Programming',
@@ -36,7 +36,10 @@ class EditProfileVM extends GetxController {
     'Customer service',
   ];
 
-  Map<String, String> socialMediaLink = {};
+  Map<String, String> socialMedia = {
+    "Instagram": "instagram.com/rohit_gupta_indu",
+    "Twitter": "twitter.com/rohitgupta",
+  };
 
   removeSkill(String skill) {
     skills.remove(skill);
@@ -54,18 +57,21 @@ class EditProfileVM extends GetxController {
   }
 
   addSocialMedia() {
-    if (socialMediaName.text.isNotEmpty && socialMediaUrl.text.isNotEmpty) {
-      socialMediaLink[socialMediaName.text] = socialMediaUrl.text;
-      socialMediaName.clear();
-      socialMediaUrl.clear();
+    if (socialMediaNameController.text.isNotEmpty &&
+        socialMediaUrlController.text.isNotEmpty) {
+      socialMedia[socialMediaNameController.text] =
+          socialMediaUrlController.text;
+      socialMediaNameController.clear();
+      socialMediaUrlController.clear();
       update();
       showSnackBar(Get.context!, "Url Added", false);
+    } else {
+      showSnackBar(Get.context!, "Invalid Request", true);
     }
-    showSnackBar(Get.context!, "Invalid Request", true);
   }
 
   removeSocialMedia(String key) {
-    socialMediaLink.remove(key);
+    socialMedia.remove(key);
     update();
   }
 }

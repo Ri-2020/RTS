@@ -1,10 +1,10 @@
 // ignore_for_file: constant_identifier_names
 
-import 'package:rts/ui/dashboard/dashboard.dart';
-
 class UseString {
-  static const website_name = "Raah Towards Success";
-  static const short_website_name = "RTS";
+  static const website_name = "Incandescent";
+  static const website_name_caps = "INCANDESCENT";
+  static const short_website_name = "Incandescent";
+  static const save_changes = "Save Changes";
   static const Bootcamps = "Bootcamps";
   static const Bootcamp = "Bootcamp";
   static const bootcamps = "bootcamps";
@@ -19,4 +19,7 @@ class UseString {
   static const signin = "Sign In";
   static const edit_profile = "Edit Profile";
   static const no_skills_added = "No Skills Added";
+  static const no_social_media_added = "No Social Media Added";
+  static const where_brilliance_ignites_and_innovation_glows =
+      "Where Brilliance Ignites and Innovation Glows";
 }

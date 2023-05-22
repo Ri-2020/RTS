@@ -11,6 +11,7 @@ import 'package:rts/utils/shared_prefer.dart';
 
 class HomeVM extends GetxController {
   UserData? user;
+  // double width = MediaQuery.of(context).size.width;
 
   List<Widget> views = [
     const LoggedInHome(),
@@ -18,10 +19,6 @@ class HomeVM extends GetxController {
     const Dashboard(),
     const DoubtPage(),
     const About(),
-  ];
-
-  List<Widget> test = [
-    const BootCampTile(),
   ];
 
   String homeTitle = "Raah Towards Success";

@@ -2,6 +2,7 @@ import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:rts/constants/strings.dart';
 import 'package:rts/ui/register/signin.dart';
 import 'package:rts/utils/constants.dart';
@@ -35,12 +36,14 @@ class _MainHomePageState extends State<MainHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
         body: Stack(
       children: [
         Container(
-          width: Get.width,
-          height: Get.height,
+          width: width,
+          height: height,
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
@@ -71,6 +74,29 @@ class _MainHomePageState extends State<MainHomePage> {
                 ),
               )),
         ),
+        width < 1000
+            ? Positioned(
+                bottom: 0,
+                right: 0,
+                child: Container(
+                  margin: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                    border: Border.all(color: Colors.purple, width: 2),
+                  ),
+                  child: Text(
+                    "Developed By:\n\nRohit Gupta\nVikram Negi",
+                    textAlign: TextAlign.end,
+                    style: GoogleFonts.openSans(
+                      color: Colors.white,
+                      fontSize: 10,
+                      fontWeight: FontWeight.w100,
+                    ),
+                  ),
+                ),
+              )
+            : const SizedBox(),
         Positioned(
           width: Get.width,
           top: 0,
@@ -84,13 +110,13 @@ class _MainHomePageState extends State<MainHomePage> {
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text("Incandescent",
+                        Text(UseString.website_name,
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize: width < 600 ? 16 : 20,
                               color: Colors.white,
                               fontWeight: FontWeight.w900,
                             )),
-                        const SizedBox(height: 5),
+                        // const SizedBox(height: 5),
                         const Divider(
                           thickness: 1,
                           color: Colors.white,
@@ -123,13 +149,16 @@ class _MainHomePageState extends State<MainHomePage> {
                       Text(
                         name,
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: width < 600 ? 10 : 14,
                           color: Colors.grey.shade800,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      SizedBox(width: 5),
-                      Icon(Icons.arrow_forward)
+                      const SizedBox(width: 5),
+                      Icon(
+                        Icons.arrow_forward,
+                        size: width < 600 ? 10 : null,
+                      )
                     ],
                   ),
                 )
@@ -137,12 +166,59 @@ class _MainHomePageState extends State<MainHomePage> {
             ),
           ),
         ),
+        width < 1000
+            ? Positioned(
+                bottom: 1,
+                child: SizedBox(
+                  width: width,
+                  child: Center(
+                    child: InkWell(
+                      onTap: () {},
+                      child: SizedBox(
+                        width: 50,
+                        child: Column(
+                          children: [
+                            Transform(
+                              transform: Matrix4.rotationX(3.14),
+                              child: Image.asset(
+                                "assets/gifs/arrowdown.gif",
+                                width: 50,
+                                height: 23,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Transform(
+                              transform: Matrix4.rotationX(3.14),
+                              child: Image.asset(
+                                "assets/gifs/arrowdown.gif",
+                                width: 40,
+                                height: 18,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Transform(
+                              transform: Matrix4.rotationX(3.14),
+                              child: Image.asset(
+                                "assets/gifs/arrowdown.gif",
+                                width: 30,
+                                height: 13,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              )
+            : const SizedBox(),
         Positioned(
-          top: Get.height * 0.28,
+          top: width < 600 ? height * 0.3 : height * 0.25,
           child: Container(
-              width: Get.width - 120,
-              margin: const EdgeInsets.only(left: 100, right: 20),
+              margin: EdgeInsets.only(left: width < 600 ? 50 : 100, right: 20),
               height: Get.height,
+              width: width < 1000 ? null : width - 120,
               decoration: const BoxDecoration(),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -156,38 +232,43 @@ class _MainHomePageState extends State<MainHomePage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text(
-                                "INCANDESCENT",
-                                style: TextStyle(
+                              Text(
+                                UseString.website_name_caps,
+                                style: GoogleFonts.openSans(
                                   letterSpacing: 2.3,
-                                  fontSize: 48,
+                                  fontSize: width < 600 ? 40 : 48,
                                   color: Colors.white,
                                 ),
                               ),
                               Container(
                                 height: 2,
-                                width: 150,
+                                width: width < 600 ? 100 : 150,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: Colors.white,
                                 ),
                               ),
                               SizedBox(height: 5),
-                              const Text(
-                                "Where Brilliance Ignites and Innovation Glows",
-                                style: TextStyle(
-                                  fontSize: 18,
+                              Text(
+                                width < 600
+                                    ? "Where Brilliance Ignites and \nInnovation Glows"
+                                    : "Where Brilliance Ignites and Innovation Glows",
+                                style: GoogleFonts.openSans(
+                                  fontSize: width < 600 ? 16 : 18,
                                   color: Colors.white,
                                 ),
                               )
                             ],
                           ),
                         ),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(vertical: 20),
-                          child: Text("May 22 - May 25, 2023 | IT Semenar Hall",
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 20),
+                          child: Text(
+                              width < 600
+                                  ? "May 22 - May 25, 2023 \nIT Semenar Hall"
+                                  : "May 22 - May 25, 2023 | IT Semenar Hall",
                               style: TextStyle(
-                                fontSize: 18,
+                                fontSize: width < 600 ? 12 : 18,
                                 fontWeight: FontWeight.bold,
                                 letterSpacing: 3,
                                 color: Colors.white,
@@ -209,74 +290,78 @@ class _MainHomePageState extends State<MainHomePage> {
                                     width: 1,
                                     color: Colors.white,
                                   )),
-                              child: const Text(
+                              child: Text(
                                 "Register Now",
                                 style: TextStyle(
-                                  fontSize: 22,
+                                  fontSize: width < 600 ? 13 : 22,
                                   color: Colors.white,
                                   fontWeight: FontWeight.w900,
                                 ),
                               )),
                         )
                       ]),
-                  Column(
-                    children: [
-                      Container(
-                        height: 350,
-                        width: 400,
-                        margin: const EdgeInsets.only(left: 40),
-                        padding: const EdgeInsets.all(40),
-                        decoration: BoxDecoration(
-                            color: Colors.black,
-                            border: Border.all(
-                              color: Colors.purpleAccent,
-                              width: 2,
-                            )),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                  width < 1000
+                      ? const SizedBox()
+                      : Column(
                           children: [
-                            const Text("LATEST",
-                                style: TextStyle(
-                                    fontSize: 22, color: Colors.white)),
-                            const SizedBox(height: 30),
-                            const Text("Get Ready For RTS Flutter Bootcaamp",
-                                style: TextStyle(
-                                    fontSize: 22, color: Colors.white)),
-                            const SizedBox(height: 40),
-                            const Text("Register Yourself",
-                                style: TextStyle(
-                                    fontSize: 16, color: Colors.white)),
                             Container(
-                              margin: const EdgeInsets.symmetric(vertical: 10),
-                              color: Colors.yellowAccent,
-                              height: 3,
-                              width: 150,
+                              height: 350,
+                              width: 400,
+                              margin: const EdgeInsets.only(left: 40),
+                              padding: const EdgeInsets.all(40),
+                              decoration: BoxDecoration(
+                                  color: Colors.black,
+                                  border: Border.all(
+                                    color: Colors.purpleAccent,
+                                    width: 2,
+                                  )),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text("LATEST",
+                                      style: TextStyle(
+                                          fontSize: 22, color: Colors.white)),
+                                  const SizedBox(height: 30),
+                                  const Text(
+                                      "Get Ready For ${UseString.short_website_name}'s Flutter Bootcaamp",
+                                      style: TextStyle(
+                                          fontSize: 22, color: Colors.white)),
+                                  const SizedBox(height: 40),
+                                  const Text("Register Yourself",
+                                      style: TextStyle(
+                                          fontSize: 16, color: Colors.white)),
+                                  Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        vertical: 10),
+                                    color: Colors.yellowAccent,
+                                    height: 3,
+                                    width: 150,
+                                  ),
+                                ],
+                              ),
                             ),
+                            const SizedBox(height: 15),
+                            Container(
+                              height: 50,
+                              width: 400,
+                              margin: const EdgeInsets.only(left: 40),
+                              padding: const EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                  color: Colors.black,
+                                  border: Border.all(
+                                    color: Colors.purpleAccent,
+                                    width: 2,
+                                  )),
+                              child: const Text(
+                                "Developed by Vikram Negi & Rohit Gupta",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white),
+                              ),
+                            )
                           ],
                         ),
-                      ),
-                      SizedBox(height: 15),
-                      Container(
-                        height: 50,
-                        width: 400,
-                        margin: const EdgeInsets.only(left: 40),
-                        padding: const EdgeInsets.all(12),
-                        decoration: BoxDecoration(
-                            color: Colors.black,
-                            border: Border.all(
-                              color: Colors.purpleAccent,
-                              width: 2,
-                            )),
-                        child: const Text(
-                          "Developed by Vikram Negi & Rohit Gupta",
-                          style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white),
-                        ),
-                      )
-                    ],
-                  ),
                 ],
               )),
         ),

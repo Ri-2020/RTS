@@ -15,24 +15,32 @@ class About extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     return GetBuilder<HomeVM>(builder: (vm) {
       return PageFrame(
+        width: width,
         pageTitle: UseString.website_name,
         pageDescription: "/about",
         children: [
           Container(
             // width: 600,
-            margin: const EdgeInsets.all(30),
-            padding: const EdgeInsets.all(30),
+            // margin: EdgeInsets.all(width < 600
+            //     ? width < 400
+            //         ? 0
+            //         : 10
+            //     : 0),
+            margin: const EdgeInsets.symmetric(vertical: 20),
+            padding: EdgeInsets.all(width < 600 ? 10 : 30),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(15),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 0,
-                  blurRadius: 2,
-                  offset: const Offset(0, 0),
-                ),
-              ],
+              boxShadow: width < 450
+                  ? null
+                  : [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 0,
+                        blurRadius: 2,
+                        offset: const Offset(0, 0),
+                      ),
+                    ],
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,7 +51,7 @@ class About extends StatelessWidget {
                   child: Text(
                     "About Us",
                     style: UseGoogleFont().openSans(
-                      size: 30,
+                      size: width < 600 ? 20 : 30,
                       color: Colors.blue[900],
                       weight: FontWeight.bold,
                     ),
@@ -53,7 +61,7 @@ class About extends StatelessWidget {
                   "John Doe is a software developer with over 10 years of experience. He is currently a senior software engineer at Google, where he works on the development of the company's search engine. John is a highly skilled developer with a strong understanding of computer science. He is also a talented problem solver and is able to quickly come up with creative solutions to complex problems. John is a valuable asset to any team and is always willing to help others. He is also a great communicator and is able to clearly explain complex technical concepts to both technical and non-technical audiences. John is a passionate developer who is always looking for new ways to improve his skills and knowledge. He is also a strong advocate for diversity and inclusion in the tech industry. John is a role model for aspiring developers and is an inspiration to his colleagues.",
                   textAlign: TextAlign.justify,
                   style: UseGoogleFont().openSans(
-                      size: 17,
+                      size: width < 600 ? 14 : 17,
                       color: Colors.blue[900],
                       weight: FontWeight.w500),
                 ),
@@ -79,16 +87,19 @@ class About extends StatelessWidget {
             width: double.infinity,
             child: Wrap(
               alignment: WrapAlignment.spaceAround,
-              children: const [
+              children: [
                 CharacterTile(
+                  width: width,
                   name: "Rohit Gupta",
                   post: "Chief Technology Head",
                 ),
                 CharacterTile(
+                  width: width,
                   name: "Vikram Negi",
                   post: "Chief Executive Head",
                 ),
                 CharacterTile(
+                  width: width,
                   name: "Aman Tiwari",
                   post: "Chief Managing Head",
                 ),

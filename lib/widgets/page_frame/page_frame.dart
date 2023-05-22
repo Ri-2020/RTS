@@ -5,6 +5,7 @@ import 'package:rts/constants/google_fonts.dart';
 
 class PageFrame extends StatelessWidget {
   final List<Widget>? headerButtons;
+  final double width;
   final String? imageUrl;
   final String pageTitle;
   final String? pageDescription;
@@ -16,6 +17,7 @@ class PageFrame extends StatelessWidget {
     this.imageUrl,
     required this.pageTitle,
     this.pageDescription,
+    required this.width,
     this.children,
     this.isPadding = true,
   });
@@ -89,7 +91,7 @@ class PageFrame extends StatelessWidget {
                                 Text(
                                   pageTitle,
                                   style: GoogleFonts.openSans(
-                                    fontSize: 30,
+                                    fontSize: width < 460 ? 20 : 30,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),

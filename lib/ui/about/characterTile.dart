@@ -5,10 +5,12 @@ import 'package:flutter/src/widgets/placeholder.dart';
 class CharacterTile extends StatelessWidget {
   final String name;
   final String? post;
+  final double width;
 
   const CharacterTile({
     super.key,
     required this.name,
+    required this.width,
     this.post,
   });
 
@@ -21,8 +23,8 @@ class CharacterTile extends StatelessWidget {
             borderRadius: BorderRadius.circular(100),
             child: Image.network(
               "https://www.alexisdental.ca/files/alexis-dental-belle-river-fillings-1.jpg",
-              height: 150,
-              width: 150,
+              height: width < 600 ? 100 : 150,
+              width: width < 600 ? 100 : 150,
               fit: BoxFit.cover,
             ),
           ),

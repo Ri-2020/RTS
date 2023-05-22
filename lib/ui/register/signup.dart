@@ -10,6 +10,7 @@ class Signup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return GetBuilder<SignupVM>(builder: (vm) {
       return Scaffold(
         backgroundColor: Colors.blueGrey.shade50,
@@ -66,11 +67,11 @@ class Signup extends StatelessWidget {
                 const SizedBox(height: 50),
                 Center(
                   child: Container(
-                    width: 400,
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 50, horizontal: 35),
+                    width: width > 440 ? 400 : width * 0.95,
+                    padding: EdgeInsets.symmetric(
+                        vertical: 50, horizontal: width > 440 ? 35 : 25),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: width > 440 ? Colors.white : Colors.transparent,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Column(
