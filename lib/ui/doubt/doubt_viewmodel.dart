@@ -93,12 +93,19 @@ class DoubtVM extends GetxController {
     txtController.text;
     txtController.clear();
 
-    update();
+    var res = await doubtRepoImp.createDoubt(meassge);
 
-    socket.emit("message", {
-      "message": meassge,
-      "userId": homeVM.user?.id ?? "",
-    });
+    if (res != {}) {
+      chatList.removeLast();
+      setMessage(res["data"]);
+    } else {
+      showSnackBar(Get.context!, res["message"]);
+    }
+    update();
+    // socket.emit("message", {
+    //   "message": meassge,
+    //   "userId": homeVM.user?.id ?? "",
+    // });
   }
 
   List<Map<String, String>> faqData = [
@@ -124,7 +131,6 @@ class DoubtVM extends GetxController {
   String time = DateFormat.jm().format(DateTime.now()).toString();
   void setMessage(Map<String, dynamic> map) {
     Doubt chat = Doubt.fromMap(map);
-
     print("chat : ${chat.text}");
     chatList.add(chat);
     update();

@@ -44,7 +44,6 @@ dependencies:
   intl: ^0.18.1
   socket_io_client: ^2.0.2
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

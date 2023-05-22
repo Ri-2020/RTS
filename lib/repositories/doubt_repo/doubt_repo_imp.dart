@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:rts/models/chat_model.dart';
 import 'package:rts/remote/doubt/doubt_api_services.dart';
 import 'package:rts/repositories/doubt_repo/doubt_repo.dart';
+import 'package:rts/utils/shared_prefer.dart';
 
 class DoubtRepoImp extends DoubtRepo {
   DoubtApiServices doubtApiServices = DoubtApiServices();
@@ -18,7 +19,6 @@ class DoubtRepoImp extends DoubtRepo {
       chats = (res["data"] as List<dynamic>)
           .map((e) => Doubt.fromMap(e as Map<String, dynamic>))
           .toList();
-
       return chats;
     }
     return [];
@@ -39,10 +39,9 @@ class DoubtRepoImp extends DoubtRepo {
   // }
 
   @override
-  Future<Map<String, dynamic>> sendMessageToUser(
-      String receiverUserId, String message) async {
-    Map<String, dynamic>? res =
-        await doubtApiServices.sendMessageToUser(receiverUserId, message);
+  Future<Map<String, dynamic>> createDoubt(String message) async {
+    String token = await SharedPrefs.getString("token") ?? "";
+    Map<String, dynamic>? res = await doubtApiServices.createDoubt(message);
     debugPrint("send message Repo Imp $res");
     if (res != null && res.isNotEmpty) {
       return res["data"];

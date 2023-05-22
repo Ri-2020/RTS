@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rts/constants/strings.dart';
 import 'package:rts/ui/register/signup.dart';
 import 'package:rts/ui/register/signup_viewmodel.dart';
 import 'package:rts/utils/constants.dart';
@@ -31,7 +32,7 @@ class Signin extends StatelessWidget {
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text("RTS",
+                                Text(UseString.website_name,
                                     style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w900,
