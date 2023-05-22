@@ -40,11 +40,10 @@ class DoubtRepoImp extends DoubtRepo {
 
   @override
   Future<Map<String, dynamic>> createDoubt(String message) async {
-    String token = await SharedPrefs.getString("token") ?? "";
     Map<String, dynamic>? res = await doubtApiServices.createDoubt(message);
     debugPrint("send message Repo Imp $res");
     if (res != null && res.isNotEmpty) {
-      return res["data"];
+      return res;
     }
     return {};
   }

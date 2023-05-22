@@ -21,6 +21,8 @@ class SignupVM extends GetxController {
   TextEditingController rollNoController = TextEditingController();
 
   int registerPage = 0;
+  bool showPassword = false;
+  bool showConfirmPassword = false;
 
   String validate() {
     if (registerEmailController.text.isEmpty ||
@@ -36,9 +38,14 @@ class SignupVM extends GetxController {
     return "";
   }
 
+  bool isSignupBtnClicked = false;
   void signupUser() async {
+    isSignupBtnClicked = true;
+    update();
     if (validate() != "") {
       showSnackBar(Get.context!, validate(), true);
+      isSignupBtnClicked = false;
+      update();
       return;
     }
 
@@ -59,6 +66,8 @@ class SignupVM extends GetxController {
       showSnackBar(
           Get.context!, res["message"] ?? "Error while creating user", true);
     }
+    isSignupBtnClicked = false;
+    update();
   }
 
   bool isSigninClickedBool = false;
@@ -68,6 +77,8 @@ class SignupVM extends GetxController {
     update();
     if (emailController.text.isEmpty || passwordController.text.isEmpty) {
       showSnackBar(Get.context!, "All Field require", true);
+      isSigninClickedBool = false;
+      update();
       return;
     }
 
