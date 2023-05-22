@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:rts/constants/google_fonts.dart';
 import 'package:rts/constants/strings.dart';
 import 'package:rts/ui/dashboard/dashboard_vm.dart';
@@ -9,6 +10,7 @@ import 'package:rts/utils/routes.dart';
 import 'package:rts/widgets/media_query_style.dart';
 import 'package:rts/widgets/page_frame/page_frame.dart';
 import 'package:rts/widgets/page_frame/page_frame_header_button.dart';
+import 'package:rts/widgets/round_container.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -80,7 +82,7 @@ class Dashboard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        padding: EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(15),
                         decoration: BoxDecoration(
                           color: Colors.blue[50],
                           borderRadius: BorderRadius.circular(15),
@@ -123,8 +125,24 @@ class Dashboard extends StatelessWidget {
                           ? width * 0.8
                           : width * 0.25
                       : width * 0.3,
-                  child: const Text(
-                      "John Doe is a software developer with over 10 years of experience. He is currently a senior software engineer at Google, where he works on the development of the company's search engine. John is a highly skilled developer with a strong understanding of computer science. He is also a talented problem solver and is able to quickly come up with creative solutions to complex problems. John is a valuable asset to any team and is always willing to help others. He is also a great communicator and is able to clearly explain complex technical concepts to both technical and non-technical audiences. John is a passionate developer who is always looking for new ways to improve his skills and knowledge. He is also a strong advocate for diversity and inclusion in the tech industry. John is a role model for aspiring developers and is an inspiration to his colleagues."),
+                  child: homeVM.user != null && homeVM.user!.skills!.isNotEmpty
+                      ? Wrap(
+                          children: homeVM.user!.skills!
+                              .map(
+                                (e) => RoundContainer(
+                                  skill: e,
+                                  isRemoveable: false,
+                                ),
+                              )
+                              .toList(),
+                        )
+                      : Text(
+                          "Skills Not Added yet",
+                          style: GoogleFonts.openSans(
+                            fontSize: 14,
+                            color: Colors.grey,
+                          ),
+                        ),
                 ),
                 const Divider(),
               ],

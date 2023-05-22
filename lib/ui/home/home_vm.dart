@@ -29,6 +29,28 @@ class HomeVM extends GetxController {
   void onInit() async {
     super.onInit();
     getUserDetails();
+    user?.skills = [
+      'Programming',
+      'Data analysis',
+      'Project management',
+      'Communication',
+      'Problem-solving',
+      'Leadership',
+      'Teamwork',
+      'Time management',
+      'Critical thinking',
+      'Creativity',
+      'Adaptability',
+      'Decision-making',
+      'Technical writing',
+      'Graphic design',
+      'Marketing',
+      'Negotiation',
+      'Public speaking',
+      'Research',
+      'Financial analysis',
+      'Customer service',
+    ];
   }
 
   void getUserDetails() async {

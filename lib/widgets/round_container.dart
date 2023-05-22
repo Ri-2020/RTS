@@ -7,9 +7,11 @@ import 'package:rts/utils/binding.dart';
 
 class RoundContainer extends StatelessWidget {
   final String skill;
+  final bool isRemoveable;
   const RoundContainer({
     super.key,
     required this.skill,
+    this.isRemoveable = true,
   });
 
   @override
@@ -33,23 +35,25 @@ class RoundContainer extends StatelessWidget {
                 fontWeight: FontWeight.normal,
               ),
             ),
-            const SizedBox(
-              width: 10,
+            SizedBox(
+              width: isRemoveable ? 10 : 0,
             ),
-            CircleAvatar(
-              radius: 7,
-              backgroundColor: Colors.white,
-              child: InkWell(
-                onTap: () {
-                  vm.removeSkill(skill);
-                },
-                child: const Icon(
-                  Icons.close_outlined,
-                  size: 14,
-                  color: Colors.black,
-                ),
-              ),
-            )
+            isRemoveable
+                ? CircleAvatar(
+                    radius: 7,
+                    backgroundColor: Colors.white,
+                    child: InkWell(
+                      onTap: () {
+                        vm.removeSkill(skill);
+                      },
+                      child: const Icon(
+                        Icons.close_outlined,
+                        size: 14,
+                        color: Colors.black,
+                      ),
+                    ),
+                  )
+                : const SizedBox(),
           ],
         ),
       );
