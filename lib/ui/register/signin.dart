@@ -32,7 +32,7 @@ class Signin extends StatelessWidget {
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(UseString.website_name,
+                                Text(UseString.website_name,
                                     style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w900,

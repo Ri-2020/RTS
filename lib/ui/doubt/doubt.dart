@@ -82,7 +82,7 @@ class _UserChatPageState extends State<DoubtPage> {
                         ),
                         child: vm.loading
                             ? SizedBox(
-                                height: Get.height,
+                                height: 500,
                                 child: const Center(
                                   child: CircularProgressIndicator(),
                                 ),
@@ -92,7 +92,7 @@ class _UserChatPageState extends State<DoubtPage> {
                                     width < Constants.commentSectionWidth + 50
                                         ? width - 80
                                         : Constants.commentSectionWidth - 80,
-                                height: 600,
+                                height: 550,
                                 child: WillPopScope(
                                   child: Stack(
                                     children: [
@@ -102,7 +102,7 @@ class _UserChatPageState extends State<DoubtPage> {
                                                   child: Text("No question")),
                                             )
                                           : SizedBox(
-                                              height: 600,
+                                              height: 550,
                                               child: ListView.builder(
                                                 controller: vm.scrollController,
                                                 // itemCount: messages.length,
@@ -217,11 +217,11 @@ class _UserChatPageState extends State<DoubtPage> {
                                                                               color: Colors.grey.shade600,
                                                                               size: 20,
                                                                             )),
-                                                                        TextButton(
-                                                                            onPressed:
-                                                                                () {},
-                                                                            child:
-                                                                                const Text("Reply")),
+                                                                        // TextButton(
+                                                                        //     onPressed:
+                                                                        //         () {},
+                                                                        //     child:
+                                                                        //         const Text("Reply")),
                                                                       ],
                                                                     ),
                                                                     i == vm.chatList.length - 1

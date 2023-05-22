@@ -47,29 +47,26 @@ class DoubtApiServices extends DoubtApiInterface {
   }
 
   @override
-  Future<Map<String, dynamic>>? sendMessageToUser(
-      String receiverUserId, String message) async {
+  Future<Map<String, dynamic>>? createDoubt(String message) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     String token = sharedPreferences.getString("token")!;
-    String senderUserId = sharedPreferences.getString("userId")!;
-    String api =
-        "$baseUrl/api/user/chat/sendMessage/$senderUserId/$receiverUserId";
+    String userId = sharedPreferences.getString("userId")!;
+    String api = "$baseUrl/doubt/create-doubts/";
     var response = await http.post(
       Uri.parse(api),
       headers: {
         "Authorization": "Bearer $token",
       },
-      body: {"message": message, "timestamp": DateTime.now().toString()},
+      body: {
+        "message": message,
+        "userId": userId,
+        "timestamp": DateTime.now().toString()
+      },
     );
     if (response == null) {
       return {};
     }
     Map<String, dynamic> res = jsonDecode(response.body);
-    if (response.statusCode == 200) {
-      if (res.isNotEmpty) {
-        return res;
-      }
-    }
     return res;
   }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rts/constants/strings.dart';
 import 'package:rts/ui/home/home_vm.dart';
 import 'package:rts/ui/register/signin.dart';
 import 'package:rts/utils/constants.dart';
@@ -30,7 +31,7 @@ class HomePage extends StatelessWidget {
                             title: Align(
                               alignment: Alignment.centerLeft,
                               child: SizedBox(
-                                child: Text("RTS",
+                                child: Text(UseString.website_name_caps,
                                     style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w900,
@@ -122,23 +123,16 @@ class HomePage extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: SizedBox(
-                                width: 115,
+                                width: 145,
                                 child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      const Padding(
-                                        padding: EdgeInsets.only(left: 8.0),
-                                        child: Text("RTS",
-                                            style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w900,
-                                            )),
-                                      ),
-                                      const SizedBox(height: 5),
-                                      // const Divider(
-                                      //   thickness: 1,
-                                      // ),
+                                      const Text(UseString.website_name_caps,
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w900,
+                                          )),
                                       Container(
                                         height: 2,
                                         decoration: BoxDecoration(
@@ -147,31 +141,17 @@ class HomePage extends StatelessWidget {
                                           borderRadius:
                                               BorderRadius.circular(4),
                                         ),
-                                        width: 75,
-                                      ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 8.0),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(vm.user?.name ?? "name",
-                                                style: const TextStyle(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.bold,
-                                                )),
-                                          ],
-                                        ),
+                                        width: 135,
                                       ),
                                     ]),
                               ),
                             ),
                           ),
-                          subtitle: const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text(""),
-                          ),
+                          subtitle: Text(vm.user?.name ?? "name",
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              )),
                           image: const Text(""),
                         ),
                         selectedIndex: vm.selectedIndex,
@@ -198,35 +178,48 @@ class HomePage extends StatelessWidget {
                           ),
                         ],
                         footer: SideNavigationBarFooter(
-                          label: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              // const Text("Raah-Towards-Success"),
-                              InkWell(
-                                onTap: () {
-                                  Get.to(() => Signin());
-                                },
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: const [
-                                    Text(
-                                      "Logout",
-                                      style: TextStyle(
-                                        color: Colors.red,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 5,
-                                    ),
-                                    Icon(
-                                      Icons.logout,
-                                      color: Colors.red,
-                                    ),
-                                  ],
+                          label: InkWell(
+                            onTap: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      content: const Text(
+                                          "Are you sure you want to logged out?"),
+                                      actions: [
+                                        TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: const Text("No")),
+                                        TextButton(
+                                            onPressed: () {
+                                              vm.signout();
+                                            },
+                                            child: const Text("Yes")),
+                                      ],
+                                    );
+                                  });
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: const [
+                                Text(
+                                  "Logout",
+                                  style: TextStyle(
+                                    color: Colors.red,
+                                  ),
                                 ),
-                              ),
-                            ],
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Icon(
+                                  Icons.logout,
+                                  color: Colors.red,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         onTap: (i) {
