@@ -34,14 +34,7 @@ class DoubtVM extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // initSocket();
     getDoubts();
-    focusNode.addListener(() {
-      if (focusNode.hasFocus) {
-        showEnojiOption = false;
-      }
-      update();
-    });
   }
 
   void initSocket() async {

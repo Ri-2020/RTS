@@ -16,7 +16,8 @@ class BootCampTile extends StatelessWidget {
         print("Bootcamp tile tapped");
       },
       child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 10),
+        margin: EdgeInsets.symmetric(
+            vertical: 10, horizontal: width < 600 ? 10 : 0),
         width: width < 600 ? width * 0.9 : 300,
         decoration: BoxDecoration(
           color: Theme.of(context).scaffoldBackgroundColor,
