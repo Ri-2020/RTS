@@ -44,6 +44,7 @@ class EditProfileScreen extends StatelessWidget {
             Container(
               margin: const EdgeInsets.all(30),
               child: MediaQueryStyle(
+                rowMainAxisAlignment: MainAxisAlignment.spaceBetween,
                 isColumn: width < 1000,
                 children: [
                   Container(

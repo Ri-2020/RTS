@@ -77,7 +77,7 @@ class UserData {
   String? bio;
   String? website;
   List<SocialMedia>? socialMedia;
-  List<String>? skills;
+  List<String> skills;
   int? profileViews;
   List<dynamic>? likedPosts;
   List<dynamic>? savedPost;
@@ -110,7 +110,7 @@ class UserData {
     this.bio,
     this.website,
     this.socialMedia,
-    this.skills,
+    required this.skills,
     this.profileViews,
     this.likedPosts,
     this.savedPost,
@@ -207,9 +207,7 @@ class UserData {
               ),
             )
           : null,
-      skills: map['skills'] != null
-          ? List<String>.from((map['skills'] as List<String>))
-          : null,
+      skills: map['skills'] == null ? [] : List<String>.from(map["skills"]),
       profileViews:
           map['profileViews'] != null ? map['profileViews'] as int : null,
       likedPosts:
