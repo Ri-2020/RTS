@@ -131,22 +131,28 @@ class EditProfileVM extends GetxController {
     data["type"] = type;
     if (type == "skill") {
       data["skill"] = skill;
+      skills.remove(skill);
     } else {
       data["socialMediaId"] = socialMed!.id;
+      socialMedia.remove(socialMed);
     }
+    update();
     bool res = await profileRepoImp.removeSkillAndSocialMedia(data);
     if (res) {
       if (type == "skill") {
-        skills.remove(skill);
         homeVM.user!.skills.remove(skill);
-        homeVM.update();
       } else {
         homeVM.user!.socialMedia.remove(socialMed);
-        homeVM.update();
-        socialMedia.remove(socialMed);
       }
+      homeVM.update();
       showSnackBar(Get.context!, "${type} removed  successfully");
     } else {
+      if (type == "skill") {
+        skills.add(skill!);
+      } else {
+        socialMedia.add(socialMed!);
+      }
+
       showSnackBar(Get.context!, "Somthing went wrong");
     }
     isRemoveSkillAndSocialMedia = false;

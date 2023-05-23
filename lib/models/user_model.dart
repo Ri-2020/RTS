@@ -53,7 +53,7 @@ class UserModel {
 class UserData {
   String name;
   DateTime? birthDate;
-  String rolNo;
+  String rollNo;
   String email;
   String? mobile;
   String username;
@@ -61,7 +61,6 @@ class UserData {
   String? profileImage;
   String? profileCreatedAt;
   LastUpdate? lastUpdate;
-  bool? isVerified;
   bool? isOnline;
   bool? isProfileCompleted;
   bool? isMobileVerified;
@@ -76,8 +75,8 @@ class UserData {
   List<String> skills;
   int? profileViews;
   UserData({
-    required this.rolNo,
     required this.name,
+    required this.rollNo,
     this.birthDate,
     required this.email,
     this.mobile,
@@ -86,7 +85,6 @@ class UserData {
     this.profileImage,
     this.profileCreatedAt,
     this.lastUpdate,
-    this.isVerified,
     this.isOnline,
     this.isProfileCompleted,
     this.isMobileVerified,
@@ -109,11 +107,10 @@ class UserData {
       'email': email,
       'mobile': mobile,
       'username': username,
-      'id': id,
+      '_id': id,
       'profileImage': profileImage,
       'profileCreatedAt': profileCreatedAt,
       'lastUpdate': lastUpdate?.toMap(),
-      'isVerified': isVerified,
       'isOnline': isOnline,
       'isProfileCompleted': isProfileCompleted,
       'isMobileVerified': isMobileVerified,
@@ -133,13 +130,13 @@ class UserData {
   factory UserData.fromMap(Map<String, dynamic> map) {
     return UserData(
       name: map['name'],
-      rolNo: map['rolNo'] ?? "",
+      rollNo: map['rolNo'] ?? "",
       birthDate: map['birthDate'] != null
           ? DateTime.fromMillisecondsSinceEpoch(map['birthDate'] as int)
           : DateTime.now(),
       email: map['email'],
       mobile: map['mobile'] != null ? map['mobile'] as String : null,
-      username: map['username'],
+      username: map['username'] ?? "",
       id: map['_id'],
       profileImage: map['profileImage'] != null
           ? map['profileImage']["url"] as String
@@ -150,7 +147,6 @@ class UserData {
       lastUpdate: map['lastUpdate'] != null
           ? LastUpdate.fromMap(map['lastUpdate'] as Map<String, dynamic>)
           : null,
-      isVerified: map['isVerified'] != null ? map['isVerified'] as bool : false,
       isOnline: map['isOnline'] != null ? map['isOnline'] as bool : false,
       isProfileCompleted: map['isProfileCompleted'] != null
           ? map['isProfileCompleted'] as bool
@@ -167,10 +163,10 @@ class UserData {
       following: map['following'] != null
           ? List<dynamic>.from(map['following'] as List<dynamic>)
           : [],
-      age: map['age'] != null ? map['age'] as int : 20,
-      gender: map['gender'] != null ? map['gender'] as String : "",
-      bio: map['bio'] != null ? map['bio'] as String : "",
-      website: map['website'] != null ? map['website'] as String : "",
+      age: map['age'] != null ? map['age'] as int : 0,
+      gender: map['gender'] ?? "",
+      bio: map['bio'] ?? "",
+      website: map['website'] ?? "",
       socialMedia: map['socialMedia'] != null
           ? List<SocialMedia>.from(
               (map['socialMedia'] as List<dynamic>).map<SocialMedia>(
