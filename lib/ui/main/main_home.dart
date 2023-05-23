@@ -165,78 +165,71 @@ class _MainHomePageState extends State<MainHomePage> {
           ),
         ),
         width < 1000
-            ? Column(
-                children: [
-                  SizedBox(height: height * 0.90),
-                  InkWell(
-                    onTap: () {
-                      showModalBottomSheet(
-                          backgroundColor: Colors.black.withOpacity(0.1),
-                          isScrollControlled: false,
-                          context: context,
-                          builder: (context) {
-                            return Container(
-                              height: height,
-                              color: Colors.black.withOpacity(0.2),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(Icons.close)),
-                                  const Text("LATEST",
-                                      style: TextStyle(
-                                          fontSize: 22, color: Colors.white)),
-                                  const SizedBox(height: 30),
-                                  const Text(
-                                      "Get Ready For ${UseString.short_website_name}'s Flutter Bootcaamp",
-                                      style: TextStyle(
-                                          fontSize: 22, color: Colors.white)),
-                                  const SizedBox(height: 40),
-                                  const Text("Register Yourself",
-                                      style: TextStyle(
-                                          fontSize: 16, color: Colors.white)),
-                                  Container(
-                                    margin: const EdgeInsets.symmetric(
-                                        vertical: 10),
-                                    color: Colors.yellowAccent,
-                                    height: 3,
-                                    width: 150,
+            ? Positioned(
+                bottom: 10,
+                child: InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                        backgroundColor: Colors.black.withOpacity(0.1),
+                        isScrollControlled: false,
+                        context: context,
+                        builder: (context) {
+                          return Container(
+                            height: height,
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 35, horizontal: 30),
+                            color: Colors.black.withOpacity(0.2),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                  radius: 15,
+                                  child: Center(
+                                    child: InkWell(
+                                      onTap: () {
+                                        Get.back();
+                                      },
+                                      child: const Icon(
+                                        Icons.close,
+                                      ),
+                                    ),
                                   ),
-                                ],
-                              ),
-                            );
-                          });
-                    },
-                    child: Transform(
-                      transform: Matrix4.rotationX(3.14),
-                      child: Image.asset(
-                        "assets/gifs/arrowdown.gif",
-                        width: 50,
-                        height: 23,
-                        fit: BoxFit.cover,
-                      ),
+                                ),
+                                SizedBox(height: 30),
+                                const Text("LATEST",
+                                    style: TextStyle(
+                                        fontSize: 22, color: Colors.white)),
+                                const SizedBox(height: 30),
+                                const Text(
+                                    "Get Ready For ${UseString.short_website_name}'s Flutter Bootcaamp",
+                                    style: TextStyle(
+                                        fontSize: 22, color: Colors.white)),
+                                const SizedBox(height: 40),
+                                const Text("Register Yourself",
+                                    style: TextStyle(
+                                        fontSize: 16, color: Colors.white)),
+                                Container(
+                                  margin:
+                                      const EdgeInsets.symmetric(vertical: 10),
+                                  color: Colors.yellowAccent,
+                                  height: 3,
+                                  width: 150,
+                                ),
+                              ],
+                            ),
+                          );
+                        });
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(
+                      Icons.keyboard_arrow_up,
+                      color: Colors.white,
+                      size: 42,
                     ),
                   ),
-                  Transform(
-                    transform: Matrix4.rotationX(3.14),
-                    child: Image.asset(
-                      "assets/gifs/arrowdown.gif",
-                      width: 40,
-                      height: 18,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Transform(
-                    transform: Matrix4.rotationX(3.14),
-                    child: Image.asset(
-                      "assets/gifs/arrowdown.gif",
-                      width: 30,
-                      height: 13,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ],
+                ),
               )
             : const SizedBox(),
         Positioned(
@@ -274,7 +267,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                   color: Colors.white,
                                 ),
                               ),
-                              SizedBox(height: 5),
+                              const SizedBox(height: 5),
                               Text(
                                 width < 600
                                     ? "Where Brilliance Ignites and \nInnovation Glows"

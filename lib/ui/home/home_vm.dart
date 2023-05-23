@@ -8,6 +8,7 @@ import 'package:rts/ui/doubt/doubt.dart';
 import 'package:rts/ui/home/logged_in_home.dart';
 import 'package:rts/ui/resourses/resourses.dart';
 import 'package:rts/ui/home/bootcamp_tile.dart';
+import 'package:rts/utils/routes.dart';
 import 'package:rts/utils/shared_prefer.dart';
 import 'package:rts/widgets/snackbar.dart';
 
@@ -56,7 +57,10 @@ class HomeVM extends GetxController {
   void signout() async {
     bool isSignout = await SharedPrefs.clearPrefs();
     if (isSignout) {
+      print("clear");
       showSnackBar(Get.context!, "Logged out successfully");
+      Get.back();
+      Get.offAllNamed(AppRotutes.mainHome);
     } else {
       showSnackBar(Get.context!, "Something went wrong");
     }

@@ -4,6 +4,7 @@ import 'package:rts/constants/strings.dart';
 import 'package:rts/ui/register/signup.dart';
 import 'package:rts/ui/register/signup_viewmodel.dart';
 import 'package:rts/utils/constants.dart';
+import 'package:rts/utils/routes.dart';
 
 class Signin extends StatelessWidget {
   Signin({super.key});
@@ -56,13 +57,19 @@ class Signin extends StatelessWidget {
                         ),
                         Row(children: [
                           ElevatedButton(
-                              onPressed: () {},
-                              child: Text("Sign up",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.grey.shade800,
-                                    fontWeight: FontWeight.w500,
-                                  )))
+                            onPressed: () {
+                              // Get.toNamed(AppRotutes.signup);
+                              Get.to(() => Signup());
+                            },
+                            child: Text(
+                              "Sign up",
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.grey.shade800,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          )
                         ])
                       ]),
                 ),

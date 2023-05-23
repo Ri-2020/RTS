@@ -105,7 +105,12 @@ class _UserChatPageState extends State<DoubtPage> {
                                         vm.chatList.isEmpty
                                             ? Center(
                                                 child: Container(
-                                                    child: Text("No question")),
+                                                    child: Column(
+                                                  children: const [
+                                                    Icon(Icons.error, size: 32),
+                                                    Text("No question"),
+                                                  ],
+                                                )),
                                               )
                                             : SizedBox(
                                                 height: 550,

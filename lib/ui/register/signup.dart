@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rts/constants/strings.dart';
+import 'package:rts/ui/register/signin.dart';
 import 'package:rts/ui/register/signup_viewmodel.dart';
 import 'package:rts/utils/snackbar.dart';
 import 'package:rts/widgets/custom_text_form_field.dart';
+
+import '../../utils/routes.dart';
 
 class Signup extends StatelessWidget {
   Signup({super.key});
@@ -27,11 +31,11 @@ class Signup extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox(
-                          width: 115,
+                          width: 125,
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text("RTS",
+                                const Text(UseString.website_name,
                                     style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w900,
@@ -55,7 +59,9 @@ class Signup extends StatelessWidget {
                         ),
                         Row(children: [
                           ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Get.toNamed(AppRotutes.signin);
+                              },
                               child: Text("Sign in",
                                   style: TextStyle(
                                     fontSize: 14,
@@ -282,6 +288,7 @@ class Signup extends StatelessWidget {
                                     ? const Center(
                                         child: SizedBox(
                                         height: 25,
+                                        width: 25,
                                         child: CircularProgressIndicator(
                                           color: Colors.white,
                                         ),
@@ -311,12 +318,18 @@ class Signup extends StatelessWidget {
                                 fontWeight: FontWeight.w800,
                               ),
                             ),
-                            Text(
-                              "Sign in",
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.grey.shade500,
-                                fontWeight: FontWeight.w800,
+                            InkWell(
+                              onTap: () {
+                                // Get.toNamed(AppRotutes.signin);
+                                Get.to(() => Signin());
+                              },
+                              child: Text(
+                                "Sign in",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.blue.shade300,
+                                  fontWeight: FontWeight.w800,
+                                ),
                               ),
                             ),
                           ],
