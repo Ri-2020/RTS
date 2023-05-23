@@ -17,12 +17,14 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DashboardVM vm = Get.find<DashboardVM>();
+    // DashboardVM vm = Get.isRegistered<DashboardVM>()
+    //     ? Get.find<DashboardVM>()
+    //     : Get.put(DashboardVM());
     HomeVM homeVM =
         Get.isRegistered<HomeVM>() ? Get.find<HomeVM>() : Get.put(HomeVM());
     double width = MediaQuery.of(context).size.width;
     return GetBuilder<HomeVM>(
-      builder: (vm) {
+      builder: (homeVM) {
         return PageFrame(
           // isPadding: width > 820,
           width: width,
@@ -62,7 +64,7 @@ class Dashboard extends StatelessWidget {
                 bottom: 15,
               ),
               child: Text(
-                "${vm.user?.email}",
+                "${homeVM.user?.email}",
                 style: UseGoogleFont().openSans(
                   color: Colors.grey,
                 ),
@@ -155,9 +157,8 @@ class Dashboard extends StatelessWidget {
                           ? Wrap(
                               children: homeVM.user!.skills
                                   .map(
-                                    (e) => RoundContainer(
+                                    (e) => RoundContainerStatic(
                                       skill: e,
-                                      isRemoveable: false,
                                     ),
                                   )
                                   .toList(),

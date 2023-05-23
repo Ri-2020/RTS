@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -167,50 +165,78 @@ class _MainHomePageState extends State<MainHomePage> {
           ),
         ),
         width < 1000
-            ? Positioned(
-                bottom: 1,
-                child: SizedBox(
-                  width: width,
-                  child: Center(
-                    child: InkWell(
-                      onTap: () {},
-                      child: SizedBox(
+            ? Column(
+                children: [
+                  SizedBox(height: height * 0.90),
+                  InkWell(
+                    onTap: () {
+                      showModalBottomSheet(
+                          backgroundColor: Colors.black.withOpacity(0.1),
+                          isScrollControlled: false,
+                          context: context,
+                          builder: (context) {
+                            return Container(
+                              height: height,
+                              color: Colors.black.withOpacity(0.2),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(Icons.close)),
+                                  const Text("LATEST",
+                                      style: TextStyle(
+                                          fontSize: 22, color: Colors.white)),
+                                  const SizedBox(height: 30),
+                                  const Text(
+                                      "Get Ready For ${UseString.short_website_name}'s Flutter Bootcaamp",
+                                      style: TextStyle(
+                                          fontSize: 22, color: Colors.white)),
+                                  const SizedBox(height: 40),
+                                  const Text("Register Yourself",
+                                      style: TextStyle(
+                                          fontSize: 16, color: Colors.white)),
+                                  Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        vertical: 10),
+                                    color: Colors.yellowAccent,
+                                    height: 3,
+                                    width: 150,
+                                  ),
+                                ],
+                              ),
+                            );
+                          });
+                    },
+                    child: Transform(
+                      transform: Matrix4.rotationX(3.14),
+                      child: Image.asset(
+                        "assets/gifs/arrowdown.gif",
                         width: 50,
-                        child: Column(
-                          children: [
-                            Transform(
-                              transform: Matrix4.rotationX(3.14),
-                              child: Image.asset(
-                                "assets/gifs/arrowdown.gif",
-                                width: 50,
-                                height: 23,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            Transform(
-                              transform: Matrix4.rotationX(3.14),
-                              child: Image.asset(
-                                "assets/gifs/arrowdown.gif",
-                                width: 40,
-                                height: 18,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            Transform(
-                              transform: Matrix4.rotationX(3.14),
-                              child: Image.asset(
-                                "assets/gifs/arrowdown.gif",
-                                width: 30,
-                                height: 13,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ],
-                        ),
+                        height: 23,
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
-                ),
+                  Transform(
+                    transform: Matrix4.rotationX(3.14),
+                    child: Image.asset(
+                      "assets/gifs/arrowdown.gif",
+                      width: 40,
+                      height: 18,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Transform(
+                    transform: Matrix4.rotationX(3.14),
+                    child: Image.asset(
+                      "assets/gifs/arrowdown.gif",
+                      width: 30,
+                      height: 13,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ],
               )
             : const SizedBox(),
         Positioned(
@@ -265,8 +291,8 @@ class _MainHomePageState extends State<MainHomePage> {
                           padding: const EdgeInsets.symmetric(vertical: 20),
                           child: Text(
                               width < 600
-                                  ? "May 22 - May 25, 2023 \nIT Semenar Hall"
-                                  : "May 22 - May 25, 2023 | IT Semenar Hall",
+                                  ? "May 23 - May 26, 2023 \nME Semenar Hall"
+                                  : "May 23 - May 26, 2023 | ME Semenar Hall",
                               style: TextStyle(
                                 fontSize: width < 600 ? 12 : 18,
                                 fontWeight: FontWeight.bold,
