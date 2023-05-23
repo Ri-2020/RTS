@@ -75,7 +75,8 @@ class RoundContainer extends StatelessWidget {
                     backgroundColor: Colors.white,
                     child: InkWell(
                       onTap: () {
-                        editProfilevm.removeSkill(skill);
+                        editProfilevm.removeSkillAndSocialMedia(
+                            type: "skill", skill: skill);
                       },
                       child: const Icon(
                         Icons.close_outlined,

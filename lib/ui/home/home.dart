@@ -153,11 +153,16 @@ class HomePage extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                subtitle: Text(vm.user?.name ?? "name",
-                                    style: const TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.bold,
-                                    )),
+                                subtitle: Container(
+                                  width: 145,
+                                  margin: const EdgeInsets.only(left: 10),
+                                  child: Text(vm.user?.name ?? "name",
+                                      overflow: TextOverflow.ellipsis,
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                      )),
+                                ),
                                 image: const Text(""),
                               ),
                               selectedIndex: vm.selectedIndex,
