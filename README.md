@@ -1,4 +1,4 @@
-# Raah-Towards-Success
+# INCANDESCENT
 
 A Project to empower students of our college with technology and frameworks so that the can achieve success in the near future.
 
