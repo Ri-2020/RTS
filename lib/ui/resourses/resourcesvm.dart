@@ -1,5 +1,8 @@
 import 'package:get/get.dart';
+import 'package:rts/models/ressource_model.dart';
+import 'package:rts/repositories/resource_repo/resource_repo_imp.dart';
 import 'package:rts/ui/resourses/resource_box.dart';
+import 'package:rts/widgets/snackbar.dart';
 
 class ResourcesVM extends GetxController {
   List<ResourceBox> resources = [
@@ -16,4 +19,31 @@ class ResourcesVM extends GetxController {
         url:
             "https://www.youtube.com/watch?v=BqHOtlh3Dd4&pp=ygUYSG93IHRvIGluc3RhbGwgZmx1dHRlciAg"),
   ];
+  List<Resource> resourceList = [];
+  ResourceRepoImp resourceRepoImp = ResourceRepoImp();
+
+  bool resourceLoading = false;
+
+  void getAllResources() async {
+    resourceLoading = true;
+    update();
+    try {
+      var res = await resourceRepoImp.getAllResources();
+      if (res.isEmpty) {
+        showSnackBar(Get.context!, "Error while fetching resources");
+      }
+      resourceList = res;
+      update();
+    } catch (e) {
+      showSnackBar(Get.context!, "Error while fetching resources");
+    }
+    resourceLoading = false;
+    update();
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    getAllResources();
+  }
 }

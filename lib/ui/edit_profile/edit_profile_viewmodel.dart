@@ -74,4 +74,9 @@ class EditProfileVM extends GetxController {
     socialMedia.remove(key);
     update();
   }
+
+  @override
+  void onInit() {
+    super.onInit();
+  }
 }
