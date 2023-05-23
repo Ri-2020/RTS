@@ -173,7 +173,7 @@ class UserData {
       website: map['website'] != null ? map['website'] as String : "",
       socialMedia: map['socialMedia'] != null
           ? List<SocialMedia>.from(
-              (map['socialMedia'] as List<int>).map<SocialMedia?>(
+              (map['socialMedia'] as List<dynamic>).map<SocialMedia>(
                 (x) => SocialMedia.fromMap(x as Map<String, dynamic>),
               ),
             )
@@ -227,15 +227,20 @@ class LastUpdate {
 
 class SocialMedia {
   String? name;
+  String id;
   String? link;
+  bool process;
   SocialMedia({
     this.name,
+    this.process = false,
+    required this.id,
     this.link,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
+      'id': id,
       'link': link,
     };
   }
@@ -243,6 +248,7 @@ class SocialMedia {
   factory SocialMedia.fromMap(Map<String, dynamic> map) {
     return SocialMedia(
       name: map['name'] != null ? map['name'] as String : null,
+      id: map['_id'],
       link: map['link'] != null ? map['link'] as String : null,
     );
   }
