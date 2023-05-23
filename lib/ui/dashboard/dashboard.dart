@@ -17,12 +17,14 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DashboardVM vm = Get.find<DashboardVM>();
+    // DashboardVM vm = Get.isRegistered<DashboardVM>()
+    //     ? Get.find<DashboardVM>()
+    //     : Get.put(DashboardVM());
     HomeVM homeVM =
         Get.isRegistered<HomeVM>() ? Get.find<HomeVM>() : Get.put(HomeVM());
     double width = MediaQuery.of(context).size.width;
     return GetBuilder<HomeVM>(
-      builder: (vm) {
+      builder: (homeVM) {
         return PageFrame(
           // isPadding: width > 820,
           width: width,
@@ -42,9 +44,9 @@ class Dashboard extends StatelessWidget {
             Container(
               width: double.infinity,
               margin: const EdgeInsets.only(top: 70),
-              padding: const EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 30),
               child: Text(
-                homeVM.user?.username ?? UseString.user_name_not_found,
+                homeVM.user?.name ?? UseString.user_name_not_found,
                 style: UseGoogleFont().openSans(
                   color: Colors.black,
                   size: width < 500 ? 15 : 20,
@@ -54,15 +56,14 @@ class Dashboard extends StatelessWidget {
             ),
             Container(
               width: double.infinity,
-              // color: Colors.black,
               padding: const EdgeInsets.only(
-                left: 20,
+                left: 30,
                 right: 15,
                 // top: 15,
                 bottom: 15,
               ),
               child: Text(
-                "${vm.user?.email}",
+                "${homeVM.user?.email}",
                 style: UseGoogleFont().openSans(
                   color: Colors.grey,
                 ),
@@ -89,33 +90,15 @@ class Dashboard extends StatelessWidget {
                           color: Colors.blue[50],
                           borderRadius: BorderRadius.circular(15),
                         ),
-                        child: const Text(
-                          "I am a B.Tech. Student at Rajkiya Engineering College Azamgarh.",
+                        child: Text(
+                          "I am a passionate student at Rajkiya Engineering College Azamgarh, driven by my love for programming. Joining the Incandescent group has allowed me to further develop my skills and engage with like-minded individuals. Through their bootcamps, seminars, and talks, I am expanding my knowledge, gaining practical experience, and building a strong foundation for my programming journey. With Incandescent, I am excited to embrace challenges, pursue excellence, and unlock my full potential in the world of programming.",
                           textAlign: TextAlign.justify,
-                          style: TextStyle(
+                          style: GoogleFonts.openSans(
                             fontSize: 15,
                             fontWeight: FontWeight.normal,
                           ),
                         ),
                       ),
-                      // Container(
-                      //   width: width < Constants.mwidth
-                      //       ? width * 0.8
-                      //       : width * 0.25,
-                      //   margin: const EdgeInsets.only(top: 20),
-                      //   padding: const EdgeInsets.all(15),
-                      //   decoration: BoxDecoration(
-                      //     color: Colors.blue[100],
-                      //     borderRadius: BorderRadius.circular(15),
-                      //   ),
-                      //   child: const Text(
-                      //     "Some thing here",
-                      //     style: TextStyle(
-                      //       fontSize: 15,
-                      //       fontWeight: FontWeight.normal,
-                      //     ),
-                      //   ),
-                      // ),
                     ],
                   ),
                 ),
@@ -155,9 +138,8 @@ class Dashboard extends StatelessWidget {
                           ? Wrap(
                               children: homeVM.user!.skills
                                   .map(
-                                    (e) => RoundContainer(
+                                    (e) => RoundContainerStatic(
                                       skill: e,
-                                      isRemoveable: false,
                                     ),
                                   )
                                   .toList(),

@@ -53,6 +53,7 @@ class UserModel {
 class UserData {
   String name;
   DateTime? birthDate;
+  String rollNo;
   String email;
   String? mobile;
   String username;
@@ -70,11 +71,12 @@ class UserData {
   String? gender;
   String? bio;
   String? website;
-  List<SocialMedia>? socialMedia;
+  List<SocialMedia> socialMedia;
   List<String> skills;
   int? profileViews;
   UserData({
     required this.name,
+    required this.rollNo,
     this.birthDate,
     required this.email,
     this.mobile,
@@ -93,7 +95,7 @@ class UserData {
     this.gender,
     this.bio,
     this.website,
-    this.socialMedia,
+    required this.socialMedia,
     required this.skills,
     this.profileViews,
   });
@@ -119,7 +121,7 @@ class UserData {
       'gender': gender,
       'bio': bio,
       'website': website,
-      'socialMedia': socialMedia?.map((x) => x.toMap()).toList() ?? [],
+      'socialMedia': socialMedia.map((x) => x.toMap()).toList() ?? [],
       'skills': skills,
       'profileViews': profileViews,
     };
@@ -128,12 +130,13 @@ class UserData {
   factory UserData.fromMap(Map<String, dynamic> map) {
     return UserData(
       name: map['name'],
+      rollNo: map['rolNo'] ?? "",
       birthDate: map['birthDate'] != null
           ? DateTime.fromMillisecondsSinceEpoch(map['birthDate'] as int)
-          : null,
+          : DateTime.now(),
       email: map['email'],
       mobile: map['mobile'] != null ? map['mobile'] as String : null,
-      username: map['username'],
+      username: map['username'] ?? "",
       id: map['_id'],
       profileImage: map['profileImage'] != null
           ? map['profileImage']["url"] as String
@@ -166,7 +169,7 @@ class UserData {
       website: map['website'] ?? "",
       socialMedia: map['socialMedia'] != null
           ? List<SocialMedia>.from(
-              (map['socialMedia'] as List<int>).map<SocialMedia?>(
+              (map['socialMedia'] as List<dynamic>).map<SocialMedia>(
                 (x) => SocialMedia.fromMap(x as Map<String, dynamic>),
               ),
             )
@@ -220,15 +223,20 @@ class LastUpdate {
 
 class SocialMedia {
   String? name;
+  String id;
   String? link;
+  bool process;
   SocialMedia({
     this.name,
+    this.process = false,
+    required this.id,
     this.link,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
+      'id': id,
       'link': link,
     };
   }
@@ -236,6 +244,7 @@ class SocialMedia {
   factory SocialMedia.fromMap(Map<String, dynamic> map) {
     return SocialMedia(
       name: map['name'] != null ? map['name'] as String : null,
+      id: map['_id'],
       link: map['link'] != null ? map['link'] as String : null,
     );
   }

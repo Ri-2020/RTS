@@ -64,15 +64,82 @@ class _UserChatPageState extends State<DoubtPage> {
                   SizedBox(
                     width: double.infinity,
                     child: Wrap(
-                      alignment: WrapAlignment.spaceBetween,
-                      crossAxisAlignment: WrapCrossAlignment.center,
+                      alignment: WrapAlignment.spaceAround,
+                      crossAxisAlignment: WrapCrossAlignment.start,
                       spacing: 40,
                       children: [
                         Container(
-                          width:
-                              width < Constants.mwidth + 50 ? width - 90 : 440,
+                          margin:
+                              EdgeInsets.only(left: 30, top: 30, bottom: 30),
+                          height: vm.expandedList
+                                      .where((e) => e == true)
+                                      .length *
+                                  190 +
+                              vm.expandedList.where((e) => e == false).length *
+                                  55 +
+                              100,
+                          width: width > 1180 ? 400 : double.infinity,
+                          child: ListView.builder(
+                            itemCount: vm.faqData.length,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                children: [
+                                  index == 0
+                                      ? const Padding(
+                                          padding: EdgeInsets.only(
+                                              top: 30, bottom: 30, left: 15),
+                                          child:
+                                              Text("Frequently Asked Questions",
+                                                  style: TextStyle(
+                                                    fontSize: 18,
+                                                    fontWeight: FontWeight.bold,
+                                                  )),
+                                        )
+                                      : const SizedBox(),
+                                  ExpansionPanelList(
+                                    elevation: 1,
+                                    expandedHeaderPadding: EdgeInsets.zero,
+                                    expansionCallback:
+                                        (panelIndex, isExpanded) {
+                                      vm.expandedList[index] = !isExpanded;
+                                      vm.update();
+                                    },
+                                    children: [
+                                      ExpansionPanel(
+                                        headerBuilder: (context, isExpanded) {
+                                          return ListTile(
+                                            title: Text(
+                                              vm.faqData[index]['question'] ??
+                                                  "",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          );
+                                        },
+                                        body: Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 16.0, vertical: 8.0),
+                                          child: Text(
+                                            vm.faqData[index]['answer'] ?? "",
+                                            style: TextStyle(fontSize: 16.0),
+                                          ),
+                                        ),
+                                        isExpanded: vm.expandedList[index],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              );
+                            },
+                          ),
+                        ),
+                        Container(
+                          width: width < 1180 ? double.infinity : 440,
                           padding: const EdgeInsets.all(10),
-                          margin: const EdgeInsets.only(top: 20, bottom: 20),
+                          margin: EdgeInsets.symmetric(
+                            vertical: 20,
+                            horizontal: width < 820 ? 20 : 0,
+                          ),
                           decoration: BoxDecoration(
                             color: Colors.grey.shade200,
                             borderRadius: BorderRadius.circular(15),
@@ -81,23 +148,22 @@ class _UserChatPageState extends State<DoubtPage> {
                                 color: Colors.grey.withOpacity(0.5),
                                 spreadRadius: 0,
                                 blurRadius: 2,
-                                offset: const Offset(
-                                    0, 0), // changes position of shadow
+                                offset: const Offset(0, 0),
                               ),
                             ],
                           ),
                           child: vm.loading
-                              ? SizedBox(
+                              ? const SizedBox(
                                   height: 500,
-                                  child: const Center(
+                                  child: Center(
                                     child: CircularProgressIndicator(),
                                   ),
                                 )
-                              : SizedBox(
+                              : Container(
                                   width:
                                       width < Constants.commentSectionWidth + 50
-                                          ? width - 80
-                                          : Constants.commentSectionWidth - 80,
+                                          ? width - 90
+                                          : Constants.commentSectionWidth - 90,
                                   height: 550,
                                   child: WillPopScope(
                                     child: Stack(
@@ -175,8 +241,8 @@ class _UserChatPageState extends State<DoubtPage> {
                                                                           Constants.mwidth +
                                                                               50
                                                                       ? width -
-                                                                          190
-                                                                      : 340,
+                                                                          195
+                                                                      : 330,
                                                                   child: Column(
                                                                     crossAxisAlignment:
                                                                         CrossAxisAlignment
@@ -227,41 +293,6 @@ class _UserChatPageState extends State<DoubtPage> {
                                                             )
                                                           ]),
                                                     );
-
-                                                    // if (vm.chatList[i]
-                                                    //         .senderUserId !=
-                                                    //     vm.senderUserId) {
-                                                    //   return OwnMsgCard(
-                                                    //       chatId:
-                                                    //           vm.chatList[i].id,
-                                                    //       text: vm.chatList[i]
-                                                    //           .message,
-                                                    //       index: i,
-                                                    //       time: vm
-                                                    //           .convertDateTime(vm
-                                                    //               .chatList[i]
-                                                    //               .createdAt));
-                                                    // } else {
-                                                    //   // print(
-                                                    //   // "isit chala ${vm.chatList[i].id}, ${vm.senderUserId}");
-                                                    //   return OtherSideMsgCard(
-                                                    //       chatId:
-                                                    //           vm.chatList[i].id,
-                                                    //       text: vm.chatList[i]
-                                                    //           .message,
-                                                    //       time: vm
-                                                    //           .convertDateTime(vm
-                                                    //               .chatList[i]
-                                                    //               .createdAt));
-                                                    //   // if (vm.messages[i].type == "source") {
-                                                    //   //   return OwnMsgCard(
-                                                    //   //       text: vm.messages[i].msg,
-                                                    //   //       time: vm.messages[i].time);
-                                                    //   // } else {
-                                                    //   //   return OtherSideMsgCard(
-                                                    //   //       text: vm.messages[i].msg,
-                                                    //   //       time: vm.messages[i].time);
-                                                    // }
                                                   },
                                                 ),
                                               ),
@@ -284,71 +315,6 @@ class _UserChatPageState extends State<DoubtPage> {
                                     },
                                   ),
                                 ),
-                        ),
-                        Container(
-                          margin:
-                              EdgeInsets.only(left: 30, top: 30, bottom: 30),
-                          height: vm.expandedList
-                                      .where((e) => e == true)
-                                      .length *
-                                  150 +
-                              vm.expandedList.where((e) => e == false).length *
-                                  50 +
-                              100,
-                          width: 400,
-                          child: ListView.builder(
-                            itemCount: vm.faqData.length,
-                            itemBuilder: (context, index) {
-                              return Column(
-                                children: [
-                                  index == 0
-                                      ? Padding(
-                                          padding: const EdgeInsets.only(
-                                              top: 30, bottom: 30, left: 15),
-                                          child:
-                                              Text("Frequently Asked Questions",
-                                                  style: TextStyle(
-                                                    fontSize: 18,
-                                                    fontWeight: FontWeight.bold,
-                                                  )),
-                                        )
-                                      : SizedBox(),
-                                  ExpansionPanelList(
-                                    elevation: 1,
-                                    expandedHeaderPadding: EdgeInsets.zero,
-                                    expansionCallback:
-                                        (panelIndex, isExpanded) {
-                                      vm.expandedList[index] = !isExpanded;
-                                      vm.update();
-                                    },
-                                    children: [
-                                      ExpansionPanel(
-                                        headerBuilder: (context, isExpanded) {
-                                          return ListTile(
-                                            title: Text(
-                                              vm.faqData[index]['question'] ??
-                                                  "",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          );
-                                        },
-                                        body: Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 16.0, vertical: 8.0),
-                                          child: Text(
-                                            vm.faqData[index]['answer'] ?? "",
-                                            style: TextStyle(fontSize: 16.0),
-                                          ),
-                                        ),
-                                        isExpanded: vm.expandedList[index],
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              );
-                            },
-                          ),
                         ),
                       ],
                     ),

@@ -41,7 +41,9 @@ class About extends StatelessWidget {
             height: 20,
           ),
           Container(
+            padding: const EdgeInsets.all(10),
             color: Colors.amber[50],
+            width: double.infinity,
             child: Column(
               children: [
                 Container(
@@ -56,35 +58,40 @@ class About extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.all(10),
-                  width: double.infinity,
-                  child: Wrap(
-                    alignment: WrapAlignment.spaceAround,
-                    children: [
-                      CharacterTile(
-                        width: width,
-                        name: "Rohit Gupta",
-                        post: "Flutter Mentor",
-                      ),
-                      CharacterTile(
-                        width: width,
-                        name: "Vikram Negi",
-                        post: "Flutter Mentor",
-                      ),
-                      CharacterTile(
-                        width: width,
-                        name: "Aman Tiwari",
-                        post: "Dart Mentor",
-                      ),
-                      CharacterTile(
-                        width: width,
-                        name: "Yashwant Sahu",
-                        post: "Dart Mentor",
-                      ),
-                    ],
-                  ),
-                ),
+                Wrap(
+                  children: [
+                    CharacterTile(
+                      width: width,
+                      name: "Rohit Gupta",
+                      post: "Website Developer, Flutter Mentor",
+                    ),
+                    CharacterTile(
+                      width: width,
+                      name: "Vikram Negi",
+                      post: "Website Developer, Flutter Mentor",
+                    ),
+                    CharacterTile(
+                      width: width,
+                      name: "Aman Tiwari",
+                      post: "Dart Mentor",
+                    ),
+                    CharacterTile(
+                      width: width,
+                      name: "Yashwant Sahu",
+                      post: "Dart Mentor",
+                    ),
+                    CharacterTile(
+                      width: width,
+                      name: "Sushant Yadav",
+                      post: "Decipline Team",
+                    ),
+                    CharacterTile(
+                      width: width,
+                      name: "Annu Soni",
+                      post: "Decipline Team",
+                    ),
+                  ],
+                )
               ],
             ),
           ),
@@ -191,3 +198,44 @@ class AboutBoxes extends StatelessWidget {
     );
   }
 }
+
+// class Teams extends StatelessWidget {
+//   final double width;
+//   final String teamName;
+//   final List<Widget> children;
+//   const Teams({
+//     super.key,
+//     required this.width,
+//     required this.teamName,
+//     required this.children,
+//   });
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       margin: const EdgeInsets.symmetric(vertical: 10),
+//       child: Column(
+//         children: [
+//           Text(
+//             teamName,
+//             style: const TextStyle(
+//               color: Colors.black,
+//               fontSize: 25,
+//               fontWeight: FontWeight.bold,
+//             ),
+//           ),
+//           Container(
+//             margin: const EdgeInsets.all(10),
+//             width: double.infinity,
+//             child: Center(
+//               child: Wrap(
+//                 alignment: WrapAlignment.spaceAround,
+//                 children: children,
+//               ),
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }

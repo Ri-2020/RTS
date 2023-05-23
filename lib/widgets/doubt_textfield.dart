@@ -6,7 +6,11 @@ import 'package:rts/ui/doubt/doubt_viewmodel.dart';
 import '../utils/constants.dart';
 
 class BottomTextMessaging extends StatelessWidget {
-  BottomTextMessaging({super.key});
+  // final BuildContext context;
+  BottomTextMessaging({
+    super.key,
+    // required this.context,
+  });
   DoubtVM vm = Get.isRegistered<DoubtVM>() ? Get.find() : Get.put(DoubtVM());
 
   @override
@@ -28,9 +32,12 @@ class BottomTextMessaging extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
-                      width: width < Constants.mwidth + 50
-                          ? width - 160
-                          : Constants.commentSectionWidth - 55,
+                      width: width < 800
+                          ? width - 170
+                          : (width > 1180 ? 360 : width - 345),
+                      // width < Constants.mwidth + 50
+                      //     ? width - 160
+                      //     : Constants.commentSectionWidth - 55,
                       child: Card(
                         margin:
                             const EdgeInsets.only(left: 4, right: 2, bottom: 6),
@@ -47,7 +54,7 @@ class BottomTextMessaging extends StatelessWidget {
                           focusNode: vm.focusNode,
                           textAlignVertical: TextAlignVertical.center,
                           maxLines: 5,
-                          minLines: 1,
+                          // minLines: 1,
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: "Ask question here",
@@ -65,7 +72,7 @@ class BottomTextMessaging extends StatelessWidget {
                             //     vm.update();
                             //   },
                             // ),
-                            contentPadding: const EdgeInsets.all(5),
+                            contentPadding: const EdgeInsets.all(15),
                           ),
                         ),
                       ),

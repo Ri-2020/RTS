@@ -22,4 +22,5 @@ class UseString {
   static const no_social_media_added = "No Social Media Added";
   static const where_brilliance_ignites_and_innovation_glows =
       "Where Brilliance Ignites and Innovation Glows";
+  static const empty_message_snackbar_text = "Cannot send empty message!";
 }

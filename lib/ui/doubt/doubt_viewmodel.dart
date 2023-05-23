@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:rts/constants/strings.dart';
 import 'package:rts/models/chat_model.dart';
 import 'package:rts/remote/api_constants.dart';
 import 'package:rts/repositories/doubt_repo/doubt_repo_imp.dart';
@@ -34,14 +35,7 @@ class DoubtVM extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // initSocket();
     getDoubts();
-    focusNode.addListener(() {
-      if (focusNode.hasFocus) {
-        showEnojiOption = false;
-      }
-      update();
-    });
   }
 
   void initSocket() async {
@@ -79,6 +73,10 @@ class DoubtVM extends GetxController {
 
   void sendMessage() async {
     String meassge = txtController.text;
+    if (meassge.trim().isEmpty) {
+      showSnackBar(Get.context!, UseString.empty_message_snackbar_text);
+      return;
+    }
     print("caalled send messagage");
     chatList.add(Doubt(
       userImage: homeVM.user?.profileImage ?? Constants.image,
@@ -113,21 +111,52 @@ class DoubtVM extends GetxController {
     {
       'question': 'What is Flutter?',
       'answer':
-          'Flutter is a UI toolkit for building natively compiled applications '
-              'for mobile, web, and desktop from a single codebase.'
+          'Flutter is an open-source UI software development kit (SDK) developed by Google for building natively compiled applications for mobile, web, and desktop from a single codebase.'
     },
     {
-      'question': 'Is Flutter free to use?',
-      'answer': 'Yes, Flutter is an open-source framework released under the '
-          'BSD-style license, which means it is free to use and customize.'
+      'question': 'Which programming language does Flutter use?',
+      'answer':
+          'Flutter uses the Dart programming language, which is also developed by Google. Dart is a modern, object-oriented language with a syntax similar to Java or JavaScript.'
     },
     {
-      'question': 'What programming language is used in Flutter?',
-      'answer': 'Flutter uses the Dart programming language, which is also '
-          'developed by Google.'
+      'question': 'Is Flutter only for mobile app development?',
+      'answer':
+          'No, Flutter is not limited to mobile app development. It also supports web and desktop app development. With Flutter, you can write code once and deploy it across multiple platforms.'
+    },
+    {
+      'question': 'How does Flutter achieve cross-platform development?',
+      'answer':
+          'Flutter achieves cross-platform development by providing a framework that renders its own widgets, rather than using the native UI components of the underlying platform. This enables consistent app UI and behavior across different platforms.'
+    },
+    {
+      'question':
+          'Can I use existing Java/Kotlin or Objective-C/Swift code in Flutter?',
+      'answer':
+          'Yes, Flutter provides platform channels that allow you to integrate existing Java/Kotlin or Objective-C/Swift code into your Flutter app. This enables you to leverage existing codebases or access platform-specific APIs.'
+    },
+    {
+      'question': 'Is Flutter suitable for building complex apps?',
+      'answer':
+          'Yes, Flutter is well-suited for building complex apps. Its reactive framework, hot-reload feature, and extensive widget library make it efficient for developing complex user interfaces and managing state.'
+    },
+    {
+      'question':
+          'How does Flutter compare to other cross-platform frameworks?',
+      'answer':
+          'Flutter offers a different approach compared to other cross-platform frameworks. It provides a complete UI toolkit, while other frameworks use native components. Flutter\'s performance, ease of use, and hot-reload feature make it a popular choice among developers.'
+    },
+    {
+      'question': 'Is Flutter suitable for beginners?',
+      'answer':
+          'Yes, Flutter is beginner-friendly and has a gentle learning curve. The official documentation, online resources, and a supportive community make it easier for beginners to get started with Flutter development.'
+    },
+    {
+      'question': 'Can I monetize my Flutter apps?',
+      'answer':
+          'Yes, you can monetize your Flutter apps using various methods like in-app purchases, advertisements, subscriptions, or by selling the app itself on app stores, similar to any other mobile or web application.'
     },
   ];
-  List expandedList = List.generate(3, (index) => false);
+  List expandedList = List.generate(9, (index) => false);
 
   String time = DateFormat.jm().format(DateTime.now()).toString();
   void setMessage(Map<String, dynamic> map) {

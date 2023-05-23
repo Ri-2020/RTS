@@ -20,7 +20,7 @@ class AppRotutes {
     ),
     GetPage(
       name: AppRotutes.mainHome,
-      page: () => MainHomePage(),
+      page: () => const MainHomePage(),
       // binding: HomeBinding(),
     ),
     GetPage(

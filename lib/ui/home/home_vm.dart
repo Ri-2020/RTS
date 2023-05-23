@@ -9,6 +9,7 @@ import 'package:rts/ui/home/logged_in_home.dart';
 import 'package:rts/ui/resourses/resourses.dart';
 import 'package:rts/ui/home/bootcamp_tile.dart';
 import 'package:rts/utils/shared_prefer.dart';
+import 'package:rts/widgets/logout.dart';
 import 'package:rts/widgets/snackbar.dart';
 
 class HomeVM extends GetxController {
@@ -22,6 +23,7 @@ class HomeVM extends GetxController {
     const Dashboard(),
     const DoubtPage(),
     const About(),
+    const Logout(),
   ];
 
   String homeTitle = "Raah Towards Success";
