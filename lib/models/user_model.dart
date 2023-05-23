@@ -72,7 +72,7 @@ class UserData {
   String? bio;
   String? website;
   List<SocialMedia>? socialMedia;
-  List<String>? skills;
+  List<String> skills;
   int? profileViews;
   UserData({
     required this.name,
@@ -96,7 +96,7 @@ class UserData {
     this.bio,
     this.website,
     this.socialMedia,
-    this.skills,
+    required this.skills,
     this.profileViews,
   });
 
@@ -173,10 +173,11 @@ class UserData {
                 (x) => SocialMedia.fromMap(x as Map<String, dynamic>),
               ),
             )
+
           : [],
-      skills: map['skills'] != null
-          ? List<String>.from((map['skills'] as List<String>))
-          : [],
+     
+      skills: map['skills'] == null ? [] : List<String>.from(map["skills"]),
+
       profileViews:
           map['profileViews'] != null ? map['profileViews'] as int : 0,
     );

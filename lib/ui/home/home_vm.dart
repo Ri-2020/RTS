@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:rts/models/user_model.dart';
+import 'package:rts/repositories/home_repo/home_repo_imp.dart';
 import 'package:rts/ui/about/about.dart';
 import 'package:rts/ui/dashboard/dashboard.dart';
 import 'package:rts/ui/doubt/doubt.dart';
@@ -13,6 +14,7 @@ import 'package:rts/widgets/snackbar.dart';
 class HomeVM extends GetxController {
   UserData? user;
   // double width = MediaQuery.of(context).size.width;
+  HomeRepoImp homeRepoImp = HomeRepoImp();
 
   List<Widget> views = [
     const LoggedInHome(),
@@ -32,8 +34,22 @@ class HomeVM extends GetxController {
     getUserDetails();
   }
 
+  bool userDataLoading = false;
+
   void getUserDetails() async {
-    user = UserData.fromJson((await SharedPrefs.getString("user"))!);
+    userDataLoading = true;
+    update();
+    var res = await homeRepoImp.getLoggedInUserData();
+    if (res.isEmpty) {
+      user = UserData.fromJson((await SharedPrefs.getString("user"))!);
+    } else {
+      user = UserData.fromMap(res["data"]);
+    }
+    userDataLoading = false;
+    print("user skill ${user?.skills ?? "dnfko"}");
+    String x = (await SharedPrefs.getString("token")) ?? "No Token";
+    print(x);
+
     update();
   }
 

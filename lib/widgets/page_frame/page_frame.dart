@@ -29,7 +29,7 @@ class PageFrame extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: EdgeInsets.all(isPadding ? 20 : 0),
+            padding: width < 820 ? null : EdgeInsets.all(isPadding ? 20 : 0),
             decoration: BoxDecoration(
               color: Theme.of(context).scaffoldBackgroundColor,
               borderRadius: BorderRadius.circular(10),
