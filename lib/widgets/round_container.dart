@@ -8,12 +8,15 @@ import 'package:rts/utils/binding.dart';
 class RoundContainer extends StatelessWidget {
   final String skill;
   final bool isRemoveable;
-  const RoundContainer({
+  RoundContainer({
     super.key,
     required this.skill,
     this.isRemoveable = true,
   });
 
+  EditProfileVM vm = Get.isRegistered<EditProfileVM>()
+      ? Get.find<EditProfileVM>()
+      : Get.put(EditProfileVM());
   @override
   Widget build(BuildContext context) {
     return GetBuilder<EditProfileVM>(builder: (vm) {

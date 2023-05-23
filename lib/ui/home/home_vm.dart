@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:rts/models/user_model.dart';
+import 'package:rts/repositories/home_repo/home_repo_imp.dart';
 import 'package:rts/ui/about/about.dart';
 import 'package:rts/ui/dashboard/dashboard.dart';
 import 'package:rts/ui/doubt/doubt.dart';
@@ -13,6 +14,7 @@ import 'package:rts/widgets/snackbar.dart';
 class HomeVM extends GetxController {
   UserData? user;
   // double width = MediaQuery.of(context).size.width;
+  HomeRepoImp homeRepoImp = HomeRepoImp();
 
   List<Widget> views = [
     const LoggedInHome(),
@@ -30,32 +32,22 @@ class HomeVM extends GetxController {
   void onInit() async {
     super.onInit();
     getUserDetails();
-    user?.skills = [
-      'Programming',
-      'Data analysis',
-      'Project management',
-      'Communication',
-      'Problem-solving',
-      'Leadership',
-      'Teamwork',
-      'Time management',
-      'Critical thinking',
-      'Creativity',
-      'Adaptability',
-      'Decision-making',
-      'Technical writing',
-      'Graphic design',
-      'Marketing',
-      'Negotiation',
-      'Public speaking',
-      'Research',
-      'Financial analysis',
-      'Customer service',
-    ];
   }
 
+  bool userDataLoading = false;
+
   void getUserDetails() async {
-    user = UserData.fromJson((await SharedPrefs.getString("user"))!);
+    userDataLoading = true;
+    update();
+    var res = await homeRepoImp.getLoggedInUserData();
+    if (res.isEmpty) {
+      user = UserData.fromJson((await SharedPrefs.getString("user"))!);
+    } else {
+      user = UserData.fromMap(res["data"]);
+    }
+    userDataLoading = false;
+    print("user skill ${user?.skills ?? "dnfko"}");
+
     update();
   }
 

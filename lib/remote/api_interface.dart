@@ -9,3 +9,7 @@ abstract class DoubtApiInterface {
   Future<Map<String, dynamic>>? getSearchedUsers(String query);
   Future<Map<String, dynamic>>? setIsSend(String chatId);
 }
+
+abstract class HomeRepo {
+  Future<Map<String, dynamic>> getLoggedInUser();
+}
