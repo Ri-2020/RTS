@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rts/models/user_model.dart';
+import 'package:rts/ui/home/home_vm.dart';
 import 'package:rts/utils/snackbar.dart';
 import 'package:rts/widgets/round_container.dart';
 
@@ -15,31 +17,33 @@ class EditProfileVM extends GetxController {
   TextEditingController addSkillController = TextEditingController();
   List<String> skills = [
     'Programming',
-    'Data analysis',
-    'Project management',
-    'Communication',
-    'Problem-solving',
-    'Leadership',
-    'Teamwork',
-    'Time management',
-    'Critical thinking',
-    'Creativity',
-    'Adaptability',
-    'Decision-making',
-    'Technical writing',
-    'Graphic design',
-    'Marketing',
-    'Negotiation',
-    'Public speaking',
-    'Research',
-    'Financial analysis',
-    'Customer service',
   ];
 
-  Map<String, String> socialMedia = {
-    "Instagram": "instagram.com/rohit_gupta_indu",
-    "Twitter": "twitter.com/rohitgupta",
-  };
+  void fetchUserData() {
+    nameController.text = homeVM.user?.name ?? "";
+    usernameController.text = homeVM.user?.username ?? "";
+    emailController.text = homeVM.user?.email ?? "";
+    phoneController.text = homeVM.user?.mobile ?? "";
+    bioController.text = homeVM.user?.bio ?? "";
+    if (homeVM.user!.socialMedia.isNotEmpty) {
+      for (var e in homeVM.user!.socialMedia) {
+        socialMedia.add(e);
+      }
+    }
+    socialMedia.add(
+        SocialMedia(link: "instagram.com/rohit_gupta_indu", name: "rohit"));
+    skills = homeVM.user!.skills;
+    skills.add("programming");
+    update();
+  }
+
+  HomeVM homeVM =
+      Get.isRegistered<HomeVM>() ? Get.find<HomeVM>() : Get.put(HomeVM());
+  List<SocialMedia> socialMedia = [];
+  // Map<String, String> socialMedia = {
+  //   "Instagram": "instagram.com/rohit_gupta_indu",
+  //   "Twitter": "twitter.com/rohitgupta",
+  // };
 
   removeSkill(String skill) {
     skills.remove(skill);
@@ -59,8 +63,8 @@ class EditProfileVM extends GetxController {
   addSocialMedia() {
     if (socialMediaNameController.text.isNotEmpty &&
         socialMediaUrlController.text.isNotEmpty) {
-      socialMedia[socialMediaNameController.text] =
-          socialMediaUrlController.text;
+      // socialMedia[socialMediaNameController.text] =
+      // socialMediaUrlController.text;
       socialMediaNameController.clear();
       socialMediaUrlController.clear();
       update();
@@ -70,7 +74,7 @@ class EditProfileVM extends GetxController {
     }
   }
 
-  removeSocialMedia(String key) {
+  removeSocialMedia(SocialMedia key) {
     socialMedia.remove(key);
     update();
   }
@@ -78,5 +82,6 @@ class EditProfileVM extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    fetchUserData();
   }
 }

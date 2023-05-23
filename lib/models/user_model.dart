@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:rts/utils/constants.dart';
+
 UserModel userModelFromJson(String str) => UserModel.fromJson(json.decode(str));
 
 String userModelToJson(UserModel data) => json.encode(data.toJson());
@@ -49,71 +51,55 @@ class UserModel {
 }
 
 class UserData {
-  int? personId;
   String name;
   DateTime? birthDate;
+  String rolNo;
   String email;
   String? mobile;
   String username;
-  List<double>? location;
-  String password;
   String id;
-  String? jti;
   String? profileImage;
   String? profileCreatedAt;
   LastUpdate? lastUpdate;
   bool? isVerified;
-  bool? isDeleted;
-  bool? isBlocked;
   bool? isOnline;
   bool? isProfileCompleted;
   bool? isMobileVerified;
   bool? isEmailVerified;
   List<dynamic>? follower;
   List<dynamic>? following;
-  List<dynamic>? post;
   int? age;
   String? gender;
   String? bio;
   String? website;
-  List<SocialMedia>? socialMedia;
+  List<SocialMedia> socialMedia;
   List<String> skills;
   int? profileViews;
-  List<dynamic>? likedPosts;
-  List<dynamic>? savedPost;
   UserData({
-    this.personId,
+    required this.rolNo,
     required this.name,
     this.birthDate,
     required this.email,
     this.mobile,
     required this.username,
-    required this.location,
-    required this.password,
     required this.id,
-    this.jti,
     this.profileImage,
     this.profileCreatedAt,
     this.lastUpdate,
     this.isVerified,
-    this.isDeleted,
-    this.isBlocked,
     this.isOnline,
     this.isProfileCompleted,
     this.isMobileVerified,
     this.isEmailVerified,
     this.follower,
     this.following,
-    this.post,
     this.age,
     this.gender,
     this.bio,
     this.website,
-    this.socialMedia,
+    required this.socialMedia,
     required this.skills,
     this.profileViews,
-    this.likedPosts,
-    this.savedPost,
   });
 
   Map<String, dynamic> toMap() {
@@ -124,20 +110,16 @@ class UserData {
       'mobile': mobile,
       'username': username,
       'id': id,
-      'jti': jti,
       'profileImage': profileImage,
       'profileCreatedAt': profileCreatedAt,
       'lastUpdate': lastUpdate?.toMap(),
       'isVerified': isVerified,
-      'isDeleted': isDeleted,
-      'isBlocked': isBlocked,
       'isOnline': isOnline,
       'isProfileCompleted': isProfileCompleted,
       'isMobileVerified': isMobileVerified,
       'isEmailVerified': isEmailVerified,
       'follower': follower,
       'following': following,
-      'post': post,
       'age': age,
       'gender': gender,
       'bio': bio,
@@ -145,75 +127,60 @@ class UserData {
       'socialMedia': socialMedia?.map((x) => x.toMap()).toList() ?? [],
       'skills': skills,
       'profileViews': profileViews,
-      'likedPosts': likedPosts?.map((x) => x).toList() ?? [],
-      'savedPost': savedPost?.map((x) => x).toList() ?? [],
     };
   }
 
   factory UserData.fromMap(Map<String, dynamic> map) {
     return UserData(
       name: map['name'],
+      rolNo: map['rolNo'] ?? "",
       birthDate: map['birthDate'] != null
           ? DateTime.fromMillisecondsSinceEpoch(map['birthDate'] as int)
-          : null,
+          : DateTime.now(),
       email: map['email'],
       mobile: map['mobile'] != null ? map['mobile'] as String : null,
       username: map['username'],
-      location: map['location'] != null
-          ? List<double>.from(map['location']['coordinates'])
-          : [00, 00],
-      password: map['password'],
       id: map['_id'],
-      jti: map['jti'] != null ? map['jti'] as String : null,
       profileImage: map['profileImage'] != null
           ? map['profileImage']["url"] as String
-          : null,
+          : Constants.image,
       profileCreatedAt: map['profileCreatedAt'] != null
           ? map['profileCreatedAt'] as String
-          : null,
+          : "",
       lastUpdate: map['lastUpdate'] != null
           ? LastUpdate.fromMap(map['lastUpdate'] as Map<String, dynamic>)
           : null,
       isVerified: map['isVerified'] != null ? map['isVerified'] as bool : false,
-      isDeleted: map['isDeleted'] != null ? map['isDeleted'] as bool : false,
-      isBlocked: map['isBlocked'] != null ? map['isBlocked'] as bool : false,
       isOnline: map['isOnline'] != null ? map['isOnline'] as bool : false,
       isProfileCompleted: map['isProfileCompleted'] != null
           ? map['isProfileCompleted'] as bool
           : false,
       isMobileVerified: map['isMobileVerified'] != null
           ? map['isMobileVerified'] as bool
-          : null,
+          : false,
       isEmailVerified: map['isEmailVerified'] != null
           ? map['isEmailVerified'] as bool
-          : null,
+          : false,
       follower: map['follower'] != null
           ? List<dynamic>.from(map['follower'] as List<dynamic>)
-          : null,
+          : [],
       following: map['following'] != null
           ? List<dynamic>.from(map['following'] as List<dynamic>)
-          : null,
-      post: map['post'] != null
-          ? List<dynamic>.from(map['post'] as List<dynamic>)
-          : null,
-      age: map['age'] != null ? map['age'] as int : null,
-      gender: map['gender'] != null ? map['gender'] as String : null,
-      bio: map['bio'] != null ? map['bio'] as String : null,
-      website: map['website'] != null ? map['website'] as String : null,
+          : [],
+      age: map['age'] != null ? map['age'] as int : 20,
+      gender: map['gender'] != null ? map['gender'] as String : "",
+      bio: map['bio'] != null ? map['bio'] as String : "",
+      website: map['website'] != null ? map['website'] as String : "",
       socialMedia: map['socialMedia'] != null
           ? List<SocialMedia>.from(
               (map['socialMedia'] as List<int>).map<SocialMedia?>(
                 (x) => SocialMedia.fromMap(x as Map<String, dynamic>),
               ),
             )
-          : null,
+          : [],
       skills: map['skills'] == null ? [] : List<String>.from(map["skills"]),
       profileViews:
-          map['profileViews'] != null ? map['profileViews'] as int : null,
-      likedPosts:
-          map['likedPosts'] != null ? map['likedPosts'] as List<dynamic> : [],
-      savedPost:
-          map['savedPosts'] != null ? map['savedPosts'] as List<dynamic> : [],
+          map['profileViews'] != null ? map['profileViews'] as int : 0,
     );
   }
 

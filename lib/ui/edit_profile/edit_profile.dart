@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:rts/constants/colors.dart';
 import 'package:rts/constants/google_fonts.dart';
 import 'package:rts/constants/strings.dart';
+import 'package:rts/models/user_model.dart';
 import 'package:rts/ui/edit_profile/edit_profile_viewmodel.dart';
 import 'package:rts/ui/register/signup.dart';
 import 'package:rts/utils/routes.dart';
@@ -367,14 +368,12 @@ class EditProfileScreen extends StatelessWidget {
                               child: vm.socialMedia.isNotEmpty
                                   ? Column(
                                       // alignment: WrapAlignment.start,
-                                      children: vm.socialMedia.entries
+                                      children: vm.socialMedia
                                           .map((entry) => SocialMediaTile(
                                               width: width,
                                               entry: entry,
                                               onDelete: () {
-                                                vm.removeSocialMedia(
-                                                  entry.key,
-                                                );
+                                                vm.removeSocialMedia(entry);
                                               }))
                                           .toList())
                                   : Center(
@@ -429,7 +428,7 @@ Widget changeInput({
 }
 
 class SocialMediaTile extends StatelessWidget {
-  final MapEntry<String, String> entry;
+  final SocialMedia entry;
   final Function onDelete;
   final double width;
   const SocialMediaTile({
@@ -473,7 +472,7 @@ class SocialMediaTile extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(right: width < 600 ? 0 : 20),
                 child: Text(
-                  entry.key,
+                  entry.name ?? "",
                   style: GoogleFonts.openSans(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
@@ -482,7 +481,7 @@ class SocialMediaTile extends StatelessWidget {
               ),
               SizedBox(
                 child: Text(
-                  entry.value,
+                  entry.link ?? "",
                   style: GoogleFonts.openSans(
                     fontSize: 15,
                     fontWeight: FontWeight.w500,
