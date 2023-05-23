@@ -56,7 +56,7 @@ class HomePage extends StatelessWidget {
                                   ),
                                   SideNavigationBarItem(
                                     icon: Icons.water_drop,
-                                    label: "Resourses",
+                                    label: "Resources",
                                   ),
                                   SideNavigationBarItem(
                                     icon: Icons.dashboard,
@@ -70,39 +70,37 @@ class HomePage extends StatelessWidget {
                                     icon: Icons.self_improvement,
                                     label: "About",
                                   ),
+                                  SideNavigationBarItem(
+                                    icon: Icons.logout,
+                                    label: "Logout",
+                                  ),
                                 ],
                                 footer: SideNavigationBarFooter(
-                                  label: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      // const Text("Raah-Towards-Success"),
-                                      InkWell(
-                                        onTap: () {
-                                          Get.to(() => Signin());
-                                        },
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: const [
-                                            Text(
-                                              "Logout",
-                                              style: TextStyle(
-                                                color: Colors.red,
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: 5,
-                                            ),
-                                            Icon(
-                                              Icons.logout,
-                                              color: Colors.red,
-                                            ),
-                                          ],
+                                  label: InkWell(
+                                    onTap: () {
+                                      Get.to(() => Signin());
+                                    },
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: const [
+                                        Text(
+                                          "Logout",
+                                          style: TextStyle(
+                                            color: Colors.red,
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        Icon(
+                                          Icons.logout,
+                                          color: Colors.red,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                                 onTap: (i) {
