@@ -17,33 +17,38 @@ class CharacterTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: width < 820 ? width * 0.8 : width * 0.2,
+      margin: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        color: Colors.white,
+      ),
       child: Column(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: Image.network(
-              "https://www.alexisdental.ca/files/alexis-dental-belle-river-fillings-1.jpg",
-              height: width < 600 ? 100 : 150,
-              width: width < 600 ? 100 : 150,
-              fit: BoxFit.cover,
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
+          // ClipRRect(
+          //   borderRadius: BorderRadius.circular(100),
+          //   child: Image.network(
+          //     "https://www.alexisdental.ca/files/alexis-dental-belle-river-fillings-1.jpg",
+          //     height: width < 600 ? 100 : 150,
+          //     width: width < 600 ? 100 : 150,
+          //     fit: BoxFit.cover,
+          //   ),
+          // ),
+          // SizedBox(
+          //   height: 20,
+          // ),
           Text(
             name,
             style: const TextStyle(
-              fontSize: 20,
+              fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
           ),
           post != null
               ? Text(
                   post!,
-                  style: const TextStyle(
-                    fontSize: 15,
-                  ),
+                  style: const TextStyle(fontSize: 15, color: Colors.grey),
                 )
               : const SizedBox(),
         ],

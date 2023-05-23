@@ -47,6 +47,8 @@ class HomeVM extends GetxController {
     }
     userDataLoading = false;
     print("user skill ${user?.skills ?? "dnfko"}");
+    String x = (await SharedPrefs.getString("token")) ?? "No Token";
+    print(x);
 
     update();
   }

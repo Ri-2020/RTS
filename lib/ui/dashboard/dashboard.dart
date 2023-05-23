@@ -100,24 +100,24 @@ class Dashboard extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Container(
-                        width: width < Constants.mwidth
-                            ? width * 0.8
-                            : width * 0.25,
-                        margin: const EdgeInsets.only(top: 20),
-                        padding: const EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                          color: Colors.blue[100],
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: const Text(
-                          "Some thing here",
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.normal,
-                          ),
-                        ),
-                      ),
+                      // Container(
+                      //   width: width < Constants.mwidth
+                      //       ? width * 0.8
+                      //       : width * 0.25,
+                      //   margin: const EdgeInsets.only(top: 20),
+                      //   padding: const EdgeInsets.all(15),
+                      //   decoration: BoxDecoration(
+                      //     color: Colors.blue[100],
+                      //     borderRadius: BorderRadius.circular(15),
+                      //   ),
+                      //   child: const Text(
+                      //     "Some thing here",
+                      //     style: TextStyle(
+                      //       fontSize: 15,
+                      //       fontWeight: FontWeight.normal,
+                      //     ),
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),

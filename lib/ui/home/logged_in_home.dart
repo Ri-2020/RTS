@@ -23,25 +23,12 @@ class LoggedInHome extends StatelessWidget {
         ),
         Container(
           constraints: BoxConstraints(
-            // maxWidth: Get.width - 270,
             minWidth: Get.width - 300,
           ),
           child: Wrap(
             runAlignment: WrapAlignment.start,
             alignment: WrapAlignment.spaceBetween,
             children: [
-              BootCampTile(
-                width: MediaQuery.of(context).size.width,
-              ),
-              BootCampTile(
-                width: MediaQuery.of(context).size.width,
-              ),
-              BootCampTile(
-                width: MediaQuery.of(context).size.width,
-              ),
-              BootCampTile(
-                width: MediaQuery.of(context).size.width,
-              ),
               BootCampTile(
                 width: MediaQuery.of(context).size.width,
               ),
