@@ -56,7 +56,6 @@ class UserData {
   String email;
   String? mobile;
   String username;
-  String password;
   String id;
   String? profileImage;
   String? profileCreatedAt;
@@ -80,7 +79,6 @@ class UserData {
     required this.email,
     this.mobile,
     required this.username,
-    required this.password,
     required this.id,
     this.profileImage,
     this.profileCreatedAt,
@@ -136,7 +134,6 @@ class UserData {
       email: map['email'],
       mobile: map['mobile'] != null ? map['mobile'] as String : null,
       username: map['username'],
-      password: map['password'],
       id: map['_id'],
       profileImage: map['profileImage'] != null
           ? map['profileImage']["url"] as String
@@ -173,11 +170,8 @@ class UserData {
                 (x) => SocialMedia.fromMap(x as Map<String, dynamic>),
               ),
             )
-
           : [],
-     
       skills: map['skills'] == null ? [] : List<String>.from(map["skills"]),
-
       profileViews:
           map['profileViews'] != null ? map['profileViews'] as int : 0,
     );
