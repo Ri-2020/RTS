@@ -19,89 +19,71 @@ class About extends StatelessWidget {
         pageTitle: UseString.website_name,
         pageDescription: "/about",
         children: [
-          Container(
-            // width: 600,
-            // margin: EdgeInsets.all(width < 600
-            //     ? width < 400
-            //         ? 0
-            //         : 10
-            //     : 0),
-            margin: const EdgeInsets.symmetric(vertical: 20),
-            padding: EdgeInsets.all(width < 600 ? 10 : 30),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(15),
-              boxShadow: width < 450
-                  ? null
-                  : [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 0,
-                        blurRadius: 2,
-                        offset: const Offset(0, 0),
-                      ),
-                    ],
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-                  child: Text(
-                    "About Us",
-                    style: UseGoogleFont().openSans(
-                      size: width < 600 ? 20 : 30,
-                      color: Colors.blue[900],
-                      weight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                Text(
-                  "John Doe is a software developer with over 10 years of experience. He is currently a senior software engineer at Google, where he works on the development of the company's search engine. John is a highly skilled developer with a strong understanding of computer science. He is also a talented problem solver and is able to quickly come up with creative solutions to complex problems. John is a valuable asset to any team and is always willing to help others. He is also a great communicator and is able to clearly explain complex technical concepts to both technical and non-technical audiences. John is a passionate developer who is always looking for new ways to improve his skills and knowledge. He is also a strong advocate for diversity and inclusion in the tech industry. John is a role model for aspiring developers and is an inspiration to his colleagues.",
-                  textAlign: TextAlign.justify,
-                  style: UseGoogleFont().openSans(
-                      size: width < 600 ? 14 : 17,
-                      color: Colors.blue[900],
-                      weight: FontWeight.w500),
-                ),
-              ],
-            ),
+          AboutBoxes(
+            title: "About Us",
+            description:
+                "Welcome to Incandescent, a group of passionate students dedicated to creating engaging bootcamps, seminars, and talks for fellow students like ourselves. We believe that education extends beyond the classroom, and we aim to provide valuable learning experiences that complement our academic journey.",
+            width: width,
+          ),
+          AboutBoxes(
+            title: "Purpose",
+            description:
+                "Our primary purpose is to empower students by offering practical knowledge, skill development, and inspiring insights. We understand the importance of acquiring real-world skills and staying informed about current trends and opportunities. Through our initiatives, we aim to bridge the gap between academic learning and practical application, helping students thrive in their personal and professional lives.",
+            width: width,
+          ),
+          AboutBoxes(
+            title: "Our Approach",
+            description:
+                "At Incandescent, we prioritize student engagement, interaction, and collaboration. We believe that learning is most effective when it is enjoyable, practical, and student-driven. Our events encourage active participation, fostering an inclusive environment where everyone can contribute, ask questions, and exchange ideas. We strive to create a platform that promotes lifelong learning, personal growth, and the development of essential skills beyond traditional academic settings.",
+            width: width,
           ),
           const SizedBox(
             height: 20,
           ),
           Container(
-            margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 5),
-            child: Text(
-              "Our Team",
-              style: TextStyle(
-                color: Colors.blue[900],
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.all(10),
-            width: double.infinity,
-            child: Wrap(
-              alignment: WrapAlignment.spaceAround,
+            color: Colors.amber[50],
+            child: Column(
               children: [
-                CharacterTile(
-                  width: width,
-                  name: "Rohit Gupta",
-                  post: "Chief Technology Head",
+                Container(
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+                  child: Text(
+                    "Our Team",
+                    style: TextStyle(
+                      color: Colors.blue[900],
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
-                CharacterTile(
-                  width: width,
-                  name: "Vikram Negi",
-                  post: "Chief Executive Head",
-                ),
-                CharacterTile(
-                  width: width,
-                  name: "Aman Tiwari",
-                  post: "Chief Managing Head",
+                Container(
+                  margin: const EdgeInsets.all(10),
+                  width: double.infinity,
+                  child: Wrap(
+                    alignment: WrapAlignment.spaceAround,
+                    children: [
+                      CharacterTile(
+                        width: width,
+                        name: "Rohit Gupta",
+                        post: "Flutter Mentor",
+                      ),
+                      CharacterTile(
+                        width: width,
+                        name: "Vikram Negi",
+                        post: "Flutter Mentor",
+                      ),
+                      CharacterTile(
+                        width: width,
+                        name: "Aman Tiwari",
+                        post: "Dart Mentor",
+                      ),
+                      CharacterTile(
+                        width: width,
+                        name: "Yashwant Sahu",
+                        post: "Dart Mentor",
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -128,12 +110,15 @@ class About extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "Email: incandescent.rec@gmail.com\nPhone: +91 1234567890",
+                  "Email: incandescent.rec@gmail.com",
                   style: TextStyle(
                     color: Colors.blue[900],
-                    fontSize: 10,
+                    fontSize: 13,
                     fontWeight: FontWeight.w100,
                   ),
+                ),
+                const SizedBox(
+                  height: 20,
                 ),
               ],
             ),
@@ -141,5 +126,68 @@ class About extends StatelessWidget {
         ],
       );
     });
+  }
+}
+
+class AboutBoxes extends StatelessWidget {
+  final String title;
+  final String description;
+  final double width;
+  const AboutBoxes({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.width,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          margin: EdgeInsets.symmetric(vertical: width < 820 ? 10 : 20),
+          padding: EdgeInsets.all(width < 600 ? 15 : 30),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: width < 820
+                ? null
+                : [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 0,
+                      blurRadius: 2,
+                      offset: const Offset(0, 0),
+                    ),
+                  ],
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
+                child: Text(
+                  title,
+                  style: UseGoogleFont().openSans(
+                    size: width < 600 ? 20 : 30,
+                    color: Colors.blue[900],
+                    weight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Text(
+                description,
+                textAlign: TextAlign.justify,
+                style: UseGoogleFont().openSans(
+                    size: width < 600 ? 14 : 17,
+                    color: Colors.blue[900],
+                    weight: FontWeight.w500),
+              ),
+            ],
+          ),
+        ),
+        width < 820 ? const Divider() : const SizedBox(),
+      ],
+    );
   }
 }
