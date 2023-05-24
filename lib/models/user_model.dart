@@ -121,7 +121,7 @@ class UserData {
       'gender': gender,
       'bio': bio,
       'website': website,
-      'socialMedia': socialMedia.map((x) => x.toMap()).toList() ?? [],
+      'socialMedia': socialMedia.map((x) => x.toMap()).toList(),
       'skills': skills,
       'profileViews': profileViews,
     };
