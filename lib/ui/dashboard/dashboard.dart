@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:rts/constants/google_fonts.dart';
 import 'package:rts/constants/strings.dart';
 import 'package:rts/ui/dashboard/dashboard_vm.dart';
@@ -47,10 +46,11 @@ class Dashboard extends StatelessWidget {
               padding: const EdgeInsets.only(left: 30),
               child: Text(
                 homeVM.user?.name ?? UseString.user_name_not_found,
-                style: UseGoogleFont().openSans(
+                style: TextStyle(
+                  // UseGoogleFont().openSans(
                   color: Colors.black,
-                  size: width < 500 ? 15 : 20,
-                  weight: FontWeight.bold,
+                  fontSize: width < 500 ? 15 : 20,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
@@ -64,7 +64,8 @@ class Dashboard extends StatelessWidget {
               ),
               child: Text(
                 "${homeVM.user?.email}",
-                style: UseGoogleFont().openSans(
+                style: TextStyle(
+                  // UseGoogleFont().openSans(
                   color: Colors.grey,
                 ),
               ),
@@ -93,7 +94,8 @@ class Dashboard extends StatelessWidget {
                         child: Text(
                           "I am a passionate student at Rajkiya Engineering College Azamgarh, driven by my love for programming. Joining the Incandescent group has allowed me to further develop my skills and engage with like-minded individuals. Through their bootcamps, seminars, and talks, I am expanding my knowledge, gaining practical experience, and building a strong foundation for my programming journey. With Incandescent, I am excited to embrace challenges, pursue excellence, and unlock my full potential in the world of programming.",
                           textAlign: TextAlign.justify,
-                          style: GoogleFonts.openSans(
+                          style: TextStyle(
+                            //  GoogleFonts.openSans(
                             fontSize: 15,
                             fontWeight: FontWeight.normal,
                           ),
@@ -126,7 +128,8 @@ class Dashboard extends StatelessWidget {
                     children: [
                       Text(
                         "Skills",
-                        style: GoogleFonts.openSans(
+                        style: TextStyle(
+                          //  GoogleFonts.openSans(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
@@ -146,7 +149,8 @@ class Dashboard extends StatelessWidget {
                             )
                           : Text(
                               "Skills Not Added yet",
-                              style: GoogleFonts.openSans(
+                              style: TextStyle(
+                                // GoogleFonts.openSans(
                                 fontSize: 14,
                                 color: Colors.grey,
                               ),

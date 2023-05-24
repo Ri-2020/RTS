@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
+// import 'package:google_fonts/google_fonts.dart';
 import 'package:rts/ui/home/home_vm.dart';
 import 'package:rts/widgets/page_frame/page_frame.dart';
 
@@ -49,7 +49,8 @@ class Logout extends StatelessWidget {
             child: Center(
                 child: Text(
               "Logout Now",
-              style: GoogleFonts.openSans(
+              style: TextStyle(
+                // GoogleFonts.openSans(
                 color: Colors.red,
               ),
             )),

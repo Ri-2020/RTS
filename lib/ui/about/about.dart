@@ -175,20 +175,22 @@ class AboutBoxes extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
                 child: Text(
                   title,
-                  style: UseGoogleFont().openSans(
-                    size: width < 600 ? 20 : 30,
+                  style: TextStyle(
+                    // UseGoogleFont().openSans(
+                    fontSize: width < 600 ? 20 : 30,
                     color: Colors.blue[900],
-                    weight: FontWeight.bold,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
               Text(
                 description,
                 textAlign: TextAlign.justify,
-                style: UseGoogleFont().openSans(
-                    size: width < 600 ? 14 : 17,
+                style: TextStyle(
+                    // UseGoogleFont().openSans(
+                    fontSize: width < 600 ? 14 : 17,
                     color: Colors.blue[900],
-                    weight: FontWeight.w500),
+                    fontWeight: FontWeight.w500),
               ),
             ],
           ),

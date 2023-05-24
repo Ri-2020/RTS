@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:rts/constants/strings.dart';
 import 'package:rts/ui/register/signin.dart';
 import 'package:rts/utils/constants.dart';
@@ -86,7 +85,8 @@ class _MainHomePageState extends State<MainHomePage> {
                   child: Text(
                     "Developed By:\n\nRohit Gupta\nVikram Negi",
                     textAlign: TextAlign.end,
-                    style: GoogleFonts.openSans(
+                    style: TextStyle(
+                      // GoogleFonts.openSans(
                       color: Colors.white,
                       fontSize: 10,
                       fontWeight: FontWeight.w100,
@@ -253,7 +253,8 @@ class _MainHomePageState extends State<MainHomePage> {
                             children: [
                               Text(
                                 UseString.website_name_caps,
-                                style: GoogleFonts.openSans(
+                                style: TextStyle(
+                                  // GoogleFonts.openSans(
                                   letterSpacing: 2.3,
                                   fontSize: width < 600 ? 40 : 48,
                                   color: Colors.white,
@@ -272,7 +273,8 @@ class _MainHomePageState extends State<MainHomePage> {
                                 width < 600
                                     ? "Where Brilliance Ignites and \nInnovation Glows"
                                     : "Where Brilliance Ignites and Innovation Glows",
-                                style: GoogleFonts.openSans(
+                                style: TextStyle(
+                                  // GoogleFonts.openSans(
                                   fontSize: width < 600 ? 16 : 18,
                                   color: Colors.white,
                                 ),

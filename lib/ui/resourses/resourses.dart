@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:rts/constants/google_fonts.dart';
 import 'package:rts/constants/strings.dart';
 import 'package:rts/ui/home/home_vm.dart';
@@ -56,10 +55,11 @@ class Resourses extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                child: Text(
+                                child: const Text(
                                   UseString.no_resources_available,
                                   textAlign: TextAlign.center,
-                                  style: GoogleFonts.openSans(
+                                  style: TextStyle(
+                                    // GoogleFonts.openSans(
                                     fontWeight: FontWeight.normal,
                                     color: Colors.grey,
                                     fontSize: 15,
