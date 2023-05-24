@@ -8,7 +8,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:rts/widgets/doubt_textfield.dart';
 import 'package:rts/widgets/page_frame/page_frame.dart';
-import 'package:socket_io_client/socket_io_client.dart' as io;
 
 class MoreOption {
   final String name;

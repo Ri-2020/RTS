@@ -13,8 +13,6 @@ import 'package:rts/utils/constants.dart';
 import 'package:rts/utils/shared_prefer.dart';
 import 'package:rts/widgets/snackbar.dart';
 
-import 'package:socket_io_client/socket_io_client.dart' as io;
-
 class DoubtVM extends GetxController {
   List<MessageModel> messages = [];
   List<Doubt> selectedChatList = [];
@@ -29,43 +27,13 @@ class DoubtVM extends GetxController {
   final ScrollController scrollController = ScrollController();
   FocusNode focusNode = FocusNode();
   final TextEditingController txtController = TextEditingController();
-  late io.Socket socket;
+
   String? senderUserId;
 
   @override
   void onInit() {
     super.onInit();
     getDoubts();
-  }
-
-  void initSocket() async {
-    print("init socket");
-    socket = io.io(baseUrl, <String, dynamic>{
-      "transports": ["websocket"],
-      "autoConnect": false
-    });
-    senderUserId = await SharedPrefs.getString("userId");
-    socket.connect();
-    print("socket connection : $senderUserId");
-    socket.emit("signin", senderUserId);
-
-    socket.onConnect((data) {
-      print("message : $data");
-      socket.on("message", (msg) {
-        print("message : $msg");
-        Map<String, dynamic> res = msg;
-        print("chat reply $res");
-        if (res["status"] == "success") {
-          Doubt chat = Doubt.fromMap(res["data"]);
-          // var response = doubtRepoImp.setIsSend(chat.id);
-          // chatList.removeLast();
-          setMessage(res["data"]);
-        }
-      });
-    });
-    socket.onDisconnect((_) => print('Connection Disconnection'));
-    socket.onConnectError((err) => print(err));
-    print("socket connection : ${socket.connected}");
   }
 
   HomeVM homeVM =
@@ -245,8 +213,6 @@ class DoubtVM extends GetxController {
 
   @override
   void onClose() {
-    socket.disconnect();
-    socket.dispose();
     super.dispose();
   }
 
