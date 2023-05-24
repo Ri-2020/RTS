@@ -90,6 +90,16 @@ class About extends StatelessWidget {
                       name: "Annu Soni",
                       post: "Decipline Team",
                     ),
+                    CharacterTile(
+                      width: width,
+                      name: "Anuj Kumar",
+                      post: "Technical Team",
+                    ),
+                    CharacterTile(
+                      width: width,
+                      name: "Satyam Kumar",
+                      post: "Technical Team",
+                    ),
                   ],
                 )
               ],
