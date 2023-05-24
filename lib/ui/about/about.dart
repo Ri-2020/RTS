@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rts/constants/google_fonts.dart';
 import 'package:rts/constants/strings.dart';
 import 'package:rts/ui/about/characterTile.dart';
 import 'package:rts/ui/home/home_vm.dart';
+import 'package:rts/widgets/contact_us.dart';
 import 'package:rts/widgets/page_frame/page_frame.dart';
 
 class About extends StatelessWidget {
@@ -52,6 +52,7 @@ class About extends StatelessWidget {
                   child: Text(
                     "Our Team",
                     style: TextStyle(
+                      fontFamily: UseString.font_family,
                       color: Colors.blue[900],
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
@@ -80,26 +81,6 @@ class About extends StatelessWidget {
                       name: "Yashwant Sahu",
                       post: "Dart Mentor",
                     ),
-                    CharacterTile(
-                      width: width,
-                      name: "Sushant Yadav",
-                      post: "Decipline Team",
-                    ),
-                    CharacterTile(
-                      width: width,
-                      name: "Annu Soni",
-                      post: "Decipline Team",
-                    ),
-                    CharacterTile(
-                      width: width,
-                      name: "Anuj Kumar",
-                      post: "Technical Team",
-                    ),
-                    CharacterTile(
-                      width: width,
-                      name: "Satyam Kumar",
-                      post: "Technical Team",
-                    ),
                   ],
                 )
               ],
@@ -109,37 +90,7 @@ class About extends StatelessWidget {
             height: 20,
           ),
           const Divider(),
-          Container(
-            margin: const EdgeInsets.only(left: 50),
-            width: double.infinity,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 10),
-                  child: Text(
-                    "Contact Us",
-                    style: TextStyle(
-                      color: Colors.blue[900],
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                Text(
-                  "Email: incandescent.rec@gmail.com",
-                  style: TextStyle(
-                    color: Colors.blue[900],
-                    fontSize: 13,
-                    fontWeight: FontWeight.w100,
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-              ],
-            ),
-          )
+          const ContactUs(),
         ],
       );
     });
@@ -185,20 +136,23 @@ class AboutBoxes extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
                 child: Text(
                   title,
-                  style: UseGoogleFont().openSans(
-                    size: width < 600 ? 20 : 30,
+                  style: TextStyle(
+                    fontFamily: UseString.font_family,
+                    fontSize: width < 600 ? 20 : 30,
                     color: Colors.blue[900],
-                    weight: FontWeight.bold,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
               Text(
                 description,
                 textAlign: TextAlign.justify,
-                style: UseGoogleFont().openSans(
-                    size: width < 600 ? 14 : 17,
-                    color: Colors.blue[900],
-                    weight: FontWeight.w500),
+                style: TextStyle(
+                  fontFamily: UseString.font_family,
+                  fontSize: width < 600 ? 14 : 17,
+                  color: Colors.blue[900],
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ],
           ),
@@ -208,44 +162,3 @@ class AboutBoxes extends StatelessWidget {
     );
   }
 }
-
-// class Teams extends StatelessWidget {
-//   final double width;
-//   final String teamName;
-//   final List<Widget> children;
-//   const Teams({
-//     super.key,
-//     required this.width,
-//     required this.teamName,
-//     required this.children,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       margin: const EdgeInsets.symmetric(vertical: 10),
-//       child: Column(
-//         children: [
-//           Text(
-//             teamName,
-//             style: const TextStyle(
-//               color: Colors.black,
-//               fontSize: 25,
-//               fontWeight: FontWeight.bold,
-//             ),
-//           ),
-//           Container(
-//             margin: const EdgeInsets.all(10),
-//             width: double.infinity,
-//             child: Center(
-//               child: Wrap(
-//                 alignment: WrapAlignment.spaceAround,
-//                 children: children,
-//               ),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }

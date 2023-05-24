@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rts/constants/strings.dart';
 
 class offlineWidget extends StatelessWidget {
   const offlineWidget({
@@ -25,6 +26,7 @@ class offlineWidget extends StatelessWidget {
               "Seem's like you aren't connected\n to internet",
               textAlign: TextAlign.center,
               style: TextStyle(
+                fontFamily: UseString.font_family,
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
               ),

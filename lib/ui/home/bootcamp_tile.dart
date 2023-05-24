@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rts/constants/colors.dart';
+import 'package:rts/constants/strings.dart';
 
 class BootCampTile extends StatelessWidget {
   final double width;
@@ -53,6 +54,7 @@ class BootCampTile extends StatelessWidget {
                   const Text(
                     "Flutter Bootcamp",
                     style: TextStyle(
+                      fontFamily: UseString.font_family,
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
@@ -81,6 +83,7 @@ class BootCampTile extends StatelessWidget {
                         Text(
                           "View Details",
                           style: TextStyle(
+                              fontFamily: UseString.font_family,
                               color: Colors.white,
                               fontSize: 10,
                               fontWeight: FontWeight.bold),

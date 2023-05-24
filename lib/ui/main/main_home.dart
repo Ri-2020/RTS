@@ -110,6 +110,7 @@ class _MainHomePageState extends State<MainHomePage> {
                       children: [
                         Text(UseString.website_name,
                             style: TextStyle(
+                              fontFamily: UseString.font_family,
                               fontSize: width < 600 ? 16 : 20,
                               color: Colors.white,
                               fontWeight: FontWeight.w900,
@@ -124,6 +125,7 @@ class _MainHomePageState extends State<MainHomePage> {
                           children: [
                             Text("Fultter Bootcamp",
                                 style: TextStyle(
+                                  fontFamily: UseString.font_family,
                                   fontSize: 11,
                                   color: Colors.grey.shade200,
                                   fontWeight: FontWeight.bold,
@@ -147,6 +149,7 @@ class _MainHomePageState extends State<MainHomePage> {
                       Text(
                         name,
                         style: TextStyle(
+                          fontFamily: UseString.font_family,
                           fontSize: width < 600 ? 10 : 14,
                           color: Colors.grey.shade800,
                           fontWeight: FontWeight.w500,
@@ -199,16 +202,22 @@ class _MainHomePageState extends State<MainHomePage> {
                                 SizedBox(height: 30),
                                 const Text("LATEST",
                                     style: TextStyle(
-                                        fontSize: 22, color: Colors.white)),
+                                        fontFamily: UseString.font_family,
+                                        fontSize: 22,
+                                        color: Colors.white)),
                                 const SizedBox(height: 30),
                                 const Text(
                                     "Get Ready For ${UseString.short_website_name}'s Flutter Bootcaamp",
                                     style: TextStyle(
-                                        fontSize: 22, color: Colors.white)),
+                                        fontFamily: UseString.font_family,
+                                        fontSize: 22,
+                                        color: Colors.white)),
                                 const SizedBox(height: 40),
                                 const Text("Register Yourself",
                                     style: TextStyle(
-                                        fontSize: 16, color: Colors.white)),
+                                        fontFamily: UseString.font_family,
+                                        fontSize: 16,
+                                        color: Colors.white)),
                                 Container(
                                   margin:
                                       const EdgeInsets.symmetric(vertical: 10),
@@ -287,6 +296,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                   ? "May 23 - May 26, 2023 \nME Semenar Hall"
                                   : "May 23 - May 26, 2023 | ME Semenar Hall",
                               style: TextStyle(
+                                fontFamily: UseString.font_family,
                                 fontSize: width < 600 ? 12 : 18,
                                 fontWeight: FontWeight.bold,
                                 letterSpacing: 3,
@@ -312,6 +322,7 @@ class _MainHomePageState extends State<MainHomePage> {
                               child: Text(
                                 "Register Now",
                                 style: TextStyle(
+                                  fontFamily: UseString.font_family,
                                   fontSize: width < 600 ? 13 : 22,
                                   color: Colors.white,
                                   fontWeight: FontWeight.w900,
@@ -339,16 +350,22 @@ class _MainHomePageState extends State<MainHomePage> {
                                 children: [
                                   const Text("LATEST",
                                       style: TextStyle(
-                                          fontSize: 22, color: Colors.white)),
+                                          fontFamily: UseString.font_family,
+                                          fontSize: 22,
+                                          color: Colors.white)),
                                   const SizedBox(height: 30),
                                   const Text(
                                       "Get Ready For ${UseString.short_website_name}'s Flutter Bootcaamp",
                                       style: TextStyle(
-                                          fontSize: 22, color: Colors.white)),
+                                          fontFamily: UseString.font_family,
+                                          fontSize: 22,
+                                          color: Colors.white)),
                                   const SizedBox(height: 40),
                                   const Text("Register Yourself",
                                       style: TextStyle(
-                                          fontSize: 16, color: Colors.white)),
+                                          fontFamily: UseString.font_family,
+                                          fontSize: 16,
+                                          color: Colors.white)),
                                   Container(
                                     margin: const EdgeInsets.symmetric(
                                         vertical: 10),
@@ -374,6 +391,7 @@ class _MainHomePageState extends State<MainHomePage> {
                               child: const Text(
                                 "Developed by Vikram Negi & Rohit Gupta",
                                 style: TextStyle(
+                                    fontFamily: UseString.font_family,
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500,
                                     color: Colors.white),

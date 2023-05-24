@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:rts/constants/google_fonts.dart';
 import 'package:rts/constants/strings.dart';
-import 'package:rts/ui/dashboard/dashboard_vm.dart';
 import 'package:rts/ui/home/home_vm.dart';
-import 'package:rts/utils/constants.dart';
 import 'package:rts/utils/routes.dart';
 import 'package:rts/widgets/media_query_style.dart';
 import 'package:rts/widgets/page_frame/page_frame.dart';
@@ -47,10 +44,11 @@ class Dashboard extends StatelessWidget {
               padding: const EdgeInsets.only(left: 30),
               child: Text(
                 homeVM.user?.name ?? UseString.user_name_not_found,
-                style: UseGoogleFont().openSans(
+                style: TextStyle(
+                  fontFamily: UseString.font_family,
                   color: Colors.black,
-                  size: width < 500 ? 15 : 20,
-                  weight: FontWeight.bold,
+                  fontSize: width < 500 ? 15 : 20,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
@@ -64,7 +62,8 @@ class Dashboard extends StatelessWidget {
               ),
               child: Text(
                 "${homeVM.user?.email}",
-                style: UseGoogleFont().openSans(
+                style: const TextStyle(
+                  fontFamily: UseString.font_family,
                   color: Colors.grey,
                 ),
               ),

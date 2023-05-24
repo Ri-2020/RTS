@@ -1,3 +1,4 @@
+import 'package:rts/constants/strings.dart';
 import 'package:rts/widgets/textformfield_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,7 +9,7 @@ void LoginFirstDialog(context) {
       builder: (context) {
         return AlertDialog(
           contentPadding:
-              EdgeInsets.only(top: 10, left: 10, bottom: 10, right: 10),
+              const EdgeInsets.only(top: 10, left: 10, bottom: 10, right: 10),
           content: Container(
             width: Get.width,
             height: 210,
@@ -26,16 +27,22 @@ void LoginFirstDialog(context) {
                     ),
                   ),
                 ),
-                Icon(Icons.error_outline_outlined,
+                const Icon(Icons.error_outline_outlined,
                     color: Color.fromARGB(255, 165, 60, 52), size: 65),
-                Text(
+                const Text(
                   "Login First",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontFamily: UseString.font_family,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),
-                Text(
+                const Text(
                   "You need to login to access this feature",
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontFamily: UseString.font_family,
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 20),
                 Container(
@@ -51,6 +58,7 @@ void LoginFirstDialog(context) {
                           },
                           child: Text("Login",
                               style: TextStyle(
+                                  fontFamily: UseString.font_family,
                                   color: Theme.of(context).backgroundColor))),
                     ))
               ],
@@ -66,7 +74,7 @@ void showDialogBox(context, String? title, String? msg, bool showBtn) {
       builder: (context) {
         return AlertDialog(
           contentPadding:
-              EdgeInsets.only(top: 10, left: 10, bottom: 10, right: 10),
+              const EdgeInsets.only(top: 10, left: 10, bottom: 10, right: 10),
           content: Container(
             width: Get.width,
             height: 210,
@@ -84,16 +92,22 @@ void showDialogBox(context, String? title, String? msg, bool showBtn) {
                     ),
                   ),
                 ),
-                Icon(Icons.error_outline_outlined,
+                const Icon(Icons.error_outline_outlined,
                     color: Color.fromARGB(255, 165, 60, 52), size: 65),
                 Text(
                   title ?? "",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontFamily: UseString.font_family,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),
                 Text(
                   msg ?? "",
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontFamily: UseString.font_family,
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 20),
                 showBtn
@@ -109,11 +123,12 @@ void showDialogBox(context, String? title, String? msg, bool showBtn) {
                               child: Text(
                                 "Ok",
                                 style: TextStyle(
+                                    fontFamily: UseString.font_family,
                                     color: Theme.of(context).backgroundColor),
                               ),
                             )),
                       )
-                    : SizedBox()
+                    : const SizedBox()
               ],
             ),
           ),

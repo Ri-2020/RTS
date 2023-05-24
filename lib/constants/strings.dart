@@ -1,6 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
 class UseString {
+  static const font_family = "openSans";
   static const website_name = "Incandescent";
   static const website_name_caps = "INCANDESCENT";
   static const short_website_name = "Incandescent";
