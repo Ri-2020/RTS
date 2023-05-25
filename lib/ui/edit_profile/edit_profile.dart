@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:rts/constants/strings.dart';
 import 'package:rts/models/user_model.dart';
 import 'package:rts/ui/edit_profile/edit_profile_viewmodel.dart';
@@ -124,7 +123,8 @@ class EditProfileScreen extends StatelessWidget {
                                   children: [
                                     Text(
                                       "Skills",
-                                      style: GoogleFonts.openSans(
+                                      style: TextStyle(
+                                        // GoogleFonts.openSans(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -230,7 +230,8 @@ class EditProfileScreen extends StatelessWidget {
                                             height: 50,
                                             child: Text(
                                               UseString.no_skills_added,
-                                              style: GoogleFonts.openSans(
+                                              style: TextStyle(
+                                                // GoogleFonts.openSans(
                                                 fontSize: 15,
                                                 color: Colors.grey,
                                                 fontWeight: FontWeight.w500,
@@ -265,7 +266,8 @@ class EditProfileScreen extends StatelessWidget {
                               children: [
                                 Text(
                                   "Social Media Links",
-                                  style: GoogleFonts.openSans(
+                                  style: TextStyle(
+                                    // GoogleFonts.openSans(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -369,7 +371,8 @@ class EditProfileScreen extends StatelessWidget {
                                         child: Center(
                                           child: Text(
                                             "Add",
-                                            style: GoogleFonts.openSans(
+                                            style: TextStyle(
+                                              // GoogleFonts.openSans(
                                               color: Colors.white,
                                               fontSize: 14,
                                               fontWeight: FontWeight.bold,
@@ -407,7 +410,8 @@ class EditProfileScreen extends StatelessWidget {
                                             height: 50,
                                             child: Text(
                                               UseString.no_social_media_added,
-                                              style: GoogleFonts.openSans(
+                                              style: TextStyle(
+                                                // GoogleFonts.openSans(
                                                 fontSize: 15,
                                                 color: Colors.grey,
                                                 fontWeight: FontWeight.w500,
@@ -516,7 +520,8 @@ class SocialMediaTile extends StatelessWidget {
                 margin: EdgeInsets.only(right: width < 600 ? 0 : 20),
                 child: Text(
                   entry.name ?? "",
-                  style: GoogleFonts.openSans(
+                  style: TextStyle(
+                    //  GoogleFonts.openSans(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
                   ),
@@ -525,7 +530,8 @@ class SocialMediaTile extends StatelessWidget {
               SizedBox(
                 child: Text(
                   entry.link ?? "",
-                  style: GoogleFonts.openSans(
+                  style: TextStyle(
+                    //  GoogleFonts.openSans(
                     fontSize: 15,
                     fontWeight: FontWeight.w500,
                   ),

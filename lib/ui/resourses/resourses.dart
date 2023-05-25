@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:rts/constants/strings.dart';
 import 'package:rts/ui/resourses/resource_box.dart';
 import 'package:rts/ui/resourses/resourcesvm.dart';

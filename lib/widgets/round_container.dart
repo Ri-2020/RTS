@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:rts/constants/colors.dart';
 import 'package:rts/ui/edit_profile/edit_profile_viewmodel.dart';
 import 'package:rts/utils/binding.dart';
@@ -23,7 +22,8 @@ class RoundContainerStatic extends StatelessWidget {
       ),
       child: Text(
         skill,
-        style: GoogleFonts.openSans(
+        style: TextStyle(
+          //  GoogleFonts.openSans(
           color: Colors.grey[300],
           fontSize: 14,
           fontWeight: FontWeight.normal,
@@ -60,7 +60,8 @@ class RoundContainer extends StatelessWidget {
           children: [
             Text(
               skill,
-              style: GoogleFonts.openSans(
+              style: TextStyle(
+                // GoogleFonts.openSans(
                 color: Colors.grey[300],
                 fontSize: 14,
                 fontWeight: FontWeight.normal,

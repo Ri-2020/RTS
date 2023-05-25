@@ -33,7 +33,7 @@ class Signin extends StatelessWidget {
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(UseString.website_name,
+                                Text(UseString.ingenious,
                                     style: TextStyle(
                                       fontFamily: UseString.font_family,
                                       fontSize: 20,
@@ -45,7 +45,7 @@ class Signin extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text("Fultter Bootcamp",
+                                    Text(UseString.website_name,
                                         style: TextStyle(
                                           fontFamily: UseString.font_family,
                                           fontSize: 11,

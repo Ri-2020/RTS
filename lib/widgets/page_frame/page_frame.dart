@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:rts/constants/google_fonts.dart';
 
 class PageFrame extends StatelessWidget {
   final List<Widget>? headerButtons;
@@ -89,7 +89,8 @@ class PageFrame extends StatelessWidget {
                               children: [
                                 Text(
                                   pageTitle,
-                                  style: GoogleFonts.openSans(
+                                  style: TextStyle(
+                                    //  GoogleFonts.openSans(
                                     fontSize: width < 460 ? 20 : 30,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
@@ -98,7 +99,8 @@ class PageFrame extends StatelessWidget {
                                 pageDescription != null
                                     ? Text(
                                         pageDescription!,
-                                        style: GoogleFonts.openSans(
+                                        style: TextStyle(
+                                          // GoogleFonts.openSans(
                                           fontSize: 10,
                                           color: Colors.white,
                                           fontWeight: FontWeight.w100,

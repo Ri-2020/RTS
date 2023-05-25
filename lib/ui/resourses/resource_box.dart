@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:rts/constants/strings.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -36,7 +35,8 @@ class ResourceBox extends StatelessWidget {
         children: [
           Text(
             title,
-            style: GoogleFonts.openSans(
+            style: TextStyle(
+              // GoogleFonts.openSans(
               color: Colors.black,
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -45,7 +45,8 @@ class ResourceBox extends StatelessWidget {
           const SizedBox(height: 10),
           Text(
             description,
-            style: GoogleFonts.openSans(
+            style: TextStyle(
+              //  GoogleFonts.openSans(
               color: Colors.grey,
               fontSize: 15,
               fontWeight: FontWeight.normal,

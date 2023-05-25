@@ -11,7 +11,7 @@ class About extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HomeVM vm = Get.find<HomeVM>();
+    // HomeVM vm = Get.find<HomeVM>();
     double width = MediaQuery.of(context).size.width;
     return GetBuilder<HomeVM>(builder: (vm) {
       return PageFrame(

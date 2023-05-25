@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:rts/constants/strings.dart';
 import 'package:rts/ui/register/signin.dart';
 import 'package:rts/utils/constants.dart';
@@ -86,7 +85,8 @@ class _MainHomePageState extends State<MainHomePage> {
                   child: Text(
                     "Developed By:\n\nRohit Gupta\nVikram Negi",
                     textAlign: TextAlign.end,
-                    style: GoogleFonts.openSans(
+                    style: TextStyle(
+                      // GoogleFonts.openSans(
                       color: Colors.white,
                       fontSize: 10,
                       fontWeight: FontWeight.w100,
@@ -104,37 +104,48 @@ class _MainHomePageState extends State<MainHomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
-                  width: 125,
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(UseString.website_name,
-                            style: TextStyle(
-                              fontFamily: UseString.font_family,
-                              fontSize: width < 600 ? 16 : 20,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w900,
-                            )),
-                        // const SizedBox(height: 5),
-                        const Divider(
-                          thickness: 1,
-                          color: Colors.white,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  width: 165,
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        "assets/images/ingenious_whte_no_back.png",
+                        width: 55,
+                      ),
+                      SizedBox(width: 10),
+                      Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Fultter Bootcamp",
+                            Text(UseString.ingenious,
                                 style: TextStyle(
                                   fontFamily: UseString.font_family,
-                                  fontSize: 11,
-                                  color: Colors.grey.shade200,
-                                  fontWeight: FontWeight.bold,
+                                  fontSize: width < 600 ? 16 : 20,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w900,
                                 )),
-                            Icon(Icons.arrow_forward,
-                                size: 15, color: Colors.grey.shade200),
-                          ],
-                        ),
-                      ]),
+                            // const SizedBox(height: 5),
+                            Container(
+                              margin: EdgeInsets.symmetric(vertical: 10),
+                              width: 100,
+                              height: 2,
+                              color: Colors.white,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(UseString.website_name,
+                                    style: TextStyle(
+                                      fontFamily: UseString.font_family,
+                                      fontSize: 11,
+                                      color: Colors.grey.shade200,
+                                      fontWeight: FontWeight.bold,
+                                    )),
+                                Icon(Icons.arrow_forward,
+                                    size: 15, color: Colors.grey.shade200),
+                              ],
+                            ),
+                          ]),
+                    ],
+                  ),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -207,7 +218,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                         color: Colors.white)),
                                 const SizedBox(height: 30),
                                 const Text(
-                                    "Get Ready For ${UseString.short_website_name}'s Flutter Bootcaamp",
+                                    "Get Ready For ${UseString.short_website_name}'s Flutter Bootcamp",
                                     style: TextStyle(
                                         fontFamily: UseString.font_family,
                                         fontSize: 22,
@@ -262,7 +273,8 @@ class _MainHomePageState extends State<MainHomePage> {
                             children: [
                               Text(
                                 UseString.website_name_caps,
-                                style: GoogleFonts.openSans(
+                                style: TextStyle(
+                                  // GoogleFonts.openSans(
                                   letterSpacing: 2.3,
                                   fontSize: width < 600 ? 40 : 48,
                                   color: Colors.white,
@@ -281,7 +293,8 @@ class _MainHomePageState extends State<MainHomePage> {
                                 width < 600
                                     ? "Where Brilliance Ignites and \nInnovation Glows"
                                     : "Where Brilliance Ignites and Innovation Glows",
-                                style: GoogleFonts.openSans(
+                                style: TextStyle(
+                                  // GoogleFonts.openSans(
                                   fontSize: width < 600 ? 16 : 18,
                                   color: Colors.white,
                                 ),
@@ -293,8 +306,8 @@ class _MainHomePageState extends State<MainHomePage> {
                           padding: const EdgeInsets.symmetric(vertical: 20),
                           child: Text(
                               width < 600
-                                  ? "May 23 - May 26, 2023 \nME Semenar Hall"
-                                  : "May 23 - May 26, 2023 | ME Semenar Hall",
+                                  ? "May 23 - May 26, 2023 \nME Seminar Hall"
+                                  : "May 23 - May 26, 2023 | ME Seminar Hall",
                               style: TextStyle(
                                 fontFamily: UseString.font_family,
                                 fontSize: width < 600 ? 12 : 18,
@@ -355,7 +368,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                           color: Colors.white)),
                                   const SizedBox(height: 30),
                                   const Text(
-                                      "Get Ready For ${UseString.short_website_name}'s Flutter Bootcaamp",
+                                      "Get Ready For ${UseString.short_website_name}'s Flutter Bootcamp",
                                       style: TextStyle(
                                           fontFamily: UseString.font_family,
                                           fontSize: 22,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:rts/constants/colors.dart';
 
 class PageFrameHeaderButton extends StatelessWidget {
@@ -30,7 +29,8 @@ class PageFrameHeaderButton extends StatelessWidget {
         ),
         child: Text(
           label,
-          style: GoogleFonts.openSans(
+          style: TextStyle(
+            // GoogleFonts.openSans(
             fontSize: 12,
             color: AppColors.whiteColor,
             fontWeight: FontWeight.w100,
