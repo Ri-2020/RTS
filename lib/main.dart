@@ -4,11 +4,10 @@ import 'package:get/get.dart';
 import 'package:rts/constants/colors.dart';
 import 'package:rts/constants/textstyles.dart';
 import 'package:rts/utils/routes.dart';
-import 'package:rts/utils/shared_prefer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {

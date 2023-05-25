@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rts/constants/strings.dart';
+import 'package:rts/utils/link_opener.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ResourceBox extends StatelessWidget {
@@ -45,7 +46,7 @@ class ResourceBox extends StatelessWidget {
           const SizedBox(height: 10),
           Text(
             description,
-            style: TextStyle(
+            style: const TextStyle(
               //  GoogleFonts.openSans(
               color: Colors.grey,
               fontSize: 15,
@@ -56,11 +57,7 @@ class ResourceBox extends StatelessWidget {
           url != null
               ? InkWell(
                   onTap: () async {
-                    final uriParsed = Uri.parse(url!);
-                    if (await canLaunchUrl(uriParsed)) {
-                      await launchUrl(uriParsed);
-                    }
-                    // launchUrl(Uri.parse("http://dart.dev"));
+                    await Utils.openLink(url!);
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(

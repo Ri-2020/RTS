@@ -42,159 +42,90 @@ class _UserChatPageState extends State<DoubtPage> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    return GetBuilder<DoubtVM>(builder: (vm) {
-      return GetBuilder<HomeVM>(builder: (homeVM) {
-        return SingleChildScrollView(
-          child: GestureDetector(
-              onTap: () {
-                if (vm.focusNode.hasFocus) {
-                  vm.focusNode.unfocus();
-                }
-                if (vm.showEnojiOption) {
-                  vm.showEnojiOption = false;
-                }
-                vm.showBottomNavigation = false;
-                vm.update();
-              },
-              child: PageFrame(
-                pageDescription: "/ask_a_doubt",
-                width: width,
-                pageTitle: "Ask a doubt",
-                children: [
-                  SizedBox(
-                    width: double.infinity,
-                    child: Wrap(
-                      alignment: WrapAlignment.spaceAround,
-                      crossAxisAlignment: WrapCrossAlignment.start,
-                      spacing: 40,
-                      children: [
-                        Container(
-                          margin:
-                              EdgeInsets.only(left: 30, top: 30, bottom: 30),
-                          height: vm.expandedList
-                                      .where((e) => e == true)
-                                      .length *
-                                  190 +
-                              vm.expandedList.where((e) => e == false).length *
-                                  55 +
-                              100,
-                          width: width > 1180 ? 400 : double.infinity,
-                          child: ListView.builder(
-                            itemCount: vm.faqData.length,
-                            itemBuilder: (context, index) {
-                              return Column(
-                                children: [
-                                  index == 0
-                                      ? const Padding(
-                                          padding: EdgeInsets.only(
-                                              top: 30, bottom: 30, left: 15),
-                                          child:
-                                              Text("Frequently Asked Questions",
-                                                  style: TextStyle(
-                                                    fontFamily:
-                                                        UseString.font_family,
-                                                    fontSize: 18,
-                                                    fontWeight: FontWeight.bold,
-                                                  )),
-                                        )
-                                      : const SizedBox(),
-                                  ExpansionPanelList(
-                                    elevation: 1,
-                                    expandedHeaderPadding: EdgeInsets.zero,
-                                    expansionCallback:
-                                        (panelIndex, isExpanded) {
-                                      vm.expandedList[index] = !isExpanded;
-                                      vm.update();
-                                    },
-                                    children: [
-                                      ExpansionPanel(
-                                        headerBuilder: (context, isExpanded) {
-                                          return ListTile(
-                                            title: Text(
-                                              vm.faqData[index]['question'] ??
-                                                  "",
-                                              style: const TextStyle(
-                                                fontFamily:
-                                                    UseString.font_family,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                        body: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 16.0, vertical: 8.0),
-                                          child: Text(
-                                            vm.faqData[index]['answer'] ?? "",
-                                            style: const TextStyle(
-                                              fontFamily: UseString.font_family,
-                                              fontSize: 16.0,
-                                            ),
-                                          ),
-                                        ),
-                                        isExpanded: vm.expandedList[index],
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              );
-                            },
-                          ),
-                        ),
-                        Container(
-                          width: width < 1180 ? double.infinity : 440,
-                          padding: const EdgeInsets.all(10),
-                          margin: EdgeInsets.symmetric(
-                            vertical: 20,
-                            horizontal: width < 820 ? 20 : 0,
-                          ),
-                          decoration: BoxDecoration(
-                            color: Colors.grey.shade200,
-                            borderRadius: BorderRadius.circular(15),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 0,
-                                blurRadius: 2,
-                                offset: const Offset(0, 0),
-                              ),
-                            ],
-                          ),
-                          child: vm.loading
-                              ? const SizedBox(
-                                  height: 500,
-                                  child: Center(
-                                    child: CircularProgressIndicator(),
-                                  ),
-                                )
-                              : Container(
-                                  width:
-                                      width < Constants.commentSectionWidth + 50
-                                          ? width - 90
-                                          : Constants.commentSectionWidth - 90,
-                                  height: 550,
-                                  child: WillPopScope(
+    return GetBuilder<DoubtVM>(
+      builder: (vm) {
+        return GetBuilder<HomeVM>(
+          builder: (homeVM) {
+            return SingleChildScrollView(
+              child: GestureDetector(
+                onTap: () {
+                  if (vm.focusNode.hasFocus) {
+                    vm.focusNode.unfocus();
+                  }
+                  if (vm.showEnojiOption) {
+                    vm.showEnojiOption = false;
+                  }
+                  vm.showBottomNavigation = false;
+                  vm.update();
+                },
+                child: PageFrame(
+                  pageDescription: "/ask_a_doubt",
+                  width: width,
+                  pageTitle: "Ask a doubt",
+                  children: [
+                    SizedBox(
+                      width: double.infinity,
+                      child: Wrap(
+                        alignment: WrapAlignment.spaceAround,
+                        crossAxisAlignment: WrapCrossAlignment.start,
+                        spacing: 40,
+                        children: [
+                          FAQWidget(width: width),
+                          Container(
+                            width: width < 1180 ? double.infinity : 440,
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 5),
+                            margin: EdgeInsets.symmetric(
+                              vertical: 20,
+                              horizontal: width < 820
+                                  ? width < 420
+                                      ? 10
+                                      : 20
+                                  : 0,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade200,
+                              borderRadius: BorderRadius.circular(15),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 0,
+                                  blurRadius: 2,
+                                  offset: const Offset(0, 0),
+                                ),
+                              ],
+                            ),
+                            child: vm.loading
+                                ? const SizedBox(
+                                    height: 500,
+                                    child: Center(
+                                      child: CircularProgressIndicator(),
+                                    ),
+                                  )
+                                : SizedBox(
+                                    width: width <
+                                            Constants.commentSectionWidth + 50
+                                        ? width - 90
+                                        : Constants.commentSectionWidth - 90,
+                                    height: 550,
                                     child: Stack(
                                       children: [
                                         vm.chatList.isEmpty
-                                            ? Center(
-                                                child: Container(
-                                                    child: Column(
-                                                  children: const [
+                                            ? const Center(
+                                                child: Column(
+                                                  children: [
                                                     Icon(Icons.error, size: 32),
                                                     Text("No question"),
                                                   ],
-                                                )),
+                                                ),
                                               )
                                             : SizedBox(
                                                 height: 550,
                                                 child: ListView.builder(
                                                   controller:
                                                       vm.scrollController,
-                                                  // itemCount: messages.length,
                                                   itemCount:
                                                       vm.chatList.length + 1,
-
                                                   itemBuilder: (context, i) {
                                                     if (i ==
                                                         vm.chatList.length) {
@@ -202,115 +133,11 @@ class _UserChatPageState extends State<DoubtPage> {
                                                         height: 20,
                                                       );
                                                     }
-                                                    return Container(
-                                                      margin: const EdgeInsets
-                                                              .symmetric(
-                                                          vertical: 10,
-                                                          horizontal: 10),
-                                                      child: Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .start,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            CircleAvatar(
-                                                              radius: 25,
-                                                              backgroundImage:
-                                                                  NetworkImage(vm
-                                                                      .chatList[
-                                                                          i]
-                                                                      .userImage),
-                                                            ),
-                                                            const SizedBox(
-                                                              width: 10,
-                                                            ),
-                                                            GestureDetector(
-                                                              onLongPress: () {
-                                                                showDialog(
-                                                                    context:
-                                                                        context,
-                                                                    builder:
-                                                                        (context) {
-                                                                      return AlertDialog(
-                                                                        content:
-                                                                            const Text("Do you want to delete this comment?"),
-                                                                        actions: [
-                                                                          TextButton(
-                                                                              onPressed: () {
-                                                                                Navigator.pop(context);
-                                                                              },
-                                                                              child: const Text("No")),
-                                                                          TextButton(
-                                                                              onPressed: () {},
-                                                                              child: const Text("Yes")),
-                                                                        ],
-                                                                      );
-                                                                    });
-                                                              },
-                                                              child: Container(
-                                                                  width: width <
-                                                                          Constants.mwidth +
-                                                                              50
-                                                                      ? width -
-                                                                          195
-                                                                      : 330,
-                                                                  child: Column(
-                                                                    crossAxisAlignment:
-                                                                        CrossAxisAlignment
-                                                                            .start,
-                                                                    children: [
-                                                                      Text(
-                                                                        vm.chatList[i]
-                                                                            .username,
-                                                                        style:
-                                                                            const TextStyle(
-                                                                          fontFamily:
-                                                                              UseString.font_family,
-                                                                          fontSize:
-                                                                              15,
-                                                                          fontWeight:
-                                                                              FontWeight.w400,
-                                                                        ),
-                                                                      ),
-                                                                      RichText(
-                                                                          text:
-                                                                              TextSpan(
-                                                                        text: vm
-                                                                            .chatList[i]
-                                                                            .text,
-                                                                        style: const TextStyle(
-                                                                            fontFamily: UseString
-                                                                                .font_family,
-                                                                            color: Colors
-                                                                                .black,
-                                                                            fontSize:
-                                                                                15,
-                                                                            fontWeight:
-                                                                                FontWeight.w400),
-                                                                      )),
-                                                                      Row(
-                                                                        children: [
-                                                                          TextButton.icon(
-                                                                              label: Text("${vm.chatList[i].likes}"),
-                                                                              onPressed: () {},
-                                                                              icon: Icon(
-                                                                                Icons.thumb_up,
-                                                                                color: Colors.grey.shade600,
-                                                                                size: 20,
-                                                                              )),
-                                                                        ],
-                                                                      ),
-                                                                      i == vm.chatList.length - 1
-                                                                          ? const SizedBox(
-                                                                              height: 40,
-                                                                            )
-                                                                          : const SizedBox()
-                                                                    ],
-                                                                  )),
-                                                            )
-                                                          ]),
+                                                    return doubtUser(
+                                                      vm,
+                                                      i,
+                                                      context,
+                                                      width,
                                                     );
                                                   },
                                                 ),
@@ -319,29 +146,169 @@ class _UserChatPageState extends State<DoubtPage> {
                                             ? const SizedBox(
                                                 height: 0,
                                               )
-                                            : BottomTextMessaging()
+                                            : BottomTextMessaging(),
                                       ],
                                     ),
-                                    onWillPop: () {
-                                      if (vm.showEnojiOption == true) {
-                                        setState(() {
-                                          vm.showEnojiOption = false;
-                                        });
-                                      } else {
-                                        Navigator.pop(context);
-                                      }
-                                      return Future.value(false);
-                                    },
                                   ),
-                                ),
-                        ),
-                      ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+
+  Container doubtUser(DoubtVM vm, int i, BuildContext context, double width) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CircleAvatar(
+            radius: 25,
+            backgroundImage: NetworkImage(vm.chatList[i].userImage),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          GestureDetector(
+            onLongPress: () {
+              showDialogBox(context);
+            },
+            child: Container(
+              width: width < Constants.mwidth + 50 ? width - 195 : 330,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    vm.chatList[i].username,
+                    style: const TextStyle(
+                      fontFamily: UseString.font_family,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
+                  RichText(
+                    text: TextSpan(
+                      text: vm.chatList[i].text,
+                      style: const TextStyle(
+                        fontFamily: UseString.font_family,
+                        color: Colors.black,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      TextButton.icon(
+                        label: Text("${vm.chatList[i].likes}"),
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.thumb_up,
+                          color: Colors.grey.shade600,
+                          size: 20,
+                        ),
+                      ),
+                    ],
+                  ),
+                  i == vm.chatList.length - 1
+                      ? const SizedBox(
+                          height: 40,
+                        )
+                      : const SizedBox()
                 ],
-              )),
-        );
-      });
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class FAQWidget extends StatelessWidget {
+  const FAQWidget({
+    super.key,
+    required this.width,
+  });
+
+  final double width;
+
+  @override
+  Widget build(BuildContext context) {
+    return GetBuilder<DoubtVM>(builder: (vm) {
+      return Container(
+        margin: const EdgeInsets.only(left: 30, top: 30, bottom: 30),
+        height: vm.expandedList.where((e) => e == true).length * 195 +
+            vm.expandedList.where((e) => e == false).length * 56 +
+            100,
+        width: width > 1180 ? 400 : double.infinity,
+        child: ListView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: vm.faqData.length,
+          itemBuilder: (context, index) {
+            return Column(
+              children: [
+                index == 0
+                    ? const Padding(
+                        padding: EdgeInsets.only(top: 30, bottom: 30, left: 15),
+                        child: Text("Frequently Asked Questions",
+                            style: TextStyle(
+                              fontFamily: UseString.font_family,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            )),
+                      )
+                    : const SizedBox(),
+                ExpansionPanelList(
+                  animationDuration: const Duration(milliseconds: 200),
+                  elevation: 1,
+                  expandedHeaderPadding: EdgeInsets.zero,
+                  expansionCallback: (panelIndex, isExpanded) {
+                    vm.expandedList[index] = !isExpanded;
+                    vm.update();
+                  },
+                  children: [
+                    ExpansionPanel(
+                      headerBuilder: (context, isExpanded) {
+                        return ListTile(
+                          title: Text(
+                            vm.faqData[index]['question'] ?? "",
+                            style: const TextStyle(
+                              fontFamily: UseString.font_family,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        );
+                      },
+                      body: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16.0, vertical: 8.0),
+                        child: Text(
+                          vm.faqData[index]['answer'] ?? "",
+                          style: const TextStyle(
+                            fontFamily: UseString.font_family,
+                            fontSize: 16.0,
+                          ),
+                        ),
+                      ),
+                      isExpanded: vm.expandedList[index],
+                    ),
+                  ],
+                ),
+              ],
+            );
+          },
+        ),
+      );
     });
   }
 }
@@ -355,8 +322,9 @@ class bottomNavigationMsgOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<DoubtVM>(builder: (vm) {
-      return Container(
+    return GetBuilder<DoubtVM>(
+      builder: (vm) {
+        return Container(
           height: 56 * 6.3,
           width: Get.width < Constants.mwidth ? Get.width : 500,
           alignment: Alignment.bottomCenter,
@@ -396,30 +364,6 @@ class bottomNavigationMsgOption extends StatelessWidget {
                 ),
                 ListTile(
                   title: const Text(
-                    "React",
-                    style: TextStyle(
-                        fontFamily: UseString.font_family, color: Colors.white),
-                  ),
-                  leading: const Icon(
-                    Icons.add_reaction,
-                    color: Colors.white,
-                  ),
-                  onTap: () {},
-                ),
-                ListTile(
-                  title: const Text(
-                    "Forword",
-                    style: TextStyle(
-                        fontFamily: UseString.font_family, color: Colors.white),
-                  ),
-                  leading: const Icon(
-                    CupertinoIcons.arrowshape_turn_up_right_fill,
-                    color: Colors.white,
-                  ),
-                  onTap: () {},
-                ),
-                ListTile(
-                  title: const Text(
                     "Trash",
                     style: TextStyle(
                         fontFamily: UseString.font_family, color: Colors.white),
@@ -435,48 +379,33 @@ class bottomNavigationMsgOption extends StatelessWidget {
                     vm.update();
                   },
                 ),
-                ListTile(
-                  title: const Text(
-                    "Spam",
-                    style: TextStyle(
-                        fontFamily: UseString.font_family, color: Colors.white),
-                  ),
-                  leading: const Icon(
-                    Icons.error,
-                    color: Colors.white,
-                  ),
-                  onTap: () {},
-                ),
               ],
             ),
-          ));
-    });
+          ),
+        );
+      },
+    );
   }
 }
 
-class IconBtn extends StatelessWidget {
-  const IconBtn({
-    Key? key,
-    this.iconColor,
-    this.iconSize,
-    required this.icon,
-    this.iconOnPress,
-  }) : super(key: key);
-
-  // final List<MoreOption> moreOptionsToSend;
-  final IconData icon;
-  final Color? iconColor;
-  final double? iconSize;
-  final void Function()? iconOnPress;
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-        onPressed: iconOnPress ?? () {},
-        icon: Icon(
-          icon,
-          color: iconColor ?? Colors.grey,
-          size: iconSize ?? 24,
-        ));
-  }
+void showDialogBox(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        content: const Text("Do you want to delete this comment?"),
+        actions: [
+          TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text("No")),
+          TextButton(
+            onPressed: () {},
+            child: const Text("Yes"),
+          ),
+        ],
+      );
+    },
+  );
 }

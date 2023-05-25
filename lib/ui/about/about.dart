@@ -81,6 +81,16 @@ class About extends StatelessWidget {
                       name: "Yashwant Sahu",
                       post: "Dart Mentor",
                     ),
+                    CharacterTile(
+                      width: width,
+                      name: "Satyam Kumar",
+                      post: "Technical Team",
+                    ),
+                    CharacterTile(
+                      width: width,
+                      name: "Anuj Kumar",
+                      post: "Technical Team",
+                    ),
                   ],
                 )
               ],

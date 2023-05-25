@@ -97,9 +97,13 @@ class _MainHomePageState extends State<MainHomePage> {
             : const SizedBox(),
         Positioned(
           width: Get.width,
-          top: 0,
+          top: width < 400 ? 25.0 + 20 : 25,
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 40),
+            padding: EdgeInsets.only(
+                bottom: 25.0,
+                top: 0,
+                left: width < 400 ? 20 : 40,
+                right: width < 400 ? 20 : 40),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -184,14 +188,14 @@ class _MainHomePageState extends State<MainHomePage> {
                 child: InkWell(
                   onTap: () {
                     showModalBottomSheet(
-                        backgroundColor: Colors.black.withOpacity(0.1),
+                        backgroundColor: Colors.black.withOpacity(0.7),
                         isScrollControlled: false,
                         context: context,
                         builder: (context) {
                           return Container(
                             height: height,
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 35, horizontal: 30),
+                            padding: const EdgeInsets.only(
+                                top: 35, bottom: 35, right: 30),
                             color: Colors.black.withOpacity(0.2),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -255,7 +259,13 @@ class _MainHomePageState extends State<MainHomePage> {
         Positioned(
           top: width < 600 ? height * 0.3 : height * 0.25,
           child: Container(
-              margin: EdgeInsets.only(left: width < 600 ? 50 : 100, right: 20),
+              margin: EdgeInsets.only(
+                  left: width < 600
+                      ? width < 400
+                          ? 20
+                          : 50
+                      : 100,
+                  right: 20),
               height: Get.height,
               width: width < 1000 ? null : width - 120,
               decoration: const BoxDecoration(),
@@ -274,7 +284,6 @@ class _MainHomePageState extends State<MainHomePage> {
                               Text(
                                 UseString.website_name_caps,
                                 style: TextStyle(
-                                  // GoogleFonts.openSans(
                                   letterSpacing: 2.3,
                                   fontSize: width < 600 ? 40 : 48,
                                   color: Colors.white,

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:rts/constants/strings.dart';
 
 class CharacterTile extends StatelessWidget {
@@ -26,6 +24,7 @@ class CharacterTile extends StatelessWidget {
         color: Colors.white,
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // ClipRRect(
           //   borderRadius: BorderRadius.circular(100),
@@ -57,6 +56,48 @@ class CharacterTile extends StatelessWidget {
                   ),
                 )
               : const SizedBox(),
+
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InkWell(
+                onTap: () {},
+                child: Image.asset(
+                  "assets/images/intagram_icon.png",
+                  height: 30,
+                  width: 30,
+                ),
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              InkWell(
+                onTap: () {},
+                child: Image.asset(
+                  "assets/images/github_icon.png",
+                  height: 30,
+                  width: 30,
+                ),
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              InkWell(
+                onTap: () {},
+                child: Image.asset(
+                  "assets/images/linkedin_icon.png",
+                  height: 30,
+                  width: 30,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          )
         ],
       ),
     );

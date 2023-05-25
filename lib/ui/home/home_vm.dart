@@ -14,8 +14,8 @@ import 'package:rts/widgets/logout.dart';
 import 'package:rts/widgets/snackbar.dart';
 
 class HomeVM extends GetxController {
+  bool isSideBarVisible = true;
   UserData? user;
-  // double width = MediaQuery.of(context).size.width;
   HomeRepoImp homeRepoImp = HomeRepoImp();
 
   List<Widget> views = [

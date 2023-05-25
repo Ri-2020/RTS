@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rts/ui/doubt/doubt.dart';
 import 'package:rts/ui/doubt/doubt_viewmodel.dart';
+import 'package:rts/ui/home/home_vm.dart';
 
 import '../utils/constants.dart';
 
@@ -11,6 +12,7 @@ class BottomTextMessaging extends StatelessWidget {
     super.key,
     // required this.context,
   });
+  HomeVM homeVM = Get.isRegistered<HomeVM>() ? Get.find() : Get.put(HomeVM());
   DoubtVM vm = Get.isRegistered<DoubtVM>() ? Get.find() : Get.put(DoubtVM());
 
   @override
@@ -31,52 +33,56 @@ class BottomTextMessaging extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(
-                      width: width < 800
-                          ? width - 170
-                          : (width > 1180 ? 360 : width - 345),
-                      // width < Constants.mwidth + 50
-                      //     ? width - 160
-                      //     : Constants.commentSectionWidth - 55,
-                      child: Card(
-                        margin:
-                            const EdgeInsets.only(left: 4, right: 2, bottom: 6),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(25)),
-                        child: TextFormField(
-                          onChanged: (value) {
-                            value.isNotEmpty
-                                ? vm.sendButton = true
-                                : vm.sendButton = false;
-                            vm.update();
-                          },
-                          controller: vm.txtController,
-                          focusNode: vm.focusNode,
-                          textAlignVertical: TextAlignVertical.center,
-                          maxLines: 5,
-                          // minLines: 1,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "Ask question here",
-                            hintStyle: const TextStyle(fontSize: 18),
-                            // prefixIcon: IconButton(
-                            //   icon: const Icon(
-                            //     Icons.emoji_emotions_outlined,
-                            //     size: 28,
-                            //     color: Colors.grey,
-                            //   ),
-                            //   onPressed: () {
-                            //     vm.focusNode.unfocus();
-                            //     vm.focusNode.canRequestFocus = false;
-                            //     vm.showEnojiOption = !vm.showEnojiOption;
-                            //     vm.update();
-                            //   },
-                            // ),
-                            contentPadding: const EdgeInsets.all(15),
+                    GetBuilder<HomeVM>(builder: (homeVM) {
+                      return SizedBox(
+                        width: width < 800
+                            ? (homeVM.isSideBarVisible
+                                ? width - 170
+                                : width - 115)
+                            : (width > 1180 ? 360 : width - 345),
+                        // width < Constants.mwidth + 50
+                        //     ? width - 160
+                        //     : Constants.commentSectionWidth - 55,
+                        child: Card(
+                          margin: const EdgeInsets.only(
+                              left: 4, right: 2, bottom: 6),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25)),
+                          child: TextFormField(
+                            onChanged: (value) {
+                              value.isNotEmpty
+                                  ? vm.sendButton = true
+                                  : vm.sendButton = false;
+                              vm.update();
+                            },
+                            controller: vm.txtController,
+                            focusNode: vm.focusNode,
+                            textAlignVertical: TextAlignVertical.center,
+                            maxLines: 2,
+                            minLines: 1,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "Ask question here",
+                              hintStyle: const TextStyle(fontSize: 18),
+                              // prefixIcon: IconButton(
+                              //   icon: const Icon(
+                              //     Icons.emoji_emotions_outlined,
+                              //     size: 28,
+                              //     color: Colors.grey,
+                              //   ),
+                              //   onPressed: () {
+                              //     vm.focusNode.unfocus();
+                              //     vm.focusNode.canRequestFocus = false;
+                              //     vm.showEnojiOption = !vm.showEnojiOption;
+                              //     vm.update();
+                              //   },
+                              // ),
+                              contentPadding: const EdgeInsets.all(15),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
+                      );
+                    }),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 6.0),
                       child: CircleAvatar(
