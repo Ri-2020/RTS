@@ -52,10 +52,6 @@ class _UserChatPageState extends State<DoubtPage> {
                   if (vm.focusNode.hasFocus) {
                     vm.focusNode.unfocus();
                   }
-                  if (vm.showEnojiOption) {
-                    vm.showEnojiOption = false;
-                  }
-                  vm.showBottomNavigation = false;
                   vm.update();
                 },
                 child: PageFrame(
@@ -74,12 +70,12 @@ class _UserChatPageState extends State<DoubtPage> {
                           Container(
                             width: width < 1180 ? double.infinity : 440,
                             padding: const EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 5),
+                                vertical: 0, horizontal: 5),
                             margin: EdgeInsets.symmetric(
                               vertical: 20,
                               horizontal: width < 820
                                   ? width < 420
-                                      ? 10
+                                      ? 15
                                       : 20
                                   : 0,
                             ),
@@ -89,8 +85,8 @@ class _UserChatPageState extends State<DoubtPage> {
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 0,
-                                  blurRadius: 2,
+                                  spreadRadius: 0.3,
+                                  blurRadius: 3,
                                   offset: const Offset(0, 0),
                                 ),
                               ],
@@ -103,10 +99,6 @@ class _UserChatPageState extends State<DoubtPage> {
                                     ),
                                   )
                                 : SizedBox(
-                                    width: width <
-                                            Constants.commentSectionWidth + 50
-                                        ? width - 90
-                                        : Constants.commentSectionWidth - 90,
                                     height: 550,
                                     child: Stack(
                                       children: [
@@ -130,7 +122,7 @@ class _UserChatPageState extends State<DoubtPage> {
                                                     if (i ==
                                                         vm.chatList.length) {
                                                       return Container(
-                                                        height: 20,
+                                                        height: 80,
                                                       );
                                                     }
                                                     return doubtUser(
@@ -142,11 +134,7 @@ class _UserChatPageState extends State<DoubtPage> {
                                                   },
                                                 ),
                                               ),
-                                        vm.showBottomNavigation
-                                            ? const SizedBox(
-                                                height: 0,
-                                              )
-                                            : BottomTextMessaging(),
+                                        BottomTextMessaging(),
                                       ],
                                     ),
                                   ),
@@ -166,9 +154,10 @@ class _UserChatPageState extends State<DoubtPage> {
 
   Container doubtUser(DoubtVM vm, int i, BuildContext context, double width) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      margin: EdgeInsets.symmetric(
+          vertical: i == 0 ? 0 : 8, horizontal: width < 420 ? 4 : 10),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CircleAvatar(
@@ -176,58 +165,74 @@ class _UserChatPageState extends State<DoubtPage> {
             backgroundImage: NetworkImage(vm.chatList[i].userImage),
           ),
           const SizedBox(
-            width: 10,
+            width: 5,
           ),
-          GestureDetector(
-            onLongPress: () {
-              showDialogBox(context);
-            },
-            child: Container(
-              width: width < Constants.mwidth + 50 ? width - 195 : 330,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    vm.chatList[i].username,
-                    style: const TextStyle(
-                      fontFamily: UseString.font_family,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  RichText(
-                    text: TextSpan(
-                      text: vm.chatList[i].text,
-                      style: const TextStyle(
-                        fontFamily: UseString.font_family,
-                        color: Colors.black,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ),
-                  Row(
+          Container(
+            padding: const EdgeInsets.only(
+              left: 10,
+              bottom: 5,
+            ),
+            margin: const EdgeInsets.only(top: 15),
+            decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(15),
+                  bottomLeft: Radius.circular(15),
+                  bottomRight: Radius.circular(15),
+                )),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GestureDetector(
+                  onLongPress: () {
+                    showDialogBox(context);
+                  },
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      TextButton.icon(
-                        label: Text("${vm.chatList[i].likes}"),
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.thumb_up,
-                          color: Colors.grey.shade600,
-                          size: 20,
+                      Text(
+                        vm.chatList[i].username,
+                        style: TextStyle(
+                          fontFamily: UseString.font_family,
+                          fontSize: 15,
+                          color: Colors.grey.shade700,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      SizedBox(
+                        width: width < 1180
+                            ? homeVM.isSideBarVisible
+                                ? width - 245
+                                : width - 185
+                            : 200,
+                        child: RichText(
+                          text: TextSpan(
+                            text: vm.chatList[i].text,
+                            style: const TextStyle(
+                              fontFamily: UseString.font_family,
+                              color: Colors.black,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
                         ),
                       ),
                     ],
                   ),
-                  i == vm.chatList.length - 1
-                      ? const SizedBox(
-                          height: 40,
-                        )
-                      : const SizedBox()
-                ],
-              ),
+                ),
+                TextButton.icon(
+                  label: Text("${vm.chatList[i].likes}"),
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.thumb_up,
+                    color: Colors.grey.shade600,
+                    size: 20,
+                  ),
+                ),
+              ],
             ),
-          )
+          ),
         ],
       ),
     );
