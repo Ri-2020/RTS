@@ -368,7 +368,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                           color: Colors.white)),
                                   const SizedBox(height: 30),
                                   const Text(
-                                      "Get Ready For ${UseString.short_website_name}'s Flutter Bootcaamp",
+                                      "Get Ready For ${UseString.short_website_name}'s Flutter Bootcamp",
                                       style: TextStyle(
                                           fontFamily: UseString.font_family,
                                           fontSize: 22,
