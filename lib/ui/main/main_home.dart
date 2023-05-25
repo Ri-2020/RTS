@@ -218,7 +218,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                         color: Colors.white)),
                                 const SizedBox(height: 30),
                                 const Text(
-                                    "Get Ready For ${UseString.short_website_name}'s Flutter Bootcaamp",
+                                    "Get Ready For ${UseString.short_website_name}'s Flutter Bootcamp",
                                     style: TextStyle(
                                         fontFamily: UseString.font_family,
                                         fontSize: 22,
@@ -306,8 +306,8 @@ class _MainHomePageState extends State<MainHomePage> {
                           padding: const EdgeInsets.symmetric(vertical: 20),
                           child: Text(
                               width < 600
-                                  ? "May 23 - May 26, 2023 \nME Semenar Hall"
-                                  : "May 23 - May 26, 2023 | ME Semenar Hall",
+                                  ? "May 23 - May 26, 2023 \nME Seminar Hall"
+                                  : "May 23 - May 26, 2023 | ME Seminar Hall",
                               style: TextStyle(
                                 fontFamily: UseString.font_family,
                                 fontSize: width < 600 ? 12 : 18,
