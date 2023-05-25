@@ -37,6 +37,7 @@ class HomePage extends StatelessWidget {
                                     child: SizedBox(
                                       child: Text(UseString.website_name_caps,
                                           style: TextStyle(
+                                            fontFamily: UseString.font_family,
                                             fontSize: 20,
                                             fontWeight: FontWeight.w900,
                                           )),
@@ -89,6 +90,7 @@ class HomePage extends StatelessWidget {
                                         Text(
                                           "Logout",
                                           style: TextStyle(
+                                            fontFamily: UseString.font_family,
                                             color: Colors.red,
                                           ),
                                         ),
@@ -134,6 +136,8 @@ class HomePage extends StatelessWidget {
                                             const Text(
                                                 UseString.website_name_caps,
                                                 style: TextStyle(
+                                                  fontFamily:
+                                                      UseString.font_family,
                                                   fontSize: 18,
                                                   fontWeight: FontWeight.w900,
                                                 )),
@@ -157,6 +161,7 @@ class HomePage extends StatelessWidget {
                                   child: Text(vm.user?.name ?? "name",
                                       overflow: TextOverflow.ellipsis,
                                       style: const TextStyle(
+                                        fontFamily: UseString.font_family,
                                         fontSize: 14,
                                         fontWeight: FontWeight.bold,
                                       )),
@@ -218,6 +223,7 @@ class HomePage extends StatelessWidget {
                                       Text(
                                         "Logout",
                                         style: TextStyle(
+                                          fontFamily: UseString.font_family,
                                           color: Colors.red,
                                         ),
                                       ),

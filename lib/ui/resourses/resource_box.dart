@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rts/constants/strings.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ResourceBox extends StatelessWidget {
@@ -73,6 +74,7 @@ class ResourceBox extends StatelessWidget {
                     child: const Text(
                       "Go to Resource",
                       style: TextStyle(
+                        fontFamily: UseString.font_family,
                         color: Colors.blue,
                         fontSize: 15,
                         fontWeight: FontWeight.bold,

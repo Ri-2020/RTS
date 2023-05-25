@@ -1,3 +1,4 @@
+import 'package:rts/constants/strings.dart';
 import 'package:rts/ui/doubt/doubt_viewmodel.dart';
 import 'package:rts/ui/home/home_vm.dart';
 import 'package:rts/utils/constants.dart';
@@ -90,6 +91,8 @@ class _UserChatPageState extends State<DoubtPage> {
                                           child:
                                               Text("Frequently Asked Questions",
                                                   style: TextStyle(
+                                                    fontFamily:
+                                                        UseString.font_family,
                                                     fontSize: 18,
                                                     fontWeight: FontWeight.bold,
                                                   )),
@@ -110,17 +113,23 @@ class _UserChatPageState extends State<DoubtPage> {
                                             title: Text(
                                               vm.faqData[index]['question'] ??
                                                   "",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold),
+                                              style: const TextStyle(
+                                                fontFamily:
+                                                    UseString.font_family,
+                                                fontWeight: FontWeight.bold,
+                                              ),
                                             ),
                                           );
                                         },
                                         body: Padding(
-                                          padding: EdgeInsets.symmetric(
+                                          padding: const EdgeInsets.symmetric(
                                               horizontal: 16.0, vertical: 8.0),
                                           child: Text(
                                             vm.faqData[index]['answer'] ?? "",
-                                            style: TextStyle(fontSize: 16.0),
+                                            style: const TextStyle(
+                                              fontFamily: UseString.font_family,
+                                              fontSize: 16.0,
+                                            ),
                                           ),
                                         ),
                                         isExpanded: vm.expandedList[index],
@@ -255,11 +264,15 @@ class _UserChatPageState extends State<DoubtPage> {
                                                                       Text(
                                                                         vm.chatList[i]
                                                                             .username,
-                                                                        style: const TextStyle(
-                                                                            fontSize:
-                                                                                15,
-                                                                            fontWeight:
-                                                                                FontWeight.w400),
+                                                                        style:
+                                                                            const TextStyle(
+                                                                          fontFamily:
+                                                                              UseString.font_family,
+                                                                          fontSize:
+                                                                              15,
+                                                                          fontWeight:
+                                                                              FontWeight.w400,
+                                                                        ),
                                                                       ),
                                                                       RichText(
                                                                           text:
@@ -268,6 +281,8 @@ class _UserChatPageState extends State<DoubtPage> {
                                                                             .chatList[i]
                                                                             .text,
                                                                         style: const TextStyle(
+                                                                            fontFamily: UseString
+                                                                                .font_family,
                                                                             color: Colors
                                                                                 .black,
                                                                             fontSize:
@@ -363,7 +378,8 @@ class bottomNavigationMsgOption extends StatelessWidget {
                 ListTile(
                   title: const Text(
                     "Copy",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                        fontFamily: UseString.font_family, color: Colors.white),
                   ),
                   leading: const Icon(
                     Icons.copy,
@@ -381,7 +397,8 @@ class bottomNavigationMsgOption extends StatelessWidget {
                 ListTile(
                   title: const Text(
                     "React",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                        fontFamily: UseString.font_family, color: Colors.white),
                   ),
                   leading: const Icon(
                     Icons.add_reaction,
@@ -392,7 +409,8 @@ class bottomNavigationMsgOption extends StatelessWidget {
                 ListTile(
                   title: const Text(
                     "Forword",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                        fontFamily: UseString.font_family, color: Colors.white),
                   ),
                   leading: const Icon(
                     CupertinoIcons.arrowshape_turn_up_right_fill,
@@ -403,7 +421,8 @@ class bottomNavigationMsgOption extends StatelessWidget {
                 ListTile(
                   title: const Text(
                     "Trash",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                        fontFamily: UseString.font_family, color: Colors.white),
                   ),
                   leading: const Icon(
                     Icons.delete_outline,
@@ -419,7 +438,8 @@ class bottomNavigationMsgOption extends StatelessWidget {
                 ListTile(
                   title: const Text(
                     "Spam",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                        fontFamily: UseString.font_family, color: Colors.white),
                   ),
                   leading: const Icon(
                     Icons.error,

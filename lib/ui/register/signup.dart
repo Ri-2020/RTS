@@ -35,8 +35,9 @@ class Signup extends StatelessWidget {
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(UseString.website_name,
+                                const Text(UseString.ingenious,
                                     style: TextStyle(
+                                      fontFamily: UseString.font_family,
                                       fontSize: 20,
                                       fontWeight: FontWeight.w900,
                                     )),
@@ -46,8 +47,9 @@ class Signup extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text("Fultter Bootcamp",
+                                    Text(UseString.website_name,
                                         style: TextStyle(
+                                          fontFamily: UseString.font_family,
                                           fontSize: 11,
                                           color: Colors.grey.shade600,
                                           fontWeight: FontWeight.bold,
@@ -64,6 +66,7 @@ class Signup extends StatelessWidget {
                               },
                               child: Text("Sign in",
                                   style: TextStyle(
+                                    fontFamily: UseString.font_family,
                                     fontSize: 14,
                                     color: Colors.grey.shade800,
                                     fontWeight: FontWeight.w500,
@@ -120,6 +123,7 @@ class Signup extends StatelessWidget {
                         const SizedBox(height: 10),
                         Text("Student Registration",
                             style: TextStyle(
+                              fontFamily: UseString.font_family,
                               fontSize: 25,
                               color: Colors.grey.shade900,
                               fontWeight: FontWeight.w900,
@@ -131,6 +135,7 @@ class Signup extends StatelessWidget {
                               textAlign: TextAlign.center,
                               "Welcome, Enter your details to register your account",
                               style: TextStyle(
+                                fontFamily: UseString.font_family,
                                 fontSize: 14,
                                 color: Colors.grey.shade500,
                                 fontWeight: FontWeight.w800,
@@ -153,6 +158,7 @@ class Signup extends StatelessWidget {
                                       decoration: InputDecoration(
                                           hintText: "Enter Password",
                                           hintStyle: TextStyle(
+                                            fontFamily: UseString.font_family,
                                             color: Colors.grey.shade500,
                                             fontWeight: FontWeight.w500,
                                           ),
@@ -193,6 +199,7 @@ class Signup extends StatelessWidget {
                                       decoration: InputDecoration(
                                           hintText: "Confirm Password",
                                           hintStyle: TextStyle(
+                                            fontFamily: UseString.font_family,
                                             color: Colors.grey.shade500,
                                             fontWeight: FontWeight.w500,
                                           ),
@@ -254,6 +261,7 @@ class Signup extends StatelessWidget {
                           child: Text(
                             "Having trouble in sign up?",
                             style: TextStyle(
+                              fontFamily: UseString.font_family,
                               fontSize: 14,
                               color: Colors.grey.shade500,
                               fontWeight: FontWeight.w800,
@@ -299,6 +307,7 @@ class Signup extends StatelessWidget {
                                             ? "Proceed Next"
                                             : "Sign up",
                                         style: const TextStyle(
+                                          fontFamily: UseString.font_family,
                                           fontSize: 14,
                                           color: Colors.white60,
                                           fontWeight: FontWeight.w800,
@@ -313,6 +322,7 @@ class Signup extends StatelessWidget {
                             Text(
                               "Already have an account? ",
                               style: TextStyle(
+                                fontFamily: UseString.font_family,
                                 fontSize: 14,
                                 color: Colors.grey.shade500,
                                 fontWeight: FontWeight.w800,
@@ -326,6 +336,7 @@ class Signup extends StatelessWidget {
                               child: Text(
                                 "Sign in",
                                 style: TextStyle(
+                                  fontFamily: UseString.font_family,
                                   fontSize: 14,
                                   color: Colors.blue.shade300,
                                   fontWeight: FontWeight.w800,
@@ -363,6 +374,7 @@ class LabelField extends StatelessWidget {
         child: Text(
           name,
           style: const TextStyle(
+            fontFamily: UseString.font_family,
             // color: Colors.grey.shade500,
             fontWeight: FontWeight.w800,
           ),

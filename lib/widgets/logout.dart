@@ -41,8 +41,8 @@ class Logout extends StatelessWidget {
                 });
           },
           child: Container(
-            margin: EdgeInsets.all(30),
-            padding: EdgeInsets.all(30),
+            margin: const EdgeInsets.all(30),
+            padding: const EdgeInsets.all(30),
             decoration: BoxDecoration(
               color: Colors.red[50],
             ),

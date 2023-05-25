@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:rts/constants/strings.dart';
 
 class CharacterTile extends StatelessWidget {
   final String name;
@@ -41,6 +42,7 @@ class CharacterTile extends StatelessWidget {
           Text(
             name,
             style: const TextStyle(
+              fontFamily: UseString.font_family,
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
@@ -48,7 +50,11 @@ class CharacterTile extends StatelessWidget {
           post != null
               ? Text(
                   post!,
-                  style: const TextStyle(fontSize: 15, color: Colors.grey),
+                  style: const TextStyle(
+                    fontFamily: UseString.font_family,
+                    fontSize: 15,
+                    color: Colors.grey,
+                  ),
                 )
               : const SizedBox(),
         ],

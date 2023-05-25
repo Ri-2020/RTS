@@ -79,6 +79,7 @@ class EditProfileScreen extends StatelessWidget {
                               decoration: InputDecoration(
                                   hintText: "Tell us about yourself...",
                                   hintStyle: TextStyle(
+                                    fontFamily: UseString.font_family,
                                     color: Colors.grey.shade500,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -160,6 +161,7 @@ class EditProfileScreen extends StatelessWidget {
                                                     ),
                                                   ),
                                             hintStyle: TextStyle(
+                                              fontFamily: UseString.font_family,
                                               color: Colors.grey.shade500,
                                               fontWeight: FontWeight.w500,
                                             ),
@@ -288,6 +290,8 @@ class EditProfileScreen extends StatelessWidget {
                                             decoration: InputDecoration(
                                               hintText: "Social Media Name",
                                               hintStyle: TextStyle(
+                                                fontFamily:
+                                                    UseString.font_family,
                                                 color: Colors.grey.shade500,
                                                 fontWeight: FontWeight.w500,
                                               ),
@@ -322,6 +326,8 @@ class EditProfileScreen extends StatelessWidget {
                                             decoration: InputDecoration(
                                               hintText: "Social Media Url",
                                               hintStyle: TextStyle(
+                                                fontFamily:
+                                                    UseString.font_family,
                                                 color: Colors.grey.shade500,
                                                 fontWeight: FontWeight.w500,
                                               ),

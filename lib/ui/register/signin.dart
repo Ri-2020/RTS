@@ -33,8 +33,9 @@ class Signin extends StatelessWidget {
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(UseString.website_name,
+                                Text(UseString.ingenious,
                                     style: TextStyle(
+                                      fontFamily: UseString.font_family,
                                       fontSize: 20,
                                       fontWeight: FontWeight.w900,
                                     )),
@@ -44,8 +45,9 @@ class Signin extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text("Fultter Bootcamp",
+                                    Text(UseString.website_name,
                                         style: TextStyle(
+                                          fontFamily: UseString.font_family,
                                           fontSize: 11,
                                           color: Colors.grey.shade600,
                                           fontWeight: FontWeight.bold,
@@ -64,6 +66,7 @@ class Signin extends StatelessWidget {
                             child: Text(
                               "Sign up",
                               style: TextStyle(
+                                fontFamily: UseString.font_family,
                                 fontSize: 14,
                                 color: Colors.grey.shade800,
                                 fontWeight: FontWeight.w500,
@@ -88,6 +91,7 @@ class Signin extends StatelessWidget {
                       children: [
                         Text("Student Login",
                             style: TextStyle(
+                              fontFamily: UseString.font_family,
                               fontSize: 25,
                               color: Colors.grey.shade900,
                               fontWeight: FontWeight.w900,
@@ -99,6 +103,7 @@ class Signin extends StatelessWidget {
                               textAlign: TextAlign.center,
                               "Welcome again, Enter your details to get sign in to your account",
                               style: TextStyle(
+                                fontFamily: UseString.font_family,
                                 fontSize: 14,
                                 color: Colors.grey.shade500,
                                 fontWeight: FontWeight.w800,
@@ -112,6 +117,7 @@ class Signin extends StatelessWidget {
                             decoration: InputDecoration(
                                 hintText: "Enter Email/Phone No",
                                 hintStyle: TextStyle(
+                                  fontFamily: UseString.font_family,
                                   color: Colors.grey.shade500,
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -136,6 +142,7 @@ class Signin extends StatelessWidget {
                             decoration: InputDecoration(
                                 hintText: "Enter Password",
                                 hintStyle: TextStyle(
+                                  fontFamily: UseString.font_family,
                                   color: Colors.grey.shade500,
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -165,6 +172,7 @@ class Signin extends StatelessWidget {
                           child: Text(
                             "Having trouble in sign in?",
                             style: TextStyle(
+                              fontFamily: UseString.font_family,
                               fontSize: 14,
                               color: Colors.grey.shade500,
                               fontWeight: FontWeight.w800,
@@ -196,6 +204,7 @@ class Signin extends StatelessWidget {
                                     child: Text(
                                     "Sign in",
                                     style: TextStyle(
+                                      fontFamily: UseString.font_family,
                                       fontSize: 14,
                                       color: Colors.white60,
                                       fontWeight: FontWeight.w800,
@@ -210,6 +219,7 @@ class Signin extends StatelessWidget {
                             Text(
                               "Don't have an account? ",
                               style: TextStyle(
+                                fontFamily: UseString.font_family,
                                 fontSize: 14,
                                 color: Colors.grey.shade500,
                                 fontWeight: FontWeight.w800,
@@ -222,6 +232,7 @@ class Signin extends StatelessWidget {
                               child: Text(
                                 "Sign up",
                                 style: TextStyle(
+                                  fontFamily: UseString.font_family,
                                   fontSize: 14,
                                   color: Colors.blueAccent.shade400,
                                   fontWeight: FontWeight.w800,
@@ -259,6 +270,7 @@ class LabelField extends StatelessWidget {
         child: Text(
           name,
           style: const TextStyle(
+            fontFamily: UseString.font_family,
             // color: Colors.grey.shade500,
             fontWeight: FontWeight.w800,
           ),
