@@ -35,7 +35,7 @@ class Signup extends StatelessWidget {
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(UseString.website_name,
+                                const Text(UseString.ingenious,
                                     style: TextStyle(
                                       fontFamily: UseString.font_family,
                                       fontSize: 20,
@@ -47,7 +47,7 @@ class Signup extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text("Fultter Bootcamp",
+                                    Text(UseString.website_name,
                                         style: TextStyle(
                                           fontFamily: UseString.font_family,
                                           fontSize: 11,

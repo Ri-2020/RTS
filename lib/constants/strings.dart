@@ -3,6 +3,7 @@
 class UseString {
   static const font_family = "openSans";
   static const website_name = "Incandescent";
+  static const ingenious = "Ingenious";
   static const website_name_caps = "INCANDESCENT";
   static const short_website_name = "Incandescent";
   static const save_changes = "Save Changes";
