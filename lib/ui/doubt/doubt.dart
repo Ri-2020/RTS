@@ -103,9 +103,9 @@ class _UserChatPageState extends State<DoubtPage> {
                                     child: Stack(
                                       children: [
                                         vm.chatList.isEmpty
-                                            ? const Center(
+                                            ? Center(
                                                 child: Column(
-                                                  children: [
+                                                  children: const [
                                                     Icon(Icons.error, size: 32),
                                                     Text("No question"),
                                                   ],
