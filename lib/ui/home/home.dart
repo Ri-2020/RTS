@@ -98,12 +98,12 @@ class HomePage extends StatelessWidget {
                                             onTap: () {
                                               Get.to(() => Signin());
                                             },
-                                            child: const Row(
+                                            child: Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.center,
-                                              children: [
+                                              children: const [
                                                 Text(
                                                   "Logout",
                                                   style: TextStyle(
@@ -236,12 +236,12 @@ class HomePage extends StatelessWidget {
                                               );
                                             });
                                       },
-                                      child: const Row(
+                                      child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
-                                        children: [
+                                        children: const [
                                           Text(
                                             "Logout",
                                             style: TextStyle(

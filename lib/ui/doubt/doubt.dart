@@ -68,7 +68,7 @@ class _UserChatPageState extends State<DoubtPage> {
                         children: [
                           FAQWidget(width: width),
                           Container(
-                            width: width < 1180 ? double.infinity : 440,
+                            width: width < 1180 ? double.infinity : 400,
                             padding: const EdgeInsets.symmetric(
                                 vertical: 0, horizontal: 5),
                             margin: EdgeInsets.symmetric(
@@ -103,9 +103,9 @@ class _UserChatPageState extends State<DoubtPage> {
                                     child: Stack(
                                       children: [
                                         vm.chatList.isEmpty
-                                            ? const Center(
+                                            ? Center(
                                                 child: Column(
-                                                  children: [
+                                                  children: const [
                                                     Icon(Icons.error, size: 32),
                                                     Text("No question"),
                                                   ],
@@ -154,19 +154,18 @@ class _UserChatPageState extends State<DoubtPage> {
 
   Container doubtUser(DoubtVM vm, int i, BuildContext context, double width) {
     return Container(
+      width: width < 1180 && width > 821 ? 400 : double.infinity,
       margin: EdgeInsets.symmetric(
           vertical: i == 0 ? 0 : 8, horizontal: width < 420 ? 4 : 10),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CircleAvatar(
             radius: 25,
             backgroundImage: NetworkImage(vm.chatList[i].userImage),
           ),
-          const SizedBox(
-            width: 5,
-          ),
+          SizedBox(width: 15),
           Container(
             padding: const EdgeInsets.only(
               left: 10,
@@ -201,11 +200,13 @@ class _UserChatPageState extends State<DoubtPage> {
                       ),
                       const SizedBox(height: 5),
                       SizedBox(
-                        width: width < 1180
-                            ? homeVM.isSideBarVisible
-                                ? width - 245
-                                : width - 185
-                            : 200,
+                        width: width < 1180 && width > 821
+                            ? 300
+                            : width > 1180 || (width > 500 && width < 821)
+                                ? 238
+                                : homeVM.isSideBarVisible
+                                    ? width - 256
+                                    : width - 200,
                         child: RichText(
                           text: TextSpan(
                             text: vm.chatList[i].text,
